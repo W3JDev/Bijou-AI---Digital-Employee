@@ -10,6 +10,7 @@ import { Playbooks } from './components/Playbooks';
 import { Roadmap } from './components/Roadmap';
 import { SetupGuide } from './components/SetupGuide';
 import { DemoChat } from './components/DemoChat';
+import { WhatsAppLinkGenerator } from './components/WhatsAppLinkGenerator';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <main>
           <Hero />
+          <WhatsAppLinkGenerator />
           <RevenueCalculator />
           <ViralPillars />
           <Playbooks />
