@@ -2,7 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, Building2, Stethoscope, ArrowUpRight } from 'lucide-react';
 
-export const CaseStudies: React.FC = () => {
+interface CaseStudiesProps {
+  onOpenModal: () => void;
+}
+
+export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
   return (
     <section className="py-24 bg-black/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

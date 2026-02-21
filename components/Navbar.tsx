@@ -5,9 +5,10 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 interface NavbarProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
+  onOpenModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
+export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpenModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -42,7 +43,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => 
             <a href="#features" className="text-sm font-medium text-gray-300 hover:text-emerald-400 transition-colors">Features</a>
             <a href="#roadmap" className="text-sm font-medium text-gray-300 hover:text-emerald-400 transition-colors">Roadmap</a>
             <a href="#demo" className="text-sm font-medium text-gray-300 hover:text-emerald-400 transition-colors">Live Demo</a>
-            <button className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-2 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+            <button 
+              onClick={onOpenModal}
+              className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-2 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
+            >
               Get Early Access
             </button>
           </div>
@@ -70,7 +74,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => 
             <a href="#features" className="block text-base font-medium text-gray-300 hover:text-emerald-400" onClick={() => setIsMenuOpen(false)}>Features</a>
             <a href="#roadmap" className="block text-base font-medium text-gray-300 hover:text-emerald-400" onClick={() => setIsMenuOpen(false)}>Roadmap</a>
             <a href="#demo" className="block text-base font-medium text-gray-300 hover:text-emerald-400" onClick={() => setIsMenuOpen(false)}>Live Demo</a>
-            <button className="w-full mt-4 bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-3 px-6 rounded-lg">
+            <button 
+              onClick={() => { setIsMenuOpen(false); onOpenModal(); }}
+              className="w-full mt-4 bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-3 px-6 rounded-lg"
+            >
               Get Early Access
             </button>
           </div>

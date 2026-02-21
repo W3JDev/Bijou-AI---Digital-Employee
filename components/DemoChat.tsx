@@ -8,7 +8,11 @@ interface Message {
   content: string;
 }
 
-export const DemoChat: React.FC = () => {
+interface DemoChatProps {
+  onOpenModal: () => void;
+}
+
+export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
   const [messages, setMessages] = useState<Message[]>([
     { role: 'model', content: "Hello Boss! Bijou here. I can help you manage appointments or answer queries while you relax. What business you running?" }
   ]);

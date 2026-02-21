@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, DollarSign, ArrowRight } from 'lucide-react';
 
-export const RevenueCalculator: React.FC = () => {
+interface RevenueCalculatorProps {
+  onOpenModal: () => void;
+}
+
+export const RevenueCalculator: React.FC<RevenueCalculatorProps> = ({ onOpenModal }) => {
   const [inquiries, setInquiries] = useState(50);
   const [commission, setCommission] = useState(1000);
   const [missedRate, setMissedRate] = useState(50); // percentage

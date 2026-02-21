@@ -2,7 +2,11 @@ import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { MessageSquare, ArrowRight, PhoneMissed, Zap, ShieldCheck } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenModal: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
 
@@ -47,7 +51,7 @@ export const Hero: React.FC = () => {
               Warning: You are leaking revenue
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+            <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-6">
               Stop losing <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">RM300k/year</span> to late-night WhatsApp leads.
             </motion.h1>
             
@@ -57,6 +61,7 @@ export const Hero: React.FC = () => {
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-12">
               <motion.button 
+                onClick={onOpenModal}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group relative flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 font-bold py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"

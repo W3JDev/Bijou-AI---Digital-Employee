@@ -57,7 +57,11 @@ const playbooks = [
     }
 ];
 
-export const Playbooks: React.FC = () => {
+interface PlaybooksProps {
+  onOpenModal: () => void;
+}
+
+export const Playbooks: React.FC<PlaybooksProps> = ({ onOpenModal }) => {
   const [activeTab, setActiveTab] = useState(playbooks[0]);
   const [chatStage, setChatStage] = useState<'hidden' | 'user' | 'typing' | 'bijou'>('hidden');
 
@@ -125,7 +129,10 @@ export const Playbooks: React.FC = () => {
                         ))}
                     </div>
 
-                    <button className={`flex items-center gap-2 text-${activeTab.color}-400 font-bold hover:gap-3 transition-all`}>
+                    <button 
+                        onClick={onOpenModal}
+                        className={`flex items-center gap-2 text-${activeTab.color}-400 font-bold hover:gap-3 transition-all`}
+                    >
                         View {activeTab.label} Demo <ArrowRight className="w-4 h-4" />
                     </button>
                 </motion.div>

@@ -396,7 +396,11 @@ const NightDashboardSimulation = () => {
   )
 };
 
-export const ViralPillars: React.FC = () => {
+interface ViralPillarsProps {
+  onOpenModal: () => void;
+}
+
+export const ViralPillars: React.FC<ViralPillarsProps> = ({ onOpenModal }) => {
   const [activeTab, setActiveTab] = useState<'stress' | 'speed' | 'dashboard'>('stress');
 
   return (
@@ -451,9 +455,12 @@ export const ViralPillars: React.FC = () => {
         </motion.div>
 
         <div className="mt-12 text-center">
-          <button className="bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 font-bold py-3 px-8 rounded-full border border-emerald-500/20 transition-all flex items-center gap-2 mx-auto group">
-            Start Your Own Simulation
-            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <button 
+            onClick={onOpenModal}
+            className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-4 px-8 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all flex items-center gap-2 mx-auto group"
+          >
+            Try Bijou Free for 14 Days
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>

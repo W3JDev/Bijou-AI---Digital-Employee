@@ -3,14 +3,11 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ViralPillars } from './components/ViralPillars';
 import { HowItWorks } from './components/HowItWorks';
-import { Features } from './components/Features';
 import { CaseStudies } from './components/CaseStudies';
 import { RevenueCalculator } from './components/RevenueCalculator';
 import { Playbooks } from './components/Playbooks';
-import { Roadmap } from './components/Roadmap';
-import { SetupGuide } from './components/SetupGuide';
 import { DemoChat } from './components/DemoChat';
-import { WhatsAppLinkGenerator } from './components/WhatsAppLinkGenerator';
+import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -27,16 +24,13 @@ export default function App() {
         <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <main>
           <Hero />
-          <WhatsAppLinkGenerator />
-          <RevenueCalculator />
           <ViralPillars />
-          <Playbooks />
+          <RevenueCalculator />
           <HowItWorks />
-          <Roadmap />
-          <Features />
+          <Playbooks />
           <CaseStudies />
-          <SetupGuide />
           <DemoChat />
+          <FinalCTA />
         </main>
         <Footer />
       </div>

@@ -57,7 +57,11 @@ const steps = [
   }
 ];
 
-export const HowItWorks: React.FC = () => {
+interface HowItWorksProps {
+  onOpenModal: () => void;
+}
+
+export const HowItWorks: React.FC<HowItWorksProps> = ({ onOpenModal }) => {
   useEffect(() => {
     // Simulate TRACE logging for demo purposes
     console.group('TRACE System Initiation - Bijou AI');
