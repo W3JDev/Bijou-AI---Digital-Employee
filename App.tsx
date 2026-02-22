@@ -9,6 +9,8 @@ import { Playbooks } from './components/Playbooks';
 import { DemoChat } from './components/DemoChat';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
+import { WhatsAppCTA } from './components/WhatsAppCTA';
+import { WaitlistStrip } from './components/WaitlistStrip';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,6 +44,10 @@ export default function App() {
           <FinalCTA />
         </main>
         <Footer />
+        
+        {/* Fixed CTAs */}
+        <WhatsAppCTA phoneNumber="60174106981" />
+        <WaitlistStrip />
       </div>
     </div>
   );

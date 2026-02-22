@@ -18,13 +18,15 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
           14-day free trial. No credit card. Cancel anytime.
         </p>
         
-        <button 
-          onClick={onOpenModal}
+        <a 
+          href="https://bijou-staging.fly.dev"
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] transition-all transform hover:scale-[1.02] flex items-center gap-3 mx-auto text-xl mb-16"
         >
           Start Free Trial
           <ArrowRight className="w-6 h-6" />
-        </button>
+        </a>
 
         <div className="grid md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12">
           <div>

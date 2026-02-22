@@ -1,6 +1,8 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { MessageSquare, ArrowRight, PhoneMissed, Zap, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { MessageSquare, ArrowRight, PhoneMissed, Zap, ShieldCheck, Calendar, Users } from 'lucide-react';
+import { LeadCaptureForm } from './LeadCaptureForm';
+import { CalBooking } from './CalBooking';
 
 interface HeroProps {
   onOpenModal: () => void;
@@ -9,6 +11,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
+  const [activeTab, setActiveTab] = useState<'form' | 'demo'>('form');
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,27 +62,65 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                Your human agents sleep. Bijou doesn't. For just <span className="text-emerald-400 font-bold">RM159/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-12">
-              <motion.button 
-                onClick={onOpenModal}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 font-bold py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  Stop The Bleeding
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              </motion.button>
-              
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 glass-panel-3d hover:bg-white/5 text-white font-medium py-4 px-8 rounded-xl transition-all"
-              >
-                Calculate Savings
-              </motion.button>
+            <motion.div variants={itemVariants} className="mb-12">
+              {/* Lead Capture Tabs */}
+              <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+                <button
+                  onClick={() => setActiveTab('form')}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    activeTab === 'form'
+                      ? 'bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_20px_rgba(16,185,129,0.4)]'
+                      : 'glass-panel-3d text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Users className="w-5 h-5" />
+                  Get Started
+                </button>
+                
+                <button
+                  onClick={() => setActiveTab('demo')}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
+                    activeTab === 'demo'
+                      ? 'bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_20px_rgba(16,185,129,0.4)]'
+                      : 'glass-panel-3d text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book Demo
+                </button>
+              </div>
+
+              {/* Lead Capture Content */}
+              <AnimatePresence mode="wait">
+                {activeTab === 'form' && (
+                  <motion.div
+                    key="form"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="max-w-2xl mx-auto lg:mx-0"
+                  >
+                    <LeadCaptureForm 
+                      source="hero_form"
+                      className="glass-panel-3d p-8 rounded-2xl border border-white/10"
+                    />
+                  </motion.div>
+                )}
+
+                {activeTab === 'demo' && (
+                  <motion.div
+                    key="demo"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="max-w-4xl mx-auto lg:mx-0"
+                  >
+                    <CalBooking className="glass-panel-3d p-8 rounded-2xl border border-white/10" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             {/* Trust Signals / Partners */}

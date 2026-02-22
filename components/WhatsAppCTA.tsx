@@ -1,0 +1,177 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MessageCircle, X, ArrowRight, Clock } from 'lucide-react';
+
+interface WhatsAppCTAProps {
+  phoneNumber?: string;
+  className?: string;
+}
+
+export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({ 
+  phoneNumber = '60174106981',
+  className = ''
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  // Show CTA after user scrolls or after delay
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setIsVisible(true);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3000); // Show after 3 seconds
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Auto-expand animation periodically to grab attention
+  useEffect(() => {
+    if (isVisible && !hasInteracted) {
+      const expandTimer = setInterval(() => {
+        setIsExpanded(true);
+        setTimeout(() => setIsExpanded(false), 4000);
+      }, 15000); // Expand every 15 seconds
+
+      return () => clearInterval(expandTimer);
+    }
+  }, [isVisible, hasInteracted]);
+
+  const handleClick = () => {
+    setHasInteracted(true);
+    
+    // Track the click
+    const leadPayload = {
+      name: 'WhatsApp Click',
+      email: 'whatsapp@tracking.local',
+      source: 'whatsapp_cta',
+      notes: 'Clicked WhatsApp CTA button'
+    };
+
+    fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(leadPayload)
+    }).catch(console.error);
+
+    // Generate contextual message based on time
+    const hour = new Date().getHours();
+    let message = '';
+
+    if (hour >= 9 && hour < 18) {
+      message = 'Hi! Saw your Bijou AI website. Can you show me how it works for my business?';
+    } else {
+      message = 'Hi! Interested in Bijou AI. Can we chat tomorrow about how it can help my late-night leads?';
+    }
+
+    // Open WhatsApp
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+    setHasInteracted(true);
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <div className={`fixed bottom-6 right-6 z-50 ${className}`}>
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            className="absolute bottom-20 right-0 w-80 max-w-[90vw] p-6 glass-panel-3d rounded-2xl border border-emerald-500/30 bg-[#050816]/95 backdrop-blur-xl shadow-2xl"
+          >
+            <button
+              onClick={() => setIsExpanded(false)}
+              className="absolute top-3 right-3 w-6 h-6 rounded-full glass-panel flex items-center justify-center hover:bg-white/10 transition-colors"
+            >
+              <X className="w-4 h-4 text-gray-400" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                <MessageCircle className="w-6 h-6 text-green-400" />
+              </div>
+              <div>
+                <h4 className="text-white font-semibold">Chat with Bijou Team</h4>
+                <div className="flex items-center gap-2 text-green-400 text-sm">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <Clock className="w-3 h-3" />
+                  Online now
+                </div>
+              </div>
+            </div>
+
+            <p className="text-gray-300 text-sm mb-6 leading-relaxed">
+              Get instant answers about how Bijou can stop your revenue leaks. 
+              Our Malaysian team speaks your language! 🇲🇾
+            </p>
+
+            <motion.button
+              onClick={handleClick}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold py-4 px-6 rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.4)] hover:shadow-[0_0_30px_rgba(34,197,94,0.6)] transition-all"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Start WhatsApp Chat
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+
+            <p className="text-xs text-gray-400 text-center mt-3">
+              Usually replies within 5 minutes
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main CTA Button */}
+      <motion.button
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={handleExpand}
+        className="relative w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:shadow-[0_0_40px_rgba(34,197,94,0.6)] transition-all flex items-center justify-center group"
+      >
+        {/* Pulse animation */}
+        <div className="absolute inset-0 rounded-full bg-green-500/30 animate-ping"></div>
+        
+        <MessageCircle className="w-8 h-8 text-white relative z-10 group-hover:scale-110 transition-transform" />
+        
+        {/* Notification badge */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 border-white"
+        >
+          1
+        </motion.div>
+      </motion.button>
+
+      {/* Quick access to direct WhatsApp */}
+      <motion.button
+        onClick={handleClick}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute bottom-20 right-0 px-4 py-2 glass-panel-3d rounded-full text-green-400 text-sm font-medium hover:bg-green-500/10 transition-all opacity-0 group-hover:opacity-100"
+      >
+        Quick Chat
+      </motion.button>
+    </div>
+  );
+};
