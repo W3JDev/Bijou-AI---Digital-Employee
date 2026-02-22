@@ -5,10 +5,10 @@ import { LeadCaptureForm } from './LeadCaptureForm';
 import { CalBooking } from './CalBooking';
 
 interface HeroProps {
-  onOpenModal: () => void;
+  onOpenModal?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenModal = () => {} }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 100]);
   const [activeTab, setActiveTab] = useState<'form' | 'demo'>('form');
@@ -38,7 +38,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   };
   
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-48 overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/15 rounded-full blur-[120px] animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-400/5 rounded-full blur-[150px]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
@@ -54,12 +61,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               Warning: You are leaking revenue
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-6">
-              Stop losing <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">RM300k/year</span> to late-night WhatsApp leads.
+            <motion.h1 variants={itemVariants} className="text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-8">
+              Stop losing <span className="text-gradient-premium">RM300k/year</span> to late-night WhatsApp leads.
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-               Your human agents sleep. Bijou doesn't. For just <span className="text-emerald-400 font-bold">RM159/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
+            <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+               Your human agents sleep. Bijou doesn't. For just <span className="text-gradient-emerald font-bold">RM159/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
             </motion.p>
 
             <motion.div variants={itemVariants} className="mb-12">

@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 interface FinalCTAProps {
-  onOpenModal: () => void;
+  onOpenModal?: () => void;
 }
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {

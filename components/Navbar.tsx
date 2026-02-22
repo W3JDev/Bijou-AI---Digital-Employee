@@ -5,7 +5,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 interface NavbarProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
-  onOpenModal: () => void;
+  onOpenModal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpenModal }) => {

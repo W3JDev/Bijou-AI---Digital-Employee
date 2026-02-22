@@ -171,28 +171,41 @@
         backdrop-filter: blur(8px);
       }
 
-      /* Malaysian Flag Gradient Text */
-      .text-gradient-malaysia {
+      /* Premium Gradient Text Effects */
+      .text-gradient-premium {
         background: linear-gradient(
-          90deg, 
-          #FFD700 0%,   /* Yellow */
-          #FFFFFF 25%,  /* White */
-          #EF4444 50%,  /* Red */
-          #60A5FA 75%,  /* Light Blue */
-          #FFD700 100%  /* Yellow loop */
+          135deg, 
+          #ffffff 0%,
+          #f0f9ff 25%,
+          #10b981 50%,
+          #34d399 75%,
+          #ffffff 100%
         );
-        background-size: 200% auto;
+        background-size: 300% 300%;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: shine-text 4s linear infinite;
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+        animation: gradient-shift 8s ease-in-out infinite;
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
       }
 
-      @keyframes shine-text {
-        to {
-          background-position: -200% center;
-        }
+      .text-gradient-emerald {
+        background: linear-gradient(
+          135deg, 
+          #10b981 0%,
+          #34d399 50%,
+          #6ee7b7 100%
+        );
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradient-shift 6s ease-in-out infinite;
+      }
+
+      @keyframes gradient-shift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
 
       /* Clean Neon Glow - Sharp Text */
