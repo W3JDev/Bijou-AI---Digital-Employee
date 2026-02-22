@@ -33,6 +33,21 @@
     <meta name="application-name" content="Bijou AI" />
     <meta name="msapplication-TileColor" content="#10b981" />
     
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Bijou AI" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png" />
+    
+    <!-- Microsoft PWA -->
+    <meta name="msapplication-TileImage" content="/icons/icon-192x192.png" />
+    <meta name="msapplication-TileColor" content="#030810" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -246,5 +261,69 @@
   <body>
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    // Register service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', async () => {
+        try {
+          const registration = await navigator.serviceWorker.register('/sw.js', {
+            scope: '/'
+          });
+          
+          console.log('✅ PWA Service Worker registered successfully:', registration.scope);
+          
+          // Handle service worker updates
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('🔄 New PWA version available. Reload to update.');
+                  // Could show update notification to user here
+                }
+              });
+            }
+          });
+          
+        } catch (error) {
+          console.error('❌ PWA Service Worker registration failed:', error);
+        }
+      });
+    } else {
+      console.log('⚠️ Service Worker not supported in this browser');
+    }
+    
+    // PWA Install Prompt Handler
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('💾 PWA install prompt available');
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Could show custom install button here
+      // Example: document.getElementById('install-btn').style.display = 'block';
+    });
+    
+    // Handle successful installation
+    window.addEventListener('appinstalled', (e) => {
+      console.log('🎉 Bijou AI PWA installed successfully!');
+      deferredPrompt = null;
+      
+      // Analytics or user feedback could go here
+    });
+    
+    // Function to trigger PWA install (call from UI button)
+    window.installBijouPWA = async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`🎯 PWA install outcome: ${outcome}`);
+        deferredPrompt = null;
+      }
+    };
+  </script>
 </body>
 </html>

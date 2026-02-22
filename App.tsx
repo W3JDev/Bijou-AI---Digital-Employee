@@ -11,6 +11,7 @@ import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { WhatsAppCTA } from './components/WhatsAppCTA';
 import { WaitlistStrip } from './components/WaitlistStrip';
+import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,6 +50,7 @@ export default function App() {
         {/* Fixed CTAs */}
         <WhatsAppCTA phoneNumber="60174106981" />
         <WaitlistStrip />
+        <PWAInstallPrompt />
       </div>
     </div>
   );

@@ -1,0 +1,29 @@
+<!-- Placeholder SVG for PWA icons - Replace with actual Bijou AI logo -->
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Deep green background -->
+  <rect width="512" height="512" fill="#030810"/>
+  
+  <!-- Emerald gradient circle -->
+  <defs>
+    <radialGradient id="iconGradient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Main icon circle -->
+  <circle cx="256" cy="256" r="180" fill="url(#iconGradient)"/>
+  
+  <!-- Bijou AI text -->
+  <text x="256" y="280" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-weight="bold" font-size="48">
+    Bijou
+  </text>
+  <text x="256" y="320" text-anchor="middle" fill="#030810" font-family="Inter, sans-serif" font-weight="600" font-size="24">
+    AI
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="200" cy="200" r="8" fill="white" opacity="0.3"/>
+  <circle cx="312" cy="190" r="6" fill="white" opacity="0.2"/>
+  <circle cx="180" cy="320" r="4" fill="white" opacity="0.4"/>
+</svg>

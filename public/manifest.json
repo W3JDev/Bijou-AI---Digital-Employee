@@ -1,0 +1,111 @@
+{
+  "name": "Bijou AI - Digital Employee",
+  "short_name": "Bijou AI",
+  "description": "RM159/month Manglish Digital Employee for Malaysian SMEs. 24/7 WhatsApp automation that speaks fluent Manglish and closes sales while you sleep.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030810",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-MY",
+  "categories": ["business", "productivity", "ai", "automation"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile-screenshot-1.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/desktop-screenshot-1.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "WhatsApp Demo",
+      "short_name": "Demo",
+      "description": "Try Bijou AI chat demo",
+      "url": "/#demo",
+      "icons": [
+        {
+          "src": "/icons/shortcut-demo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Pricing Calculator", 
+      "short_name": "Pricing",
+      "description": "Calculate ROI and pricing",
+      "url": "/#pricing",
+      "icons": [
+        {
+          "src": "/icons/shortcut-pricing.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+bijouai",
+      "url": "/?action=%s"
+    }
+  ]
+}
