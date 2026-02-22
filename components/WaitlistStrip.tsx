@@ -89,13 +89,13 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 backdrop-blur-xl border-t-2 border-emerald-300/40 shadow-[0_-15px_60px_rgba(16,185,129,0.4)] relative overflow-hidden"
+            className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-800 backdrop-blur-xl border-t-2 border-emerald-400/30 shadow-[0_-15px_60px_rgba(16,185,129,0.4)] relative overflow-hidden"
           >
             {/* Enhanced background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-transparent to-green-400/20 pointer-events-none" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 via-transparent to-green-600/10 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 relative z-10">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 {/* Left side - Message */}
                 <div className="flex items-center gap-4">
