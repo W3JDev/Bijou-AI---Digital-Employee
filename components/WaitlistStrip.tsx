@@ -89,18 +89,22 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="bg-gradient-to-r from-emerald-600 to-emerald-500 backdrop-blur-xl border-t border-emerald-400/30 shadow-[0_-10px_40px_rgba(16,185,129,0.3)]"
+            className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-green-500 backdrop-blur-xl border-t-2 border-emerald-300/40 shadow-[0_-15px_60px_rgba(16,185,129,0.4)] relative overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            {/* Enhanced background glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 via-transparent to-green-400/20 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 {/* Left side - Message */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.3)] ring-2 ring-white/40">
+                    <Users className="w-6 h-6 text-white drop-shadow-lg" />
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-lg">Don't Miss Out!</h4>
-                    <p className="text-emerald-100 text-sm">
+                    <h4 className="text-white font-bold text-lg drop-shadow-lg tracking-tight">Don't Miss Out!</h4>
+                    <p className="text-white/95 text-sm font-medium drop-shadow-sm">
                       Join 500+ Malaysian SMEs getting exclusive Bijou updates
                     </p>
                   </div>
@@ -109,13 +113,13 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                 {/* Right side - Form */}
                 <form onSubmit={handleSubmit} className="flex items-center gap-3 min-w-0 flex-1 max-w-md ml-auto">
                   <div className="relative flex-1">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-emerald-200" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/80" />
                     <input
                       type="email"
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => handleEmailChange(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-white/40 focus:outline-none text-white placeholder-emerald-100 backdrop-blur-sm transition-all"
+                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/20 border-2 border-white/30 focus:border-white/60 focus:outline-none text-white placeholder-white/70 backdrop-blur-sm transition-all font-medium shadow-lg"
                       required
                     />
                   </div>

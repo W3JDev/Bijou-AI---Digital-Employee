@@ -56,13 +56,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal = () => {} }) => {
             animate="visible"
             className="text-center lg:text-left"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel-3d border border-red-500/30 text-red-400 text-xs font-bold tracking-wider mb-8 uppercase shadow-[0_0_20px_rgba(239,68,68,0.2)]">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_#ef4444]" />
-              Warning: You are leaking revenue
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel-3d border-2 border-red-400/50 text-red-300 text-xs font-bold tracking-wider mb-8 uppercase shadow-[0_0_30px_rgba(239,68,68,0.4)] animate-pulse bg-red-500/10">
+              <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse shadow-[0_0_15px_#ef4444]" />
+              ⚠️ Warning: You are leaking revenue
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-8">
-              Stop losing <span className="text-gradient-premium">RM300k/year</span> to late-night WhatsApp leads.
+              Stop <span className="text-red-400 animate-pulse drop-shadow-[0_0_20px_rgba(248,113,113,0.6)]">losing</span> <span className="text-gradient-premium">RM300k/year</span> to <span className="text-red-400 animate-pulse drop-shadow-[0_0_20px_rgba(248,113,113,0.6)]">late-night</span> WhatsApp leads.
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
