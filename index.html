@@ -88,149 +88,107 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+      /* Clean Dark Green Theme - Inspired by OpenClaw's Clean Aesthetic */
+      :root {
+        --bg-deep: #030810;
+        --bg-surface: #061016;
+        --bg-elevated: #0a1827;
+        --emerald-bright: #10b981;
+        --emerald-mid: #059669;
+        --emerald-dark: #064e3b;
+        --text-primary: #f0f9ff;
+        --text-secondary: #8892b0;
+        --text-muted: #5a6480;
+        --border-subtle: rgba(16, 185, 129, .15);
+        --border-accent: rgba(16, 185, 129, .3);
+        --surface-card: rgba(6, 16, 22, .65);
+        --surface-card-strong: rgba(6, 16, 22, .8);
+      }
+      
       body {
-        background-color: #050816; /* Obsidian Glass theme */
-        color: #e5e5e5;
+        background-color: var(--bg-deep);
+        color: var(--text-primary);
         font-family: 'Inter', sans-serif;
+        /* Clean background - minimal gradients like OpenClaw */
         background-image: 
-          radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 25%),
-          radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.06) 0%, transparent 25%);
-        /* High fidelity text rendering */
+          radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 25%),
+          radial-gradient(circle at 85% 30%, rgba(6, 78, 59, 0.03) 0%, transparent 25%);
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
       
-      /* Base Glass */
+      /* Clean Card Design - No Heavy Glass Effects */
       .glass-panel {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--surface-card);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid var(--border-subtle);
+        transition: border-color 0.2s ease;
       }
 
-      /* Clean Dark Glassmorphism - NO FADE */
+      /* Clean Surface - Minimal Effects */
       .glass-panel-3d {
-        background: linear-gradient(135deg, 
-          rgba(20, 20, 20, 0.95) 0%, 
-          rgba(10, 10, 10, 0.90) 50%,
-          rgba(5, 5, 5, 0.95) 100%);
-        backdrop-filter: blur(20px) saturate(1.2);
-        -webkit-backdrop-filter: blur(20px) saturate(1.2);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-top: 1px solid rgba(255, 255, 255, 0.25);
-        border-left: 1px solid rgba(255, 255, 255, 0.18);
+        background: var(--surface-card-strong);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-subtle);
         box-shadow: 
-          0 15px 35px 0 rgba(0, 0, 0, 0.6),
-          0 5px 15px 0 rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2),
-          inset 0 0 20px rgba(255, 255, 255, 0.03);
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
+          0 4px 12px rgba(0, 0, 0, 0.15),
+          0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        transition: all 0.2s ease;
       }
 
-      /* Clean Hover Glow Effect */
+      /* Clean Hover State - Green Accent */
       .glass-panel-3d:hover {
-        border-color: rgba(16, 185, 129, 0.6);
+        border-color: var(--border-accent);
         box-shadow: 
-          0 20px 45px -10px rgba(16, 185, 129, 0.25),
-          0 10px 20px -5px rgba(16, 185, 129, 0.15),
-          inset 0 0 0 1px rgba(16, 185, 129, 0.3),
-          inset 0 0 20px rgba(16, 185, 129, 0.08);
-        transform: translateY(-3px);
+          0 8px 24px rgba(16, 185, 129, 0.12),
+          0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-1px);
       }
 
-      /* Shine/Sheen Effect on Hover */
+      /* Remove complex shine effects */
       .glass-panel-3d::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(
-          to right,
-          transparent,
-          rgba(255, 255, 255, 0.1),
-          transparent
-        );
-        transform: skewX(-25deg);
-        transition: 0.5s;
-        pointer-events: none;
-      }
-      .glass-panel-3d:hover::after {
-        left: 200%;
-        transition: 1s ease-in-out;
+        display: none;
       }
       
-      /* Glossy 3D Pills/Bubbles */
+      /* Simple Pills */
       .glossy-pill {
-        background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
-        box-shadow: 
-          0 4px 6px rgba(0,0,0,0.3),
-          inset 0 1px 0 rgba(255,255,255,0.2),
-          inset 0 -1px 0 rgba(0,0,0,0.2);
-        border: 1px solid rgba(255,255,255,0.08);
+        background: var(--surface-card);
+        border: 1px solid var(--border-subtle);
         backdrop-filter: blur(8px);
+        border-radius: 20px;
       }
       
       .glossy-pill-emerald {
-        background: linear-gradient(180deg, rgba(16,185,129,0.25) 0%, rgba(6,78,59,0.3) 100%);
-        box-shadow: 
-          0 4px 15px rgba(16,185,129,0.15),
-          inset 0 1px 0 rgba(52,211,153,0.3),
-          inset 0 -1px 0 rgba(0,0,0,0.2);
-        border: 1px solid rgba(16,185,129,0.2);
-        backdrop-filter: blur(8px);
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid var(--emerald-bright);
+        color: var(--emerald-bright);
       }
 
-      /* Premium Gradient Text Effects */
+      /* Clean Text - Simplified Gradients */
       .text-gradient-premium {
-        background: linear-gradient(
-          135deg, 
-          #ffffff 0%,
-          #f0f9ff 25%,
-          #10b981 50%,
-          #34d399 75%,
-          #ffffff 100%
-        );
-        background-size: 300% 300%;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--emerald-bright) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        animation: gradient-shift 8s ease-in-out infinite;
-        text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
       }
 
       .text-gradient-emerald {
-        background: linear-gradient(
-          135deg, 
-          #10b981 0%,
-          #34d399 50%,
-          #6ee7b7 100%
-        );
-        background-size: 200% 200%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: gradient-shift 6s ease-in-out infinite;
+        color: var(--emerald-bright);
       }
 
-      @keyframes gradient-shift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-      }
-
-      /* Clean Neon Glow - Sharp Text */
+      /* Minimal Glow Effects - Clean Like OpenClaw */
       .text-glow {
-        text-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
+        color: var(--text-primary);
       }
       .text-glow-strong {
-        text-shadow: 0 0 10px rgba(52, 211, 153, 0.6), 0 0 20px rgba(52, 211, 153, 0.4);
+        color: var(--emerald-bright);
       }
       .text-glow-blue {
-        text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+        color: var(--emerald-bright);
       }
       
       /* Performance Optimizations */

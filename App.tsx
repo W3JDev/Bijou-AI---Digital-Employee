@@ -25,10 +25,11 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden" style={{backgroundColor: '#050816'}}>
+    <div className="min-h-screen text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden" style={{backgroundColor: '#030810'}}>
+      {/* Clean background - minimal effects like OpenClaw */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-900/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-900/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-5%] left-[-5%] w-[25%] h-[25%] bg-emerald-900/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-5%] right-[-5%] w-[25%] h-[25%] bg-emerald-900/6 rounded-full blur-[100px]" />
       </div>
       
       <div className="relative z-10">
