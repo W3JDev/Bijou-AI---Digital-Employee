@@ -37,6 +37,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://esm.sh" crossorigin />
+    <link rel="preconnect" href="https://cal.com" crossorigin />
+    <link rel="preconnect" href="https://wa.me" crossorigin />
+    
+    <!-- Critical CSS Preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" />
+    
+    <!-- DNS prefetch for external services -->
+    <link rel="dns-prefetch" href="//mybijou.xyz" />
+    <link rel="dns-prefetch" href="//bijou-staging.fly.dev" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -217,6 +226,30 @@
       }
       .text-glow-blue {
         text-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+      }
+      
+      /* Performance Optimizations */
+      .will-change-transform {
+        will-change: transform;
+      }
+      
+      .will-change-opacity {
+        will-change: opacity;
+      }
+      
+      .gpu-acceleration {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+      }
+      
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
       
       /* Custom scrollbar */
