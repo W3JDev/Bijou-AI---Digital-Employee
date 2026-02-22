@@ -1,5 +1,5 @@
-// BIJOU AI - Lead Capture API Endpoint
-// Handles secure lead capture with Supabase storage and Resend email notifications
+// BIJOU AI - Onboarding Signup API Proxy
+// Proxies requests to the production Bijou AI onboarding system
 
 export default async function handler(req, res) {
   // Set CORS headers first
@@ -20,14 +20,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    // For now, return success without database to test the connection
-    const { email, name = 'Waitlist Subscriber' } = req.body;
+    const { business_name, email, phone } = req.body;
     
     // Basic validation
-    if (!email) {
+    if (!business_name || !email) {
       return res.status(400).json({ 
-        error: 'Email is required',
-        code: 'MISSING_EMAIL'
+        error: 'Business name and email are required',
+        code: 'MISSING_REQUIRED_FIELDS'
       });
     }
 
@@ -40,19 +39,29 @@ export default async function handler(req, res) {
       });
     }
 
-    // Simulate success response for now
-    console.log('Waitlist signup:', { email, name, timestamp: new Date() });
-    
-    return res.status(200).json({
-      success: true,
-      message: 'Successfully joined waitlist!',
-      leadId: 'temp-' + Date.now(),
-      leadScore: 25,
-      isNewLead: true
+    // Proxy request to production onboarding system
+    const response = await fetch('https://bijou-production.fly.dev/api/onboarding/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        business_name: business_name.trim(),
+        email: email.toLowerCase().trim(),
+        phone: phone ? phone.trim() : ''
+      })
     });
 
+    const result = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json(result);
+    }
+
+    return res.status(200).json(result);
+
   } catch (error) {
-    console.error('❌ Lead capture error:', error);
+    console.error('❌ Onboarding signup proxy error:', error);
     
     return res.status(500).json({
       error: 'Server error occurred',

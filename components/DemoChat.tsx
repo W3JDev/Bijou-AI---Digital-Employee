@@ -14,12 +14,21 @@ interface DemoChatProps {
 
 export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', content: "Hello Boss! Bijou here. I can help you manage appointments or answer queries while you relax. What business you running?" }
+    { role: 'model', content: "Hi boss! I'm Bijou, your Digital Employee. I can help with appointments, answer customer questions, and handle inquiries 24/7. What kind of business are you running?" }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isExcited, setIsExcited] = useState(false);
+  const [showQuickReplies, setShowQuickReplies] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const quickReplies = [
+    { icon: "💬", text: "How does Bijou work?" },
+    { icon: "💰", text: "What's the pricing?" },
+    { icon: "🏠", text: "Can it work for property agents?" },
+    { icon: "📅", text: "I want to book a demo" },
+    { icon: "🆓", text: "Start free trial" }
+  ];
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,13 +38,22 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!inputValue.trim() || isLoading) return;
+  const handleQuickReply = (text: string) => {
+    setInputValue(text);
+    setShowQuickReplies(false);
+    // Auto-send the message
+    setTimeout(() => handleSend(text), 100);
+  };
 
-    const userMsg: Message = { role: 'user', content: inputValue };
+  const handleSend = async (quickReplyText?: string) => {
+    const messageText = quickReplyText || inputValue;
+    if (!messageText.trim() || isLoading) return;
+
+    const userMsg: Message = { role: 'user', content: messageText };
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsLoading(true);
+    setShowQuickReplies(false);
 
     // Filter history for API context
     const history = messages.map(m => ({ role: m.role, content: m.content }));
@@ -148,6 +166,33 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
                  </div>
                </motion.div>
             )}
+            
+            {/* Quick Reply Chips */}
+            {showQuickReplies && messages.length === 1 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap gap-2 px-2"
+              >
+                {quickReplies.map((reply, idx) => (
+                  <motion.button
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 + (idx * 0.1) }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleQuickReply(reply.text)}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/15 border border-emerald-500/20 rounded-full text-sm text-emerald-300 hover:text-emerald-200 transition-all duration-200 backdrop-blur-sm shadow-lg hover:shadow-emerald-500/10"
+                  >
+                    <span>{reply.icon}</span>
+                    <span>{reply.text}</span>
+                  </motion.button>
+                ))}
+              </motion.div>
+            )}
+            
             <div ref={messagesEndRef} />
           </div>
 
@@ -159,21 +204,32 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Type a message (e.g. 'How much ah?', 'Can help with property?')"
+                placeholder="Type a message (e.g. 'How much?', 'Can help with my dental clinic?')"
                 className="w-full bg-black/40 border border-white/10 rounded-xl pl-6 pr-14 py-5 text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all shadow-inner text-base"
               />
               <button 
-                onClick={handleSend}
+                onClick={() => handleSend()}
                 disabled={isLoading || !inputValue.trim()}
                 className="absolute right-2.5 top-2.5 p-2.5 bg-emerald-500 hover:bg-emerald-400 text-dark-900 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)]"
               >
                 <Send className="w-5 h-5" />
               </button>
             </div>
-            <div className="text-center mt-4">
+            <div className="text-center mt-4 space-y-2">
               <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
                 <Zap className="w-3 h-3 text-emerald-500" />
                 Powered by Gemini. Bijou may display inaccurate info about people or places.
+              </p>
+              <p className="text-xs text-gray-400">
+                Want to chat with a human instead?{' '}
+                <a
+                  href="https://wa.me/60174106981?text=Hi%20Bijou%2C%20I%27d%20like%20to%20try%20a%20demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors underline"
+                >
+                  WhatsApp us
+                </a>
               </p>
             </div>
           </div>

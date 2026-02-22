@@ -28,10 +28,10 @@ export const sendMessageToBijou = async (
     
     // Graceful fallback with cultural context
     const manglishFallbacks = [
-      "Aiyo, server having hiccup. Give me a moment boss.",
-      "Alamak! Connection not stable. Try again in a while?", 
-      "Walao eh, my brain lagging. Can try again boss?",
-      "Sorry lah boss, line a bit jam. WhatsApp us instead: wa.me/60174106981"
+      "Sorry boss, connection a bit slow. Can try again?",
+      "Alamak! Server having issue. Give me a moment?", 
+      "Aiyo, my brain lagging. Try again in a while boss?",
+      "Technical problem on our side. WhatsApp us instead: wa.me/60174106981"
     ];
     
     return manglishFallbacks[Math.floor(Math.random() * manglishFallbacks.length)];
