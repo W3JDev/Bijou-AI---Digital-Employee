@@ -5,14 +5,6 @@
   },
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "functions": {
-    "api/chat.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/leads.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
