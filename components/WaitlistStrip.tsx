@@ -89,17 +89,17 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-800 backdrop-blur-xl border-t-2 border-emerald-400/30 shadow-[0_-15px_60px_rgba(16,185,129,0.4)] relative overflow-hidden"
+            className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-green-900 backdrop-blur-xl border-t-2 border-emerald-400/20 shadow-[0_-15px_60px_rgba(16,185,129,0.2)] relative overflow-hidden"
           >
             {/* Enhanced background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/10 via-transparent to-green-600/10 pointer-events-none" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/10 via-transparent to-green-900/10 pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 relative z-10">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 {/* Left side - Message */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.3)] ring-2 ring-white/40">
+                   <div className="w-12 h-12 bg-emerald-400/20 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)] ring-2 ring-emerald-400/30">
                     <Users className="w-6 h-6 text-white drop-shadow-lg" />
                   </div>
                   <div>
@@ -119,7 +119,7 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => handleEmailChange(e.target.value)}
-                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/20 border-2 border-white/30 focus:border-white/60 focus:outline-none text-white placeholder-white/70 backdrop-blur-sm transition-all font-medium shadow-lg"
+                      className="w-full pl-12 pr-4 py-3 rounded-xl bg-emerald-900/30 border-2 border-emerald-400/20 focus:border-emerald-400/40 focus:outline-none text-white placeholder-white/70 backdrop-blur-sm transition-all font-medium shadow-lg"
                       required
                     />
                   </div>
@@ -173,7 +173,7 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="bg-gradient-to-r from-green-600 to-emerald-600 backdrop-blur-xl border-t border-green-400/30"
+            className="bg-gradient-to-r from-green-800 to-emerald-800 backdrop-blur-xl border-t border-green-400/20"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
               <motion.div
