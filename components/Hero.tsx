@@ -56,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-              Your human agents sleep. Bijou doesn't. For just <span className="text-emerald-400 font-bold">RM99/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
+               Your human agents sleep. Bijou doesn't. For just <span className="text-emerald-400 font-bold">RM159/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-12">

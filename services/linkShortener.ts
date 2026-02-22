@@ -50,7 +50,7 @@ export const linkShortenerService = {
       const mockId = Math.random().toString(36).substring(2, 7);
       
       return {
-        shortLink: `https://bijou.ai/l/${mockId}`,
+        shortLink: `https://mybijou.xyz/l/${mockId}`,
         originalUrl: longUrl,
         trackingId: `trk_${Math.random().toString(36).substring(2, 9)}`
       };

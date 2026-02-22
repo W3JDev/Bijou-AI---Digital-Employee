@@ -42,7 +42,7 @@ Deno.serve(async (req: any) => {
 
     return new Response(
       JSON.stringify({ 
-        shortLink: `https://bijou.ai/l/${slug}`,
+        shortLink: `https://mybijou.xyz/l/${slug}`,
         originalUrl: longUrl,
         trackingId: data.id 
       }),

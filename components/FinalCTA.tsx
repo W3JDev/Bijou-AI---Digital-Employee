@@ -33,7 +33,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
               What happens after the trial?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-              It's RM149/month. You can cancel anytime with one click. No long-term contracts.
+               It's RM159/month. You can cancel anytime with one click. No long-term contracts.
             </p>
           </div>
           <div>
