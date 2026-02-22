@@ -1,11 +1,14 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Calendar, Zap, X, User, MessageSquare } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LeadCaptureForm } from './LeadCaptureForm';
 
 interface FinalCTAProps {
   onOpenModal?: () => void;
 }
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <section className="py-24 relative overflow-hidden border-t border-white/5 bg-dark-900">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-900/20 rounded-full blur-[120px] pointer-events-none" />
@@ -18,15 +21,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
           14-day free trial. No credit card. Cancel anytime.
         </p>
         
-        <a 
-          href="https://bijou-staging.fly.dev"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button 
+          onClick={() => setShowModal(true)}
           className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] transition-all transform hover:scale-[1.02] flex items-center gap-3 mx-auto text-xl mb-16"
         >
           Start Free Trial
           <ArrowRight className="w-6 h-6" />
-        </a>
+        </button>
 
         <div className="grid md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12">
           <div>
@@ -58,6 +59,155 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
           </div>
         </div>
       </div>
+
+      {/* Onboarding Choice Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="glass-panel-3d bg-dark-900/95 border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-6 right-6 w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-white/10 transition-colors z-10"
+              >
+                <X className="w-5 h-5 text-gray-400" />
+              </button>
+
+              <div className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-display font-bold mb-4">Choose Your Path</h3>
+                  <p className="text-gray-300 text-lg">How would you like to get started with Bijou AI?</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                  {/* Direct Trial Option */}
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="glass-panel-3d p-8 rounded-2xl border border-emerald-500/30 bg-emerald-900/10 relative group"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                        <Zap className="w-6 h-6 text-emerald-400" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-white">Quick Start Trial</h4>
+                        <p className="text-emerald-400 text-sm">Get instant access</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-300 mb-6 leading-relaxed">
+                      Jump straight into your 14-day free trial. Perfect if you're ready to test Bijou with your leads immediately.
+                    </p>
+
+                    <div className="space-y-2 text-sm text-gray-400 mb-6">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        5-minute setup process
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Instant WhatsApp integration  
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        14 days completely free
+                      </div>
+                    </div>
+
+                    <LeadCaptureForm 
+                      source="final_cta_direct"
+                      className="space-y-4"
+                      onSuccess={() => {
+                        setShowModal(false);
+                        // Could add success toast here
+                      }}
+                    />
+                  </motion.div>
+
+                  {/* Guided Onboarding Option */}
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    className="glass-panel-3d p-8 rounded-2xl border border-blue-500/30 bg-blue-900/10 relative group"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <Calendar className="w-6 h-6 text-blue-400" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-white">Guided Onboarding</h4>
+                        <p className="text-blue-400 text-sm">Personalized setup</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-300 mb-6 leading-relaxed">
+                      Book a 15-min demo call. We'll analyze your business, optimize your setup, and show you advanced strategies.
+                    </p>
+
+                    <div className="space-y-2 text-sm text-gray-400 mb-6">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        Free business analysis
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        Custom lead optimization
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        Advanced playbook setup
+                      </div>
+                    </div>
+
+                    <a
+                      href="https://cal.com/getbijou"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setShowModal(false)}
+                      className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 px-6 rounded-xl transition-all flex items-center justify-center gap-2 group-hover:scale-105"
+                    >
+                      <User className="w-5 h-5" />
+                      Book Your Demo Call
+                    </a>
+                    
+                    <p className="text-xs text-gray-400 text-center mt-3">
+                      Available slots: Today & Tomorrow
+                    </p>
+                  </motion.div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-white/10 text-center">
+                  <p className="text-sm text-gray-400 mb-3">
+                    Questions? WhatsApp our team directly
+                  </p>
+                  <a
+                    href="https://wa.me/60174106981?text=Hi! I'm interested in Bijou AI. Can we chat about how it can help my business?"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setShowModal(false)}
+                    className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Chat with us on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

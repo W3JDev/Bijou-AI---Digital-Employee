@@ -14,7 +14,7 @@ interface ShortLinkResponse {
   trackingId: string;
 }
 
-const API_ENDPOINT = process.env.NEXT_PUBLIC_API_URL || 'https://your-project.supabase.co/functions/v1';
+const API_ENDPOINT = import.meta.env.VITE_SUPABASE_URL || 'https://lrwzlujomukzjykafmic.supabase.co/functions/v1';
 
 export const linkShortenerService = {
   /**
@@ -29,7 +29,7 @@ export const linkShortenerService = {
     try {
       // 2. Attempt to call the real backend
       // Note: This requires the backend code provided in the 'backend/' folder to be deployed.
-      if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_API_URL) {
+      if (import.meta.env.MODE === 'production' && import.meta.env.VITE_PUBLIC_API_URL) {
         const response = await fetch(`${API_ENDPOINT}/create-link`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

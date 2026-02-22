@@ -233,7 +233,7 @@ Based on UI/UX patterns and messaging:
 4. Free trial activation
 
 ### **Revenue Model Analysis**
-**Pricing Strategy:** RM99/month (prominently displayed)
+**Pricing Strategy:** RM159/month (prominently displayed)
 - **Positioning:** 33x cheaper than fresh graduate employee
 - **Model:** SaaS subscription with free trial
 - **Value Anchor:** Compared to RM3,000+/month employee cost
