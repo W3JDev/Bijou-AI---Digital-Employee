@@ -42,29 +42,15 @@ export const CalBooking: React.FC<CalBookingProps> = ({
 
   const handleBookingLead = async (bookingData: any) => {
     try {
-      const leadPayload = {
+      // Log the booking for now - can be sent to proper analytics later
+      console.log('✅ Demo booking completed:', {
         name: bookingData.attendee?.name || 'Demo Booking',
         email: bookingData.attendee?.email || '',
         source: 'cal_booking',
-        marketing_consent: true, // Implied consent from booking demo
-        notes: `Demo booking: ${bookingData.eventType?.title || 'Bijou AI Demo'}`,
-        utm_source: new URLSearchParams(window.location.search).get('utm_source'),
-        utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
-        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
-        referrer: document.referrer
-      };
-
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(leadPayload)
+        eventType: bookingData.eventType?.title || 'Bijou AI Demo'
       });
-
-      console.log('✅ Booking lead captured successfully');
     } catch (error) {
-      console.error('❌ Failed to capture booking lead:', error);
+      console.error('❌ Failed to log booking:', error);
     }
   };
 

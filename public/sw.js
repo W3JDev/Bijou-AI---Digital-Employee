@@ -8,14 +8,14 @@ const CORE_ASSETS = [
   '/index.html',
   '/offline.html',
   '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/icons/icon-base.svg'
 ];
 
 // API endpoints that should be cached
 const API_CACHE_PATTERNS = [
-  '/api/leads',
-  '/api/demo'
+  '/api/onboarding',
+  '/api/demo',
+  '/api/send'
 ];
 
 // Install event - cache core assets
@@ -193,8 +193,8 @@ self.addEventListener('push', (event) => {
   
   const options = {
     body: event.data ? event.data.text() : 'New update from Bijou AI!',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/icon-72x72.png',
+    icon: '/icons/icon-base.svg',
+    badge: '/icons/icon-base.svg',
     vibrate: [200, 100, 200],
     data: {
       dateOfArrival: Date.now(),
@@ -206,12 +206,12 @@ self.addEventListener('push', (event) => {
       {
         action: 'open',
         title: 'Open Bijou AI',
-        icon: '/icons/icon-96x96.png'
+        icon: '/icons/icon-base.svg'
       },
       {
         action: 'close',
         title: 'Close',
-        icon: '/icons/icon-96x96.png'
+        icon: '/icons/icon-base.svg'
       }
     ]
   };

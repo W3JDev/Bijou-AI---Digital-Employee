@@ -59,27 +59,27 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     }
 
     try {
-      const leadPayload = {
-        ...formData,
-        source,
-        marketing_consent: marketingConsent,
-        utm_source: new URLSearchParams(window.location.search).get('utm_source'),
-        utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
-        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
-        referrer: document.referrer
+      // Convert form data to match onboarding API format
+      const onboardingPayload = {
+        business_name: formData.company || formData.name,
+        email: formData.email.toLowerCase().trim(),
+        phone: formData.phone || '',
       };
 
-      const response = await fetch('/api/leads', {
+      const response = await fetch('/api/onboarding/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(leadPayload)
+        body: JSON.stringify(onboardingPayload)
       });
 
       const result = await response.json();
 
       if (!response.ok) {
+        if (result.detail?.[0]?.msg) {
+          throw new Error(result.detail[0].msg);
+        }
         throw new Error(result.message || 'Failed to submit form');
       }
 
@@ -99,7 +99,11 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
     } catch (error: any) {
       setStatus('error');
-      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+      if (error.message.includes('duplicate')) {
+        setErrorMessage('Already registered! Check your email.');
+      } else {
+        setErrorMessage(error.message || 'Aiyo, something went wrong boss. Please try again.');
+      }
     }
   };
 

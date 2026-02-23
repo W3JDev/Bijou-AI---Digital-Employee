@@ -49,19 +49,8 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
   const handleClick = () => {
     setHasInteracted(true);
     
-    // Track the click
-    const leadPayload = {
-      name: 'WhatsApp Click',
-      email: 'whatsapp@tracking.local',
-      source: 'whatsapp_cta',
-      notes: 'Clicked WhatsApp CTA button'
-    };
-
-    fetch('/api/leads', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(leadPayload)
-    }).catch(console.error);
+    // Track the click (optional - removed to prevent 500 errors)
+    // We can track this via analytics later if needed
 
     // Generate contextual message based on time
     const hour = new Date().getHours();
