@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe } from 'lucide-react';
+import { trackLanguageChange } from '../utils/analytics';
 
 export const LanguageSwitcher: React.FC = () => {
   const { i18n } = useTranslation();
@@ -18,6 +19,7 @@ export const LanguageSwitcher: React.FC = () => {
 
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
+    trackLanguageChange(languageCode);
     setIsOpen(false);
   };
 

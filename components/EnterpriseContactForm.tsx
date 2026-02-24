@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Send, Building2, X } from 'lucide-react';
+import { trackFormSubmission } from '../utils/analytics';
 
 interface EnterpriseContactFormProps {
   onClose: () => void;
 }
 
 export const EnterpriseContactForm: React.FC<EnterpriseContactFormProps> = ({ onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +44,9 @@ Sent from Bijou AI Enterprise Contact Form
 
       // Also log to console for tracking
       console.log('Enterprise inquiry submitted:', formData);
+
+      // Track form submission in Google Analytics
+      trackFormSubmission('enterprise', i18n.language);
 
       setStatus('success');
       

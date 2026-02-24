@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Send, Handshake, X } from 'lucide-react';
+import { trackFormSubmission } from '../utils/analytics';
 
 interface PartnershipFormProps {
   onClose: () => void;
 }
 
 export const PartnershipForm: React.FC<PartnershipFormProps> = ({ onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -68,6 +69,10 @@ Sent from Bijou AI Partnership Form
       window.location.href = `mailto:mrj@mybijou.xyz?subject=${subject}&body=${body}`;
 
       console.log('Partnership inquiry submitted:', formData);
+      
+      // Track form submission in Google Analytics
+      trackFormSubmission('partnership', i18n.language);
+      
       setStatus('success');
       
       setTimeout(() => {

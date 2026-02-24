@@ -1,12 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, Building2, Stethoscope, ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface CaseStudiesProps {
   onOpenModal: () => void;
 }
 
 export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
+  const { t } = useTranslation();
+  
   return (
     <section className="py-24 bg-black/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,8 +20,8 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-           <h2 className="text-3xl md:text-5xl font-bold mb-4">Real Results</h2>
-           <p className="text-gray-400 text-lg">See how businesses are automating growth with Bijou.</p>
+           <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('cases.title')}</h2>
+           <p className="text-gray-400 text-lg">{t('cases.subtitle')}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -37,26 +40,26 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
                    <Building2 className="w-7 h-7" />
                 </div>
                 <div>
-                   <h3 className="text-2xl font-bold text-white">KL Metro Properties</h3>
-                   <p className="text-sm text-gray-400 font-medium">Real Estate Agency</p>
+                   <h3 className="text-2xl font-bold text-white">{t('cases.realEstate.company')}</h3>
+                   <p className="text-sm text-gray-400 font-medium">{t('cases.realEstate.industry')}</p>
                 </div>
              </div>
 
              <div className="grid grid-cols-2 gap-5 mb-10 relative z-10">
                 <div className="bg-white/5 p-5 rounded-2xl border border-white/5">
-                   <div className="text-4xl font-bold text-white mb-2">0%</div>
-                   <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Missed Calls</div>
+                   <div className="text-4xl font-bold text-white mb-2">{t('cases.realEstate.stat1.value')}</div>
+                   <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">{t('cases.realEstate.stat1.label')}</div>
                 </div>
                 <div className="bg-gold-900/20 p-5 rounded-2xl border border-gold-400/20 shadow-[0_4px_20px_rgba(212,175,55,0.1)]">
-                   <div className="text-4xl font-bold text-gold-400 mb-2">+40%</div>
-                   <div className="text-xs text-gold-200/70 uppercase tracking-widest font-semibold">Leads Qualified</div>
+                   <div className="text-4xl font-bold text-gold-400 mb-2">{t('cases.realEstate.stat2.value')}</div>
+                   <div className="text-xs text-gold-200/70 uppercase tracking-widest font-semibold">{t('cases.realEstate.stat2.label')}</div>
                 </div>
              </div>
 
              <div className="space-y-6 relative z-10">
-                <p className="text-gray-300 italic text-lg leading-relaxed">"Before Bijou, we lost leads every time we were in a viewing. Now, Bijou answers instantly, sends the brochure, and books the next viewing. It's like having a super-agent."</p>
+                <p className="text-gray-300 italic text-lg leading-relaxed">{t('cases.realEstate.quote')}</p>
                 <div className="flex items-center gap-2 text-sm text-blue-400 font-bold cursor-pointer group-hover:gap-3 transition-all">
-                   Read Full Case Study <ArrowUpRight className="w-4 h-4" />
+                   {t('cases.realEstate.cta')} <ArrowUpRight className="w-4 h-4" />
                 </div>
              </div>
           </motion.div>
@@ -76,26 +79,26 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
                    <Stethoscope className="w-7 h-7" />
                 </div>
                 <div>
-                   <h3 className="text-2xl font-bold text-white">SmileCraft Dental</h3>
-                   <p className="text-sm text-gray-400 font-medium">Dental Specialist</p>
+                   <h3 className="text-2xl font-bold text-white">{t('cases.healthcare.company')}</h3>
+                   <p className="text-sm text-gray-400 font-medium">{t('cases.healthcare.industry')}</p>
                 </div>
              </div>
 
              <div className="grid grid-cols-2 gap-5 mb-10 relative z-10">
                 <div className="bg-white/5 p-5 rounded-2xl border border-white/5">
-                   <div className="text-4xl font-bold text-white mb-2">-75%</div>
-                   <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">No-Show Rate</div>
+                   <div className="text-4xl font-bold text-white mb-2">{t('cases.healthcare.stat1.value')}</div>
+                   <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">{t('cases.healthcare.stat1.label')}</div>
                 </div>
                 <div className="bg-orange-900/20 p-5 rounded-2xl border border-orange-500/20 shadow-[0_4px_20px_rgba(249,115,22,0.1)]">
-                   <div className="text-4xl font-bold text-orange-400 mb-2">24/7</div>
-                   <div className="text-xs text-orange-200/70 uppercase tracking-widest font-semibold">Booking Availability</div>
+                   <div className="text-4xl font-bold text-orange-400 mb-2">{t('cases.healthcare.stat2.value')}</div>
+                   <div className="text-xs text-orange-200/70 uppercase tracking-widest font-semibold">{t('cases.healthcare.stat2.label')}</div>
                 </div>
              </div>
 
              <div className="space-y-6 relative z-10">
-                <p className="text-gray-300 italic text-lg leading-relaxed">"Our nurses used to spend hours calling patients to confirm slots. Bijou does it automatically on WhatsApp. Patients love it, and our chairs are always full."</p>
+                <p className="text-gray-300 italic text-lg leading-relaxed">{t('cases.healthcare.quote')}</p>
                 <div className="flex items-center gap-2 text-sm text-orange-400 font-bold cursor-pointer group-hover:gap-3 transition-all">
-                   Read Full Case Study <ArrowUpRight className="w-4 h-4" />
+                   {t('cases.healthcare.cta')} <ArrowUpRight className="w-4 h-4" />
                 </div>
              </div>
           </motion.div>

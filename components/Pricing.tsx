@@ -1,67 +1,70 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Zap, Building2, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface PricingProps {
   onOpenModal: () => void;
 }
 
 export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
+  const { t } = useTranslation();
+  
   const plans = [
     {
-      name: "Starter",
-      price: "159",
-      originalPrice: "499",
-      description: "Perfect for solo agents and small teams",
-      badge: "FIRST 100 ONLY",
+      name: t('pricing.starter.name'),
+      price: t('pricing.starter.price'),
+      originalPrice: t('pricing.starter.originalPrice'),
+      description: t('pricing.starter.description'),
+      badge: t('pricing.starter.badge'),
       badgeColor: "gold",
       icon: Zap,
       popular: true,
       features: [
-        "24/7 WhatsApp AI Agent",
-        "Up to 500 conversations/month",
-        "Basic lead qualification",
-        "Property brochure automation",
-        "Standard analytics",
-        "Email support"
+        t('pricing.starter.features.0'),
+        t('pricing.starter.features.1'),
+        t('pricing.starter.features.2'),
+        t('pricing.starter.features.3'),
+        t('pricing.starter.features.4'),
+        t('pricing.starter.features.5')
       ]
     },
     {
-      name: "Professional",
-      price: "299",
+      name: t('pricing.professional.name'),
+      price: t('pricing.professional.price'),
       originalPrice: null,
-      description: "For growing agencies & clinics",
-      badge: "MOST POPULAR",
+      description: t('pricing.professional.description'),
+      badge: t('pricing.professional.badge'),
       badgeColor: "blue",
       icon: Building2,
       popular: false,
       features: [
-        "Everything in Starter, plus:",
-        "Unlimited conversations",
-        "Advanced playbook customization",
-        "Multi-language support (Manglish, BM, English)",
-        "CRM integration (coming soon)",
-        "Priority WhatsApp support",
-        "Custom branding options"
+        t('pricing.professional.features.0'),
+        t('pricing.professional.features.1'),
+        t('pricing.professional.features.2'),
+        t('pricing.professional.features.3'),
+        t('pricing.professional.features.4'),
+        t('pricing.professional.features.5'),
+        t('pricing.professional.features.6')
       ]
     },
     {
-      name: "Enterprise",
-      price: "Custom",
+      name: t('pricing.enterprise.name'),
+      price: t('pricing.enterprise.price'),
       originalPrice: null,
-      description: "For large teams & franchises",
-      badge: "PREMIUM",
+      description: t('pricing.enterprise.description'),
+      badge: t('pricing.enterprise.badge'),
       badgeColor: "purple",
       icon: Sparkles,
       popular: false,
       features: [
-        "Everything in Professional, plus:",
-        "Unlimited team members",
-        "Dedicated account manager",
-        "Custom AI training on your data",
-        "White-label solution",
-        "SLA guarantee (99.9% uptime)",
-        "24/7 phone + WhatsApp support"
+        t('pricing.enterprise.features.0'),
+        t('pricing.enterprise.features.1'),
+        t('pricing.enterprise.features.2'),
+        t('pricing.enterprise.features.3'),
+        t('pricing.enterprise.features.4'),
+        t('pricing.enterprise.features.5'),
+        t('pricing.enterprise.features.6')
       ]
     }
   ];
@@ -82,13 +85,15 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
           className="text-center mb-16"
         >
           <div className="inline-block px-4 py-1.5 mb-6 rounded-full glass-panel-3d border border-gold-400/20 text-gold-400 text-xs font-bold uppercase tracking-wider">
-            💎 Limited Time Offer
+            {t('pricing.badge')}
           </div>
           <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-6 tracking-tight">
-            Simple, Transparent Pricing
+            {t('pricing.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Start with a <span className="text-gold-400 font-bold">14-day free trial</span>. No credit card required. Cancel anytime.
+            {t('pricing.subtitle', { trial: '' }).split('{{trial}}')[0]}
+            <span className="text-gold-400 font-bold">{t('pricing.subtitle.trial')}</span>
+            {t('pricing.subtitle', { trial: '' }).split('{{trial}}')[1]}
           </p>
         </motion.div>
 
@@ -140,12 +145,12 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-gray-500 line-through text-lg">RM{plan.originalPrice}</span>
                       <span className="text-xs font-bold text-red-400 bg-red-500/10 px-2 py-1 rounded-full">
-                        68% OFF
+                        {t('pricing.starter.discount')}
                       </span>
                     </div>
                   )}
                   <div className="flex items-baseline gap-2">
-                    {plan.price !== "Custom" && (
+                    {plan.price !== t('pricing.enterprise.price') && (
                       <>
                         <span className="text-xs text-gray-400 font-medium">RM</span>
                         <span className={`text-5xl font-black ${
@@ -154,7 +159,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                         <span className="text-gray-400">/month</span>
                       </>
                     )}
-                    {plan.price === "Custom" && (
+                    {plan.price === t('pricing.enterprise.price') && (
                       <span className="text-5xl font-black text-white">{plan.price}</span>
                     )}
                   </div>
@@ -181,12 +186,12 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                       : 'bg-white/10 text-white hover:bg-white/15 border border-white/20'
                   }`}
                 >
-                  {plan.price === "Custom" ? "Contact Sales" : "Start Free Trial"}
+                  {plan.price === t('pricing.enterprise.price') ? t('pricing.cta.contact') : t('pricing.cta.trial')}
                 </button>
                 
                 {isStarter && (
                   <p className="text-xs text-center text-gold-400/70 mt-4 font-medium">
-                    ⚡ Limited to first 100 customers only
+                    {t('pricing.starter.limitedText')}
                   </p>
                 )}
               </motion.div>
@@ -207,8 +212,8 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
               <Check className="w-6 h-6 text-emerald-400" />
             </div>
             <div className="text-left">
-              <div className="font-bold text-white">335% ROI Guarantee</div>
-              <div className="text-sm text-gray-400">If Bijou doesn't save you at least 3x your subscription cost, we'll refund 100%</div>
+              <div className="font-bold text-white">{t('pricing.guarantee.title')}</div>
+              <div className="text-sm text-gray-400">{t('pricing.guarantee.subtitle')}</div>
             </div>
           </div>
         </motion.div>

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Send, Puzzle, X } from 'lucide-react';
+import { trackFormSubmission } from '../utils/analytics';
 
 interface IntegrationFormProps {
   onClose: () => void;
 }
 
 export const IntegrationForm: React.FC<IntegrationFormProps> = ({ onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,6 +67,10 @@ Sent from Bijou AI Integration Request Form
       window.location.href = `mailto:support@mybijou.xyz?subject=${subject}&body=${body}`;
 
       console.log('Integration request submitted:', formData);
+      
+      // Track form submission in Google Analytics
+      trackFormSubmission('integration', i18n.language);
+      
       setStatus('success');
       
       setTimeout(() => {
