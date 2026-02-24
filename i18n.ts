@@ -42,8 +42,9 @@ const resources = {
       // Pricing Section
       "pricing.badge": "💎 Limited Time Offer",
       "pricing.title": "Simple, Transparent Pricing",
-      "pricing.subtitle": "Start with a {{trial}}. No credit card required. Cancel anytime.",
+      "pricing.subtitle.part1": "Start with a",
       "pricing.subtitle.trial": "14-day free trial",
+      "pricing.subtitle.part2": ". No credit card required. Cancel anytime.",
       
       // Starter Plan
       "pricing.starter.name": "Starter",
@@ -180,8 +181,9 @@ const resources = {
       // Pricing Section
       "pricing.badge": "💎 Tawaran Masa Terhad",
       "pricing.title": "Harga Mudah, Telus",
-      "pricing.subtitle": "Mulakan dengan {{trial}}. Tiada kad kredit diperlukan. Batalkan bila-bila masa.",
+      "pricing.subtitle.part1": "Mulakan dengan",
       "pricing.subtitle.trial": "percubaan percuma 14 hari",
+      "pricing.subtitle.part2": ". Tiada kad kredit diperlukan. Batalkan bila-bila masa.",
       
       // Starter Plan
       "pricing.starter.name": "Permulaan",
@@ -318,8 +320,9 @@ const resources = {
       // Pricing Section
       "pricing.badge": "💎 限时优惠",
       "pricing.title": "简单透明的定价",
-      "pricing.subtitle": "以{{trial}}开始。无需信用卡。随时取消。",
+      "pricing.subtitle.part1": "以",
       "pricing.subtitle.trial": "14天免费试用",
+      "pricing.subtitle.part2": "开始。无需信用卡。随时取消。",
       
       // Starter Plan
       "pricing.starter.name": "入门版",
@@ -456,8 +459,9 @@ const resources = {
       // Pricing Section
       "pricing.badge": "💎 வரையறுக்கப்பட்ட கால சலுகை",
       "pricing.title": "எளிய, வெளிப்படையான விலை",
-      "pricing.subtitle": "{{trial}} உடன் தொடங்குங்கள். கிரெடிட் கார்டு தேவையில்லை. எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்.",
+      "pricing.subtitle.part1": "",
       "pricing.subtitle.trial": "14 நாள் இலவச சோதனை",
+      "pricing.subtitle.part2": " உடன் தொடங்குங்கள். கிரெடிட் கார்டு தேவையில்லை. எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்.",
       
       // Starter Plan
       "pricing.starter.name": "தொடக்கம்",

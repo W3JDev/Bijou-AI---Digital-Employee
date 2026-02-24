@@ -91,9 +91,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
             {t('pricing.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            {t('pricing.subtitle', { trial: '' }).split('{{trial}}')[0]}
-            <span className="text-gold-400 font-bold">{t('pricing.subtitle.trial')}</span>
-            {t('pricing.subtitle', { trial: '' }).split('{{trial}}')[1]}
+            {t('pricing.subtitle.part1')} <span className="text-gold-400 font-bold">{t('pricing.subtitle.trial')}</span>{t('pricing.subtitle.part2')}
           </p>
         </motion.div>
 
