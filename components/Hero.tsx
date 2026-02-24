@@ -60,22 +60,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-8">
-              {t('hero.title', { 
-                savingsAmount: t('hero.title.savingsAmount'),
-                priceAmount: t('hero.title.priceAmount')
-              }).split('{{savingsAmount}}')[0]}
-              <span className="text-gradient-gold">{t('hero.title.savingsAmount')}</span>
-              {t('hero.title', { 
-                savingsAmount: t('hero.title.savingsAmount'),
-                priceAmount: t('hero.title.priceAmount')
-              }).split('{{savingsAmount}}')[1].split('{{priceAmount}}')[0]}
-              <span className="text-gradient-premium">{t('hero.title.priceAmount')}</span>
+              {t('hero.title.part1')} <span className="text-gradient-gold">{t('hero.title.savingsAmount')}</span> {t('hero.title.part2')} <span className="text-gradient-premium">{t('hero.title.priceAmount')}</span>
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-              {t('hero.subtitle', { roi: '' }).split('{{roi}}')[0]}
-              <span className="text-gold-400 font-bold">{t('hero.subtitle.roi')}</span>
-              {t('hero.subtitle', { roi: '' }).split('{{roi}}')[1]}
+              {t('hero.subtitle.part1')} <span className="text-gold-400 font-bold">{t('hero.subtitle.roi')}</span> {t('hero.subtitle.part2')}
             </motion.p>
 
             <motion.div variants={itemVariants} className="mb-12">

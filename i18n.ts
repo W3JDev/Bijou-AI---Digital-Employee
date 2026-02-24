@@ -14,11 +14,13 @@ const resources = {
       
       // Hero Section
       "hero.badge": "🎯 First 100 Customers: RM159/month (Limited Time)",
-      "hero.title": "Your {{savingsAmount}} 24/7 Digital Employee for {{priceAmount}}",
+      "hero.title.part1": "Your",
       "hero.title.savingsAmount": "RM9,201/month",
+      "hero.title.part2": "24/7 Digital Employee for",
       "hero.title.priceAmount": "Just RM159",
-      "hero.subtitle": "Close sales at 2AM in fluent Manglish. Book viewings instantly. Send property brochures automatically. {{roi}} guaranteed for Malaysian SMEs.",
+      "hero.subtitle.part1": "Close sales at 2AM in fluent Manglish. Book viewings instantly. Send property brochures automatically.",
       "hero.subtitle.roi": "335% ROI",
+      "hero.subtitle.part2": "guaranteed for Malaysian SMEs.",
       "hero.cta.trial": "Start Free Trial",
       "hero.cta.demo": "Book Demo",
       "hero.trustFooter": "✅ 14-day free trial • ✅ RM159 launch price • ✅ 335% ROI guaranteed",
@@ -150,11 +152,13 @@ const resources = {
       
       // Hero Section
       "hero.badge": "🎯 100 Pelanggan Pertama: RM159/bulan (Tawaran Terhad)",
-      "hero.title": "{{savingsAmount}} Pekerja Digital 24/7 Anda untuk {{priceAmount}}",
+      "hero.title.part1": "",
       "hero.title.savingsAmount": "RM9,201/bulan",
+      "hero.title.part2": "Pekerja Digital 24/7 Anda untuk",
       "hero.title.priceAmount": "Cuma RM159",
-      "hero.subtitle": "Tutup jualan pukul 2 pagi dalam Manglish yang lancar. Buat temujanji viewing segera. Hantar brosur hartanah automatik. {{roi}} dijamin untuk PKS Malaysia.",
+      "hero.subtitle.part1": "Tutup jualan pukul 2 pagi dalam Manglish yang lancar. Buat temujanji viewing segera. Hantar brosur hartanah automatik.",
       "hero.subtitle.roi": "ROI 335%",
+      "hero.subtitle.part2": "dijamin untuk PKS Malaysia.",
       "hero.cta.trial": "Cuba Percuma",
       "hero.cta.demo": "Tempah Demo",
       "hero.trustFooter": "✅ Percubaan 14 hari percuma • ✅ Harga pelancaran RM159 • ✅ ROI 335% dijamin",
@@ -286,11 +290,13 @@ const resources = {
       
       // Hero Section
       "hero.badge": "🎯 前100名客户: RM159/月 (限时优惠)",
-      "hero.title": "您的{{savingsAmount}} 24/7数字员工 只需{{priceAmount}}",
+      "hero.title.part1": "您的",
       "hero.title.savingsAmount": "RM9,201/月",
+      "hero.title.part2": "24/7数字员工 只需",
       "hero.title.priceAmount": "仅需RM159",
-      "hero.subtitle": "凌晨2点用流利的马来式英语成交销售。即时预约看房。自动发送房产手册。为马来西亚中小企业保证{{roi}}。",
+      "hero.subtitle.part1": "凌晨2点用流利的马来式英语成交销售。即时预约看房。自动发送房产手册。",
       "hero.subtitle.roi": "335% 投资回报率",
+      "hero.subtitle.part2": "为马来西亚中小企业保证。",
       "hero.cta.trial": "免费试用",
       "hero.cta.demo": "预约演示",
       "hero.trustFooter": "✅ 14天免费试用 • ✅ RM159发布价 • ✅ 335%投资回报率保证",
@@ -422,11 +428,13 @@ const resources = {
       
       // Hero Section
       "hero.badge": "🎯 முதல் 100 வாடிக்கையாளர்கள்: RM159/மாதம் (வரையறுக்கப்பட்ட காலம்)",
-      "hero.title": "உங்கள் {{savingsAmount}} 24/7 டிஜிட்டல் ஊழியர் {{priceAmount}} மட்டுமே",
+      "hero.title.part1": "உங்கள்",
       "hero.title.savingsAmount": "RM9,201/மாதம்",
+      "hero.title.part2": "24/7 டிஜிட்டல் ஊழியர்",
       "hero.title.priceAmount": "வெறும் RM159",
-      "hero.subtitle": "காலை 2 மணிக்கு சரளமான Manglish-இல் விற்பனையை முடியுங்கள். உடனடியாக காட்சி சந்திப்புகளை பதிவு செய்யுங்கள். சொத்து தகவல் புத்தகங்களை தானாக அனுப்புங்கள். மலேசிய SMEக்களுக்கு {{roi}} உத்தரவாதம்.",
+      "hero.subtitle.part1": "காலை 2 மணிக்கு சரளமான Manglish-இல் விற்பனையை முடியுங்கள். உடனடியாக காட்சி சந்திப்புகளை பதிவு செய்யுங்கள். சொத்து தகவல் புத்தகங்களை தானாக அனுப்புங்கள்.",
       "hero.subtitle.roi": "335% ROI",
+      "hero.subtitle.part2": "மலேசிய SMEக்களுக்கு உத்தரவாதம்.",
       "hero.cta.trial": "இலவச சோதனை தொடங்கவும்",
       "hero.cta.demo": "டெமோ பதிவு செய்யவும்",
       "hero.trustFooter": "✅ 14 நாள் இலவச சோதனை • ✅ RM159 வெளியீட்டு விலை • ✅ 335% ROI உத்தரவாதம்",
