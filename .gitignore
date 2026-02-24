@@ -22,3 +22,45 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+.env.development
+*.key
+*.pem
+*.p12
+*credentials*.json
+*config.json
+*secrets*.json
+
+# Sensitive files
+**/*ISSUE*.png
+**/*issue*.png
+**/*TODO*.md
+**/*todo*.md
+**/ORCHESTRATOR_LOG.md
+**/PROJECT_INTELLIGENCE.md
+
+# Temporary and development files
+*.tmp
+*.temp
+.cache
+.temp
+temp/
+tmp/
+
+# OS files
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Build artifacts
+build/
+coverage/
+.nyc_output/
+
+# OpenCode agent files (keep structure but not sensitive content)
+.opencode/node_modules
+.opencode/bun.lock
