@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavbarProps {
   isMenuOpen: boolean;
@@ -45,6 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpe
             <a href="#features" className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Features</a>
             <a href="#roadmap" className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Roadmap</a>
             <a href="#demo" className="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Live Demo</a>
+            <LanguageSwitcher />
             <button 
               onClick={onOpenModal}
               className="bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-2 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]"
@@ -76,6 +78,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpe
             <a href="#features" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Features</a>
             <a href="#roadmap" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Roadmap</a>
             <a href="#demo" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Live Demo</a>
+            <div className="pt-2">
+              <LanguageSwitcher />
+            </div>
             <button 
               onClick={() => { setIsMenuOpen(false); onOpenModal(); }}
               className="w-full mt-4 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-3 px-6 rounded-lg"
