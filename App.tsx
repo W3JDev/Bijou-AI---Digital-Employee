@@ -5,6 +5,7 @@ import { ViralPillars } from './components/ViralPillars';
 import { HowItWorks } from './components/HowItWorks';
 import { CaseStudies } from './components/CaseStudies';
 import { RevenueCalculator } from './components/RevenueCalculator';
+import { Pricing } from './components/Pricing';
 import { Playbooks } from './components/Playbooks';
 import { DemoChat } from './components/DemoChat';
 import { FinalCTA } from './components/FinalCTA';
@@ -60,7 +61,8 @@ export default function App() {
         <main>
           <Hero onOpenModal={() => openModal('signup', 'hero')} />
           <ViralPillars onOpenModal={() => openModal('signup', 'viral_pillars')} />
-          <RevenueCalculator />
+          <RevenueCalculator onOpenModal={() => openModal('signup', 'revenue_calculator')} />
+          <Pricing onOpenModal={() => openModal('signup', 'pricing')} />
           <HowItWorks />
           <Playbooks />
           <CaseStudies />

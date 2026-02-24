@@ -11,7 +11,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <section className="py-24 relative overflow-hidden border-t border-white/5 bg-dark-900">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-900/20 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-6 tracking-tight">
@@ -23,7 +23,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
         
         <button 
           onClick={() => setShowModal(true)}
-          className="bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] transition-all transform hover:scale-[1.02] flex items-center gap-3 mx-auto text-xl mb-16"
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all transform hover:scale-[1.02] text-xl mb-16"
         >
           Start Free Trial
           <ArrowRight className="w-6 h-6" />
@@ -32,7 +32,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
         <div className="grid md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12">
           <div>
             <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
               What happens after the trial?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -41,7 +41,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
           </div>
           <div>
             <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
               Do I need technical skills?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -50,7 +50,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
           </div>
           <div>
             <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
               Can I switch back to manual?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -96,15 +96,15 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
                   {/* Direct Trial Option */}
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className="glass-panel-3d p-8 rounded-2xl border border-emerald-500/30 bg-emerald-900/10 relative group"
+                    className="glass-panel-3d p-8 rounded-2xl border border-gold-400/30 bg-gold-900/10 relative group"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                        <Zap className="w-6 h-6 text-emerald-400" />
+                      <div className="w-12 h-12 rounded-full bg-gold-500/20 flex items-center justify-center">
+                        <Zap className="w-6 h-6 text-gold-400" />
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-white">Quick Start Trial</h4>
-                        <p className="text-emerald-400 text-sm">Get instant access</p>
+                        <p className="text-gold-400 text-sm">Get instant access</p>
                       </div>
                     </div>
                     
@@ -114,15 +114,15 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
 
                     <div className="space-y-2 text-sm text-gray-400 mb-6">
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
                         5-minute setup process
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
                         Instant WhatsApp integration  
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
                         14 days completely free
                       </div>
                     </div>
@@ -197,7 +197,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setShowModal(false)}
-                    className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+                    className="inline-flex items-center gap-2 text-gold-400 hover:text-gold-300 transition-colors font-medium"
                   >
                     <MessageSquare className="w-4 h-4" />
                     Chat with us on WhatsApp

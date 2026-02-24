@@ -67,15 +67,25 @@
         theme: {
           extend: {
             colors: {
+              gold: {
+                300: '#E5C158',
+                400: '#D4AF37',
+                500: '#B8941F',
+              },
+              'deep-green': {
+                400: '#1a4d4d',
+                500: '#0d3d3d',
+                600: '#0a2e2e',
+              },
               emerald: {
                 400: '#34d399',
                 500: '#10b981',
                 900: '#064e3b',
               },
               dark: {
-                900: '#0a0a0a',
-                800: '#121212',
-                700: '#1a1a1a',
+                900: '#0a0f0d',
+                800: '#0d1614',
+                700: '#1a2e2e',
               }
             },
             fontFamily: {
@@ -103,31 +113,39 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-      /* Clean Dark Green Theme - Inspired by OpenClaw's Clean Aesthetic */
+      /* Premium Deep Green & Gold Theme - Inspired by Business Card Design */
       :root {
-        --bg-deep: #030810;
-        --bg-surface: #061016;
-        --bg-elevated: #0a1827;
+        --bg-deep: #0a0f0d;
+        --bg-surface: #0d1614;
+        --bg-elevated: #1a2e2e;
+        --deep-green: #0d3d3d;
+        --deep-green-light: #1a4d4d;
+        --gold: #D4AF37;
+        --gold-light: #E5C158;
+        --gold-dark: #B8941F;
         --emerald-bright: #10b981;
         --emerald-mid: #059669;
         --emerald-dark: #064e3b;
-        --text-primary: #f0f9ff;
-        --text-secondary: #8892b0;
-        --text-muted: #5a6480;
-        --border-subtle: rgba(16, 185, 129, .15);
-        --border-accent: rgba(16, 185, 129, .3);
-        --surface-card: rgba(6, 16, 22, .65);
-        --surface-card-strong: rgba(6, 16, 22, .8);
+        --text-primary: #ffffff;
+        --text-secondary: #a0a8a3;
+        --text-muted: #6b7370;
+        --border-subtle: rgba(212, 175, 55, .12);
+        --border-accent: rgba(212, 175, 55, .35);
+        --surface-card: rgba(13, 61, 61, .25);
+        --surface-card-strong: rgba(13, 61, 61, .45);
       }
       
       body {
         background-color: var(--bg-deep);
         color: var(--text-primary);
         font-family: 'Inter', sans-serif;
-        /* Clean background - minimal gradients like OpenClaw */
+        /* Premium circuit board pattern background */
         background-image: 
-          radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 25%),
-          radial-gradient(circle at 85% 30%, rgba(6, 78, 59, 0.03) 0%, transparent 25%);
+          linear-gradient(90deg, rgba(212, 175, 55, .02) 1px, transparent 1px),
+          linear-gradient(rgba(212, 175, 55, .02) 1px, transparent 1px),
+          radial-gradient(circle at 20% 50%, rgba(13, 61, 61, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+        background-size: 50px 50px, 50px 50px, 100% 100%, 100% 100%;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -178,21 +196,38 @@
       }
       
       .glossy-pill-emerald {
-        background: rgba(16, 185, 129, 0.1);
-        border: 1px solid var(--emerald-bright);
+        background: rgba(13, 61, 61, 0.3);
+        border: 1px solid var(--deep-green-light);
         color: var(--emerald-bright);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+      }
+      
+      .glossy-pill-gold {
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
       }
 
-      /* Clean Text - Simplified Gradients */
+      /* Premium Gold & Green Gradients */
       .text-gradient-premium {
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--emerald-bright) 100%);
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
 
       .text-gradient-emerald {
-        color: var(--emerald-bright);
+        color: var(--deep-green-light);
+      }
+      
+      .text-gradient-gold {
+        background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-light) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       /* Minimal Glow Effects - Clean Like OpenClaw */

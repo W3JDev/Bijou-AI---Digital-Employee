@@ -51,17 +51,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             animate="visible"
             className="text-center lg:text-left"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel-3d border-2 border-red-400/50 text-red-300 text-xs font-bold tracking-wider mb-8 uppercase shadow-[0_0_30px_rgba(239,68,68,0.4)] animate-pulse bg-red-500/10">
-              <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse shadow-[0_0_15px_#ef4444]" />
-              ⚠️ Warning: You are leaking revenue
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel-3d border-2 border-gold-400/50 text-gold-300 text-xs font-bold tracking-wider mb-8 uppercase shadow-[0_0_30px_rgba(212,175,55,0.4)] animate-pulse bg-gold-500/10">
+              <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse shadow-[0_0_15px_#D4AF37]" />
+              🎯 First 100 Customers: RM159/month (Limited Time)
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-8">
-              Stop <span className="text-red-400 animate-pulse drop-shadow-[0_0_20px_rgba(248,113,113,0.6)]">losing</span> <span className="text-gradient-premium">RM300k/year</span> to <span className="text-red-400 animate-pulse drop-shadow-[0_0_20px_rgba(248,113,113,0.6)]">late-night</span> WhatsApp leads.
+              Your <span className="text-gradient-gold">RM9,201/month</span> 24/7 Digital Employee for <span className="text-gradient-premium">Just RM159</span>
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-               Your human agents sleep. Bijou doesn't. For just <span className="text-gradient-emerald font-bold">RM159/month</span> (33x cheaper than a fresh grad), get a Digital Employee that speaks fluent Manglish and closes sales instantly.
+               Close sales at 2AM in fluent Manglish. Book viewings instantly. Send property brochures automatically. <span className="text-gold-400 font-bold">335% ROI</span> guaranteed for Malaysian SMEs.
             </motion.p>
 
             <motion.div variants={itemVariants} className="mb-12">
@@ -69,17 +69,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
                 <button
                   onClick={() => onOpenModal()}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-[1.02]"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all bg-gradient-to-r from-gold-500 to-gold-300 text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02]"
                 >
                   <Users className="w-5 h-5" />
-                  Get Started
+                  Start Free Trial
                 </button>
                 
                 <a
                   href="https://cal.com/getbijou"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all glass-panel-3d text-white hover:bg-white/5 hover:scale-[1.02]"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all glass-panel-3d text-white border-gold-400/30 hover:border-gold-400/60 hover:bg-gold-400/5 hover:scale-[1.02]"
                 >
                   <Calendar className="w-5 h-5" />
                   Book Demo
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               </div>
 
               <p className="text-sm text-gray-400 text-center lg:text-left">
-                ✅ 14-day free trial • ✅ No credit card required • ✅ Cancel anytime
+                ✅ 14-day free trial • ✅ RM159 launch price • ✅ 335% ROI guaranteed
               </p>
             </motion.div>
 
@@ -169,13 +169,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
                </div>
 
                {/* Floating ROI Card - Repositioned to Top Right Corner */}
-               <div className="absolute -right-8 -top-8 glass-panel-3d p-4 rounded-2xl flex flex-col gap-1 animate-pulse-slow shadow-2xl border border-white/10 backdrop-blur-xl bg-black/60 max-w-[180px]">
-                  <div className="text-xs text-gray-400 uppercase font-bold">Cost Savings</div>
-                  <div className="text-2xl font-bold text-white">33x</div>
-                  <div className="text-[10px] text-emerald-400">vs Hiring Junior Exec</div>
-                  <div className="w-full bg-gray-700 h-1 rounded-full mt-2 overflow-hidden">
-                     <div className="bg-emerald-500 h-full w-[95%]"></div>
+               <div className="absolute -right-8 -top-8 glass-panel-3d p-4 rounded-2xl flex flex-col gap-1 animate-pulse-slow shadow-2xl border border-gold-400/30 backdrop-blur-xl bg-deep-green-500/80 max-w-[200px]">
+                  <div className="text-xs text-gold-300 uppercase font-bold">Monthly Savings</div>
+                  <div className="text-3xl font-bold text-gold-400">RM9,201</div>
+                  <div className="text-[10px] text-gray-300">vs Junior Customer Service Agent</div>
+                  <div className="w-full bg-deep-green-600 h-1.5 rounded-full mt-2 overflow-hidden">
+                     <div className="bg-gold-400 h-full w-[95%] shadow-[0_0_8px_rgba(212,175,55,0.6)]"></div>
                   </div>
+                  <div className="text-xs text-gold-300 mt-1 font-semibold">335% ROI</div>
                </div>
             </div>
           </motion.div>

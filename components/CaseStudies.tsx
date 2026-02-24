@@ -47,9 +47,9 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ onOpenModal }) => {
                    <div className="text-4xl font-bold text-white mb-2">0%</div>
                    <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Missed Calls</div>
                 </div>
-                <div className="bg-emerald-900/20 p-5 rounded-2xl border border-emerald-500/20 shadow-[0_4px_20px_rgba(16,185,129,0.1)]">
-                   <div className="text-4xl font-bold text-emerald-400 mb-2">+40%</div>
-                   <div className="text-xs text-emerald-200/70 uppercase tracking-widest font-semibold">Leads Qualified</div>
+                <div className="bg-gold-900/20 p-5 rounded-2xl border border-gold-400/20 shadow-[0_4px_20px_rgba(212,175,55,0.1)]">
+                   <div className="text-4xl font-bold text-gold-400 mb-2">+40%</div>
+                   <div className="text-xs text-gold-200/70 uppercase tracking-widest font-semibold">Leads Qualified</div>
                 </div>
              </div>
 
