@@ -2,16 +2,16 @@ import { GoogleGenAI } from "@google/genai";
 
 export default async function handler(req, res) {
   // CORS headers for Vite dev server
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === 'OPTIONS') {
+  if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     // SECURITY: API key is now server-side only
     const apiKey = process.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
-      throw new Error('Gemini API key not configured');
+      throw new Error("Gemini API key not configured");
     }
 
     const ai = new GoogleGenAI({ apiKey });
@@ -69,33 +69,33 @@ export default async function handler(req, res) {
 
     // Using Gemini 2.5 Flash-Lite for lightning-fast responses
     const chat = ai.chats.create({
-      model: 'gemini-flash-lite-latest',
+      model: "gemini-flash-lite-latest",
       config: {
         systemInstruction: systemInstruction,
         temperature: 0.7,
       },
-      history: (history || []).map(h => ({
+      history: (history || []).map((h) => ({
         role: h.role,
-        parts: [{ text: h.content }]
-      }))
+        parts: [{ text: h.content }],
+      })),
     });
 
     const response = await chat.sendMessage({
-      message: message || 'Hello'
+      message: message || "Hello",
     });
 
     return res.status(200).json({
       success: true,
-      response: response.text || "Sorry boss, line breaking up a bit. Say again?"
+      response:
+        response.text || "Sorry boss, line breaking up a bit. Say again?",
     });
-
   } catch (error) {
     console.error("Gemini API Error:", error);
-    
+
     // Return culturally appropriate error message
     return res.status(200).json({
       success: true,
-      response: "Sorry boss, technical issue on my end. Can try again?"
+      response: "Sorry boss, technical issue on my end. Can try again?",
     });
   }
 }
