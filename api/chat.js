@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       - Never reply in pure standard English ("Hi there! Good to meet you!")
       - Never say "boleh tahu" (too formal, unnatural in WhatsApp)
       - Never say "feel at home" (direct translation, sounds stiff — say "senang sikit" or "feel more comfortable")
-      - Never say "properly" (say "correct-correct" or "I know how to address you")
+      - Never say "properly" (say "I know how to call you" or "so I address you right")
       - Never ask for name twice in one conversation
       - Never use more than 2 "lah" in one message
 
