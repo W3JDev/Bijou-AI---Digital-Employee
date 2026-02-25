@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, User, Bot, Loader2, Zap } from 'lucide-react';
+import { Send, User, Loader2, Zap } from 'lucide-react';
 import { sendMessageToBijou } from '../services/gemini';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -114,9 +114,9 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
                      rotate: [0, -10, 10, -5, 0]
                  } : {}}
                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                 className="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold z-10 relative text-xl shadow-lg shadow-emerald-500/20 border-2 border-emerald-400/30"
+                 className="w-12 h-12 rounded-full bg-transparent flex items-center justify-center z-10 relative shadow-lg shadow-emerald-500/20"
                >
-                  B
+                  <img src="/bijou-logo.svg" alt="Bijou" className="w-12 h-12 rounded-full object-contain" />
                </motion.div>
                <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 rounded-full border-2 border-gray-800 z-20 shadow-md"></div>
              </div>
@@ -139,8 +139,8 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
                 transition={{ duration: 0.3 }}
                 className={`flex gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
               >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${msg.role === 'user' ? 'bg-gray-700' : 'bg-emerald-600'}`}>
-                  {msg.role === 'user' ? <User className="w-5 h-5 text-gray-300" /> : <Bot className="w-5 h-5 text-white" />}
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${msg.role === 'user' ? 'bg-gray-700' : 'bg-transparent'}`}>
+                  {msg.role === 'user' ? <User className="w-5 h-5 text-gray-300" /> : <img src="/bijou-logo.svg" alt="Bijou" className="w-10 h-10 rounded-full object-contain" />}
                 </div>
                 <div className={`rounded-2xl p-5 max-w-[80%] shadow-lg ${
                   msg.role === 'user' 
@@ -157,8 +157,8 @@ export const DemoChat: React.FC<DemoChatProps> = ({ onOpenModal }) => {
                  animate={{ opacity: 1 }}
                  className="flex gap-4"
                >
-                 <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Bot className="w-5 h-5 text-white" />
+                 <div className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <img src="/bijou-logo.svg" alt="Bijou" className="w-10 h-10 rounded-full object-contain" />
                  </div>
                  <div className="glossy-pill-emerald p-5 rounded-2xl rounded-tl-none flex items-center gap-3 shadow-lg">
                     <Loader2 className="w-5 h-5 text-emerald-400 animate-spin" />
