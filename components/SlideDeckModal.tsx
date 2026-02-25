@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  ArrowRight,
-  BookOpen,
-  CheckCircle2,
-  ExternalLink,
-  Loader2,
-  Mail,
-  Presentation,
-  Rocket,
-  X,
+    ArrowRight,
+    BookOpen,
+    CheckCircle2,
+    ExternalLink,
+    Loader2,
+    Mail,
+    Presentation,
+    Rocket,
+    X,
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -44,7 +44,8 @@ export const SlideDeckModal: React.FC<SlideDeckModalProps> = ({
       });
 
       const result = await response.json();
-      if (!response.ok) throw new Error(result.message || "Something went wrong");
+      if (!response.ok)
+        throw new Error(result.message || "Something went wrong");
 
       setStep("success");
     } catch (err: any) {
@@ -133,7 +134,8 @@ export const SlideDeckModal: React.FC<SlideDeckModalProps> = ({
                       Get the Full Bijou AI Deck
                     </h3>
                     <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                      Enter your email and we'll send you the slide deck, user guide, and onboarding link — all in one email, instantly.
+                      Enter your email and we'll send you the slide deck, user
+                      guide, and onboarding link — all in one email, instantly.
                     </p>
 
                     {/* Preview of what they get */}
@@ -219,7 +221,11 @@ export const SlideDeckModal: React.FC<SlideDeckModalProps> = ({
                       Check your inbox! 📬
                     </h3>
                     <p className="text-gray-400 text-sm mb-6 max-w-xs leading-relaxed">
-                      We've sent the slide deck, user guide, and onboarding link to <span className="text-emerald-400 font-semibold">{email}</span>
+                      We've sent the slide deck, user guide, and onboarding link
+                      to{" "}
+                      <span className="text-emerald-400 font-semibold">
+                        {email}
+                      </span>
                     </p>
 
                     {/* Quick access links */}
@@ -236,7 +242,10 @@ export const SlideDeckModal: React.FC<SlideDeckModalProps> = ({
                             <div
                               className={`w-7 h-7 rounded-lg bg-gradient-to-br ${r.color} flex items-center justify-center text-white flex-shrink-0`}
                             >
-                              {React.cloneElement(r.icon as React.ReactElement, { className: "w-4 h-4" })}
+                              {React.cloneElement(
+                                r.icon as React.ReactElement,
+                                { className: "w-4 h-4" },
+                              )}
                             </div>
                             <span className="text-white text-sm font-medium">
                               {r.label}

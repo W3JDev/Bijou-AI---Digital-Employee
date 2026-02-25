@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
-import { ArrowRight, Calendar, Zap, X, User, MessageSquare } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { LeadCaptureForm } from './LeadCaptureForm';
+import { AnimatePresence, motion } from "framer-motion";
+import {
+    ArrowRight,
+    Calendar,
+    MessageSquare,
+    User,
+    X,
+    Zap,
+} from "lucide-react";
+import React, { useState } from "react";
+import { LeadCaptureForm } from "./LeadCaptureForm";
 
 interface FinalCTAProps {
   onOpenModal?: () => void;
   onOpenSlideDeck?: () => void;
 }
 
-export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck }) => {
+export const FinalCTA: React.FC<FinalCTAProps> = ({
+  onOpenModal,
+  onOpenSlideDeck,
+}) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <section className="py-24 relative overflow-hidden border-t border-white/5 bg-dark-900">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-900/20 rounded-full blur-[120px] pointer-events-none" />
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h2 className="text-4xl md:text-6xl font-display font-extrabold mb-6 tracking-tight">
           Ready to Stop Losing Leads?
@@ -21,8 +31,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
         <p className="text-xl text-gray-300 mb-10 font-light">
           14-day free trial. No credit card. Cancel anytime.
         </p>
-        
-        <button 
+
+        <button
           onClick={() => setShowModal(true)}
           className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all transform hover:scale-[1.02] text-xl mb-4"
         >
@@ -48,7 +58,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
               What happens after the trial?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-               It's RM159/month. You can cancel anytime with one click. No long-term contracts.
+              It's RM159/month. You can cancel anytime with one click. No
+              long-term contracts.
             </p>
           </div>
           <div>
@@ -57,7 +68,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
               Do I need technical skills?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-              No. If you can scan a QR code and upload a PDF, you can set up Bijou in 5 minutes.
+              No. If you can scan a QR code and upload a PDF, you can set up
+              Bijou in 5 minutes.
             </p>
           </div>
           <div>
@@ -66,7 +78,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
               Can I switch back to manual?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Yes, anytime. You can pause Bijou or jump into any conversation to take over manually.
+              Yes, anytime. You can pause Bijou or jump into any conversation to
+              take over manually.
             </p>
           </div>
         </div>
@@ -75,14 +88,14 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
       {/* Onboarding Choice Modal */}
       <AnimatePresence>
         {showModal && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setShowModal(false)}
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -100,13 +113,17 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
 
               <div className="p-8">
                 <div className="text-center mb-8">
-                  <h3 className="text-3xl font-display font-bold mb-4">Choose Your Path</h3>
-                  <p className="text-gray-300 text-lg">How would you like to get started with Bijou AI?</p>
+                  <h3 className="text-3xl font-display font-bold mb-4">
+                    Choose Your Path
+                  </h3>
+                  <p className="text-gray-300 text-lg">
+                    How would you like to get started with Bijou AI?
+                  </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                   {/* Direct Trial Option */}
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="glass-panel-3d p-8 rounded-2xl border border-gold-400/30 bg-gold-900/10 relative group"
                   >
@@ -115,13 +132,18 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                         <Zap className="w-6 h-6 text-gold-400" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white">Quick Start Trial</h4>
-                        <p className="text-gold-400 text-sm">Get instant access</p>
+                        <h4 className="text-xl font-bold text-white">
+                          Quick Start Trial
+                        </h4>
+                        <p className="text-gold-400 text-sm">
+                          Get instant access
+                        </p>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                      Jump straight into your 14-day free trial. Perfect if you're ready to test Bijou with your leads immediately.
+                      Jump straight into your 14-day free trial. Perfect if
+                      you're ready to test Bijou with your leads immediately.
                     </p>
 
                     <div className="space-y-2 text-sm text-gray-400 mb-6">
@@ -131,7 +153,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                        Instant WhatsApp integration  
+                        Instant WhatsApp integration
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
@@ -139,7 +161,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                       </div>
                     </div>
 
-                    <LeadCaptureForm 
+                    <LeadCaptureForm
                       source="final_cta_direct"
                       className="space-y-4"
                       onSuccess={() => {
@@ -150,7 +172,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                   </motion.div>
 
                   {/* Guided Onboarding Option */}
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="glass-panel-3d p-8 rounded-2xl border border-blue-500/30 bg-blue-900/10 relative group"
                   >
@@ -159,13 +181,18 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                         <Calendar className="w-6 h-6 text-blue-400" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white">Guided Onboarding</h4>
-                        <p className="text-blue-400 text-sm">Personalized setup</p>
+                        <h4 className="text-xl font-bold text-white">
+                          Guided Onboarding
+                        </h4>
+                        <p className="text-blue-400 text-sm">
+                          Personalized setup
+                        </p>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                      Book a 15-min demo call. We'll analyze your business, optimize your setup, and show you advanced strategies.
+                      Book a 15-min demo call. We'll analyze your business,
+                      optimize your setup, and show you advanced strategies.
                     </p>
 
                     <div className="space-y-2 text-sm text-gray-400 mb-6">
@@ -193,7 +220,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck
                       <User className="w-5 h-5" />
                       Book Your Demo Call
                     </a>
-                    
+
                     <p className="text-xs text-gray-400 text-center mt-3">
                       Available slots: Today & Tomorrow
                     </p>
