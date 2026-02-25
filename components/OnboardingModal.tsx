@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowRight, Building2, Mail, User, Phone, CheckCircle, AlertCircle, X, Calendar, 
-  MessageSquare, RefreshCw, ExternalLink, Users, Crown, Sparkles, Clock, Shield 
-} from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import {
+    AlertCircle,
+    ArrowRight,
+    Building2,
+    Calendar,
+    Crown,
+    ExternalLink,
+    Mail,
+    MessageSquare,
+    Phone,
+    RefreshCw,
+    Shield,
+    Sparkles,
+    Users,
+    X
+} from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 interface OnboardingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  mode: 'signup' | 'waitlist' | 'demo';
+  mode: "signup" | "waitlist" | "demo";
   source?: string;
 }
 
 interface ErrorState {
-  type: 'validation' | 'duplicate' | 'server' | 'network';
+  type: "validation" | "duplicate" | "server" | "network";
   title: string;
   message: string;
   solution: string;
@@ -22,30 +34,31 @@ interface ErrorState {
   showSupport?: boolean;
 }
 
-export const OnboardingModal: React.FC<OnboardingModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  mode = 'signup',
-  source = 'modal' 
+export const OnboardingModal: React.FC<OnboardingModalProps> = ({
+  isOpen,
+  onClose,
+  mode = "signup",
+  source = "modal",
 }) => {
   const [formData, setFormData] = useState({
-    business_name: '',
-    email: '',
-    phone: '',
-    demo_time: ''
+    business_name: "",
+    email: "",
+    phone: "",
+    demo_time: "",
   });
-  
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [errorState, setErrorState] = useState<ErrorState | null>(null);
-  const [redirectCountdown, setRedirectCountdown] = useState<number | null>(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
   // Sophisticated loading progress animation
   useEffect(() => {
-    if (status === 'loading') {
+    if (status === "loading") {
       setLoadingProgress(0);
       const interval = setInterval(() => {
-        setLoadingProgress(prev => {
+        setLoadingProgress((prev) => {
           if (prev >= 90) return prev; // Stay at 90% until actual completion
           return prev + Math.random() * 15;
         });
@@ -54,160 +67,172 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     }
   }, [status]);
 
-  // Redirect countdown for successful signups
-  useEffect(() => {
-    if (mode === 'signup' && status === 'success' && redirectCountdown === null) {
-      setRedirectCountdown(5);
-      const interval = setInterval(() => {
-        setRedirectCountdown(prev => {
-          if (prev === null || prev <= 1) {
-            clearInterval(interval);
-            return null;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-  }, [status, mode, redirectCountdown]);
-
   const validatePhone = (phone: string): string => {
-    if (!phone) return '';
-    
+    if (!phone) return "";
+
     // Strip all non-digits
-    let cleaned = phone.replace(/\D/g, '');
-    
+    let cleaned = phone.replace(/\D/g, "");
+
     // If starts with 0, replace with 60 (Malaysian format)
-    if (cleaned.startsWith('0')) {
-      cleaned = '60' + cleaned.substring(1);
+    if (cleaned.startsWith("0")) {
+      cleaned = "60" + cleaned.substring(1);
     }
-    
+
     return cleaned;
   };
 
   const createErrorState = (apiError: any): ErrorState => {
-    const errorMessage = apiError.detail || apiError.message || 'Unknown error';
-    
+    const errorMessage = apiError.detail || apiError.message || "Unknown error";
+
     // Handle duplicate email scenario
-    if (errorMessage.includes('already registered') || errorMessage.includes('duplicate')) {
+    if (
+      errorMessage.includes("already registered") ||
+      errorMessage.includes("duplicate")
+    ) {
       const email = formData.email;
       return {
-        type: 'duplicate',
-        title: 'Already Part of the Family! 🎉',
+        type: "duplicate",
+        title: "Already Part of the Family! 🎉",
         message: `Great news! ${email} is already registered with Bijou AI.`,
-        solution: 'You can access your account or request a password reset.',
-        actionLabel: 'Access My Account',
+        solution: "You can access your account or request a password reset.",
+        actionLabel: "Access My Account",
         actionHandler: () => {
-          window.open(`https://wa.me/60174106981?text=Hi! I need help accessing my Bijou AI account for ${email}`, '_blank');
+          window.open(
+            `https://wa.me/60174106981?text=Hi! I need help accessing my Bijou AI account for ${email}`,
+            "_blank",
+          );
         },
-        showSupport: true
+        showSupport: true,
       };
     }
 
     // Handle validation errors
-    if (errorMessage.includes('invalid') || errorMessage.includes('required')) {
+    if (errorMessage.includes("invalid") || errorMessage.includes("required")) {
       return {
-        type: 'validation',
-        title: 'Form Incomplete',
-        message: 'Please check your information and try again.',
+        type: "validation",
+        title: "Form Incomplete",
+        message: "Please check your information and try again.",
         solution: errorMessage,
-        actionLabel: 'Fix & Retry',
+        actionLabel: "Fix & Retry",
         actionHandler: () => {
-          setStatus('idle');
+          setStatus("idle");
           setErrorState(null);
-        }
+        },
       };
     }
 
     // Handle server errors
-    if (errorMessage.includes('server') || errorMessage.includes('500')) {
+    if (errorMessage.includes("server") || errorMessage.includes("500")) {
       return {
-        type: 'server',
-        title: 'Server Hiccup',
-        message: 'Our servers are experiencing high demand (good problem to have!).',
-        solution: 'Please try again in a moment, or WhatsApp us for immediate assistance.',
-        actionLabel: 'Try Again',
+        type: "server",
+        title: "Server Hiccup",
+        message:
+          "Our servers are experiencing high demand (good problem to have!).",
+        solution:
+          "Please try again in a moment, or WhatsApp us for immediate assistance.",
+        actionLabel: "Try Again",
         actionHandler: () => {
-          setStatus('idle');
+          setStatus("idle");
           setErrorState(null);
         },
-        showSupport: true
+        showSupport: true,
       };
     }
 
     // Handle network errors
-    if (!navigator.onLine || errorMessage.includes('network') || errorMessage.includes('fetch')) {
+    if (
+      !navigator.onLine ||
+      errorMessage.includes("network") ||
+      errorMessage.includes("fetch")
+    ) {
       return {
-        type: 'network',
-        title: 'Connection Issue',
-        message: 'Looks like your internet connection is unstable.',
-        solution: 'Check your connection and try again, or save our WhatsApp for later.',
-        actionLabel: 'Retry',
+        type: "network",
+        title: "Connection Issue",
+        message: "Looks like your internet connection is unstable.",
+        solution:
+          "Check your connection and try again, or save our WhatsApp for later.",
+        actionLabel: "Retry",
         actionHandler: () => {
-          setStatus('idle');
+          setStatus("idle");
           setErrorState(null);
         },
-        showSupport: true
+        showSupport: true,
       };
     }
 
     // Generic error fallback
     return {
-      type: 'server',
-      title: 'Something Unexpected Happened',
-      message: "Don't worry, this happens sometimes with high-traffic websites.",
-      solution: 'Our team has been notified. Try again or contact us directly.',
-      actionLabel: 'Try Again',
+      type: "server",
+      title: "Something Unexpected Happened",
+      message:
+        "Don't worry, this happens sometimes with high-traffic websites.",
+      solution: "Our team has been notified. Try again or contact us directly.",
+      actionLabel: "Try Again",
       actionHandler: () => {
-        setStatus('idle');
+        setStatus("idle");
         setErrorState(null);
       },
-      showSupport: true
+      showSupport: true,
     };
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatus("loading");
     setErrorState(null);
     setLoadingProgress(0);
 
     // Client-side validation with better UX
-    if (!formData.business_name.trim() || formData.business_name.trim().length < 2) {
+    if (
+      !formData.business_name.trim() ||
+      formData.business_name.trim().length < 2
+    ) {
       setErrorState({
-        type: 'validation',
-        title: 'Business Name Required',
-        message: 'We need to know what to call your business!',
-        solution: 'Enter your business name (minimum 2 characters)',
-        actionLabel: 'Got It',
+        type: "validation",
+        title: "Business Name Required",
+        message: "We need to know what to call your business!",
+        solution: "Enter your business name (minimum 2 characters)",
+        actionLabel: "Got It",
         actionHandler: () => {
-          setStatus('idle');
+          setStatus("idle");
           setErrorState(null);
           // Focus the business name field
           setTimeout(() => {
-            document.querySelector<HTMLInputElement>('input[placeholder*="Business name"]')?.focus();
+            document
+              .querySelector<HTMLInputElement>(
+                'input[placeholder*="Business name"]',
+              )
+              ?.focus();
           }, 100);
-        }
+        },
       });
-      setStatus('error');
+      setStatus("error");
       return;
     }
 
-    if (!formData.email.trim() || !formData.email.includes('@') || !formData.email.includes('.')) {
+    if (
+      !formData.email.trim() ||
+      !formData.email.includes("@") ||
+      !formData.email.includes(".")
+    ) {
       setErrorState({
-        type: 'validation',
-        title: 'Valid Email Required',
-        message: 'We need your email to send you important updates and access details.',
-        solution: 'Enter a valid email address (e.g., you@company.com)',
-        actionLabel: 'Fix Email',
+        type: "validation",
+        title: "Valid Email Required",
+        message:
+          "We need your email to send you important updates and access details.",
+        solution: "Enter a valid email address (e.g., you@company.com)",
+        actionLabel: "Fix Email",
         actionHandler: () => {
-          setStatus('idle');
+          setStatus("idle");
           setErrorState(null);
           setTimeout(() => {
-            document.querySelector<HTMLInputElement>('input[type="email"]')?.focus();
+            document
+              .querySelector<HTMLInputElement>('input[type="email"]')
+              ?.focus();
           }, 100);
-        }
+        },
       });
-      setStatus('error');
+      setStatus("error");
       return;
     }
 
@@ -215,63 +240,76 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
       const cleanedPhone = validatePhone(formData.phone);
       if (cleanedPhone.length < 10) {
         setErrorState({
-          type: 'validation',
-          title: 'WhatsApp Number Format',
-          message: 'We need a valid Malaysian WhatsApp number to send you updates.',
-          solution: 'Enter your WhatsApp number (e.g., 0123456789 or 60123456789)',
-          actionLabel: 'Fix Number',
+          type: "validation",
+          title: "WhatsApp Number Format",
+          message:
+            "We need a valid Malaysian WhatsApp number to send you updates.",
+          solution:
+            "Enter your WhatsApp number (e.g., 0123456789 or 60123456789)",
+          actionLabel: "Fix Number",
           actionHandler: () => {
-            setStatus('idle');
+            setStatus("idle");
             setErrorState(null);
             setTimeout(() => {
-              document.querySelector<HTMLInputElement>('input[type="tel"]')?.focus();
+              document
+                .querySelector<HTMLInputElement>('input[type="tel"]')
+                ?.focus();
             }, 100);
-          }
+          },
         });
-        setStatus('error');
+        setStatus("error");
         return;
       }
       formData.phone = cleanedPhone;
     }
 
     try {
-      if (mode === 'demo') {
+      if (mode === "demo") {
         // Demo booking flow
         if (!formData.demo_time.trim()) {
           setErrorState({
-            type: 'validation',
-            title: 'Demo Time Required',
-            message: 'When would you like your personalized demo?',
-            solution: 'Enter your preferred time (e.g., "Monday 3pm" or "This Friday morning")',
-            actionLabel: 'Add Time',
+            type: "validation",
+            title: "Demo Time Required",
+            message: "When would you like your personalized demo?",
+            solution:
+              'Enter your preferred time (e.g., "Monday 3pm" or "This Friday morning")',
+            actionLabel: "Add Time",
             actionHandler: () => {
-              setStatus('idle');
+              setStatus("idle");
               setErrorState(null);
               setTimeout(() => {
-                document.querySelector<HTMLInputElement>('input[placeholder*="demo time"]')?.focus();
+                document
+                  .querySelector<HTMLInputElement>(
+                    'input[placeholder*="demo time"]',
+                  )
+                  ?.focus();
               }, 100);
-            }
+            },
           });
-          setStatus('error');
+          setStatus("error");
           return;
         }
 
         const demoPayload = {
           business_name: formData.business_name.trim(),
           email: formData.email.toLowerCase().trim(),
-          phone: formData.phone || '',
+          phone: formData.phone || "",
         };
 
         // Simulate progress for better UX
         setTimeout(() => setLoadingProgress(60), 500);
 
         // First register in onboarding system
-        const response = await fetch('/api/onboarding/signup', {
-          method: 'POST',
+        const response = await fetch("/api/leads", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(demoPayload)
+          body: JSON.stringify({
+            ...demoPayload,
+            name: demoPayload.business_name,
+            source: "website",
+          }),
         });
 
         const result = await response.json();
@@ -280,46 +318,49 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
         if (!response.ok) {
           const errorState = createErrorState(result);
           setErrorState(errorState);
-          setStatus('error');
+          setStatus("error");
           return;
         }
 
         // Send WhatsApp notification to owner
         try {
-          await fetch('/api/send', {
-            method: 'POST',
+          await fetch("/api/send", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              to: '60174106981@s.whatsapp.net',
-              message: `🎯 NEW DEMO REQUEST!\n\nBusiness: ${formData.business_name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nPreferred Time: ${formData.demo_time}\n\nSource: ${source}`
-            })
+              to: "60174106981@s.whatsapp.net",
+              message: `🎯 NEW DEMO REQUEST!\n\nBusiness: ${formData.business_name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nPreferred Time: ${formData.demo_time}\n\nSource: ${source}`,
+            }),
           });
         } catch (notifError) {
-          console.warn('WhatsApp notification failed:', notifError);
+          console.warn("WhatsApp notification failed:", notifError);
           // Don't fail the flow if notification fails
         }
 
         setLoadingProgress(100);
-        setStatus('success');
-        
+        setStatus("success");
       } else {
         // Regular signup/waitlist flow
         const signupPayload = {
           business_name: formData.business_name.trim(),
           email: formData.email.toLowerCase().trim(),
-          phone: formData.phone || '',
+          phone: formData.phone || "",
         };
 
         setTimeout(() => setLoadingProgress(60), 500);
 
-        const response = await fetch('/api/onboarding/signup', {
-          method: 'POST',
+        const response = await fetch("/api/leads", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(signupPayload)
+          body: JSON.stringify({
+            ...signupPayload,
+            name: signupPayload.business_name,
+            source: source || "website",
+          }),
         });
 
         const result = await response.json();
@@ -328,86 +369,95 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
         if (!response.ok) {
           const errorState = createErrorState(result);
           setErrorState(errorState);
-          setStatus('error');
+          setStatus("error");
           return;
         }
 
         setLoadingProgress(100);
-
-        if (mode === 'signup' && result.onboarding_url) {
-          // Redirect to onboarding flow after countdown
-          setStatus('success');
-          setTimeout(() => {
-            window.location.href = result.onboarding_url;
-          }, 5000);
-        } else {
-          setStatus('success');
-        }
+        // Always show success — onboarding link is sent by email
+        setStatus("success");
       }
 
       // Reset form after delay (except for signup which redirects)
-      setTimeout(() => {
-        if (mode === 'waitlist' || mode === 'demo') {
-          setFormData({ business_name: '', email: '', phone: '', demo_time: '' });
-          setStatus('idle');
-          setLoadingProgress(0);
-        }
-      }, mode === 'waitlist' ? 4000 : 6000);
-
+      setTimeout(
+        () => {
+          if (mode === "waitlist" || mode === "demo") {
+            setFormData({
+              business_name: "",
+              email: "",
+              phone: "",
+              demo_time: "",
+            });
+            setStatus("idle");
+            setLoadingProgress(0);
+          }
+        },
+        mode === "waitlist" ? 4000 : 6000,
+      );
     } catch (error: any) {
-      console.error('Form submission error:', error);
+      console.error("Form submission error:", error);
       const errorState = createErrorState(error);
       setErrorState(errorState);
-      setStatus('error');
+      setStatus("error");
     }
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (status === 'error') {
-      setStatus('idle');
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (status === "error") {
+      setStatus("idle");
       setErrorState(null);
     }
   };
 
   const getModalTitle = () => {
     switch (mode) {
-      case 'waitlist': return 'Join the VIP List';
-      case 'demo': return 'Book Your Personal Demo';
-      default: return 'Start Your Free Trial';
+      case "waitlist":
+        return "Join the VIP List";
+      case "demo":
+        return "Book Your Personal Demo";
+      default:
+        return "Start Your Free Trial";
     }
   };
 
   const getModalSubtitle = () => {
     switch (mode) {
-      case 'waitlist': return 'Be first to access exclusive Malaysian SME features + insider tips';
-      case 'demo': return '15-minute personalized demo + free business automation analysis';
-      default: return '14 days free • No credit card • Cancel anytime • Set up in 5 minutes';
+      case "waitlist":
+        return "Be first to access exclusive Malaysian SME features + insider tips";
+      case "demo":
+        return "15-minute personalized demo + free business automation analysis";
+      default:
+        return "14 days free • No credit card • Cancel anytime • Set up in 5 minutes";
     }
   };
 
   const getSuccessContent = () => {
     switch (mode) {
-      case 'waitlist': 
+      case "waitlist":
         return {
-          icon: '🎉',
+          icon: "🎉",
           title: "You're on the VIP list!",
-          message: "We'll WhatsApp you first when new features drop, plus exclusive Malaysian SME automation tips.",
-          subMessage: 'Expect your first insider tip within 24 hours!'
+          message:
+            "We'll WhatsApp you first when new features drop, plus exclusive Malaysian SME automation tips.",
+          subMessage: "Expect your first insider tip within 24 hours!",
         };
-      case 'demo': 
+      case "demo":
         return {
-          icon: '✅',
-          title: 'Demo booked successfully!',
-          message: "We'll WhatsApp you within 2 hours to confirm your preferred time slot.",
-          subMessage: 'Get ready to see how Bijou handles real customer inquiries in Manglish!'
+          icon: "✅",
+          title: "Demo booked successfully!",
+          message:
+            "We'll WhatsApp you within 2 hours to confirm your preferred time slot.",
+          subMessage:
+            "Get ready to see how Bijou handles real customer inquiries in Manglish!",
         };
-      default: 
+      default:
         return {
-          icon: '🚀',
-          title: 'Welcome to Bijou AI!',
-          message: redirectCountdown ? `Redirecting to your onboarding in ${redirectCountdown} seconds...` : 'Redirecting to your personalized setup...',
-          subMessage: "You're about to experience the future of Malaysian business automation!"
+          icon: "🚀",
+          title: "We got your details, boss!",
+          message:
+            "Check your email — we've sent a confirmation with your onboarding link to get started.",
+          subMessage: "Ready to jump in now? Go to app.mybijou.xyz/signup",
         };
     }
   };
@@ -416,14 +466,14 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
 
   return (
     <AnimatePresence>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         onClick={onClose}
       >
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -441,22 +491,30 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
 
           <div className="p-8">
             <div className="text-center mb-8">
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
                 className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 flex items-center justify-center"
               >
-                {mode === 'demo' ? <Calendar className="w-8 h-8 text-dark-900" /> :
-                 mode === 'waitlist' ? <Crown className="w-8 h-8 text-dark-900" /> :
-                 <Sparkles className="w-8 h-8 text-dark-900" />}
+                {mode === "demo" ? (
+                  <Calendar className="w-8 h-8 text-dark-900" />
+                ) : mode === "waitlist" ? (
+                  <Crown className="w-8 h-8 text-dark-900" />
+                ) : (
+                  <Sparkles className="w-8 h-8 text-dark-900" />
+                )}
               </motion.div>
-              <h3 className="text-2xl font-display font-bold mb-2">{getModalTitle()}</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">{getModalSubtitle()}</p>
+              <h3 className="text-2xl font-display font-bold mb-2">
+                {getModalTitle()}
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {getModalSubtitle()}
+              </p>
             </div>
 
             <AnimatePresence mode="wait">
-              {status === 'loading' && (
+              {status === "loading" && (
                 <motion.div
                   key="loading"
                   initial={{ opacity: 0, y: -10 }}
@@ -469,21 +527,25 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     <div className="absolute inset-0 border-4 border-emerald-500 rounded-full border-t-transparent animate-spin"></div>
                   </div>
                   <div className="text-center">
-                    <p className="text-emerald-400 font-semibold">Setting up your account...</p>
+                    <p className="text-emerald-400 font-semibold">
+                      Setting up your account...
+                    </p>
                     <div className="w-48 h-2 bg-gray-700 rounded-full mt-3 overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${loadingProgress}%` }}
                         transition={{ duration: 0.3 }}
                       />
                     </div>
-                    <p className="text-emerald-300 text-xs mt-2">Almost there... {Math.round(loadingProgress)}%</p>
+                    <p className="text-emerald-300 text-xs mt-2">
+                      Almost there... {Math.round(loadingProgress)}%
+                    </p>
                   </div>
                 </motion.div>
               )}
 
-              {status === 'success' && (
+              {status === "success" && (
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -500,22 +562,33 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     {getSuccessContent().icon}
                   </motion.div>
                   <div className="text-center">
-                    <p className="text-emerald-400 font-semibold text-lg">{getSuccessContent().title}</p>
-                    <p className="text-emerald-300 text-sm mt-2 leading-relaxed">{getSuccessContent().message}</p>
+                    <p className="text-emerald-400 font-semibold text-lg">
+                      {getSuccessContent().title}
+                    </p>
+                    <p className="text-emerald-300 text-sm mt-2 leading-relaxed">
+                      {getSuccessContent().message}
+                    </p>
                     {getSuccessContent().subMessage && (
-                      <p className="text-emerald-200 text-xs mt-3 italic">{getSuccessContent().subMessage}</p>
+                      <p className="text-emerald-200 text-xs mt-3 italic">
+                        {getSuccessContent().subMessage}
+                      </p>
                     )}
-                    {redirectCountdown && (
-                      <div className="mt-4 flex items-center justify-center gap-2 text-emerald-400">
-                        <Clock className="w-4 h-4" />
-                        <span className="text-sm font-mono">{redirectCountdown}s</span>
-                      </div>
+                    {mode === "signup" && (
+                      <a
+                        href="https://app.mybijou.xyz/signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-dark-900 font-bold text-sm rounded-xl transition-all"
+                      >
+                        Create Account Now
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
                     )}
                   </div>
                 </motion.div>
               )}
 
-              {status === 'error' && errorState && (
+              {status === "error" && errorState && (
                 <motion.div
                   key="error"
                   initial={{ opacity: 0, x: -20 }}
@@ -528,10 +601,16 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                       <AlertCircle className="w-6 h-6 text-red-400" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-red-400 font-semibold text-lg mb-1">{errorState.title}</h4>
-                      <p className="text-red-300 text-sm mb-2">{errorState.message}</p>
-                      <p className="text-red-200 text-xs mb-4 italic">{errorState.solution}</p>
-                      
+                      <h4 className="text-red-400 font-semibold text-lg mb-1">
+                        {errorState.title}
+                      </h4>
+                      <p className="text-red-300 text-sm mb-2">
+                        {errorState.message}
+                      </p>
+                      <p className="text-red-200 text-xs mb-4 italic">
+                        {errorState.solution}
+                      </p>
+
                       <div className="flex flex-col gap-2">
                         <button
                           onClick={errorState.actionHandler}
@@ -540,7 +619,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                           <RefreshCw className="w-4 h-4" />
                           {errorState.actionLabel}
                         </button>
-                        
+
                         {errorState.showSupport && (
                           <a
                             href="https://wa.me/60174106981?text=Hi! I need help with my Bijou AI signup. I'm getting an error."
@@ -560,12 +639,12 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
               )}
             </AnimatePresence>
 
-            {status !== 'success' && status !== 'loading' && (
-              <motion.form 
-                onSubmit={handleSubmit} 
+            {status !== "success" && status !== "loading" && (
+              <motion.form
+                onSubmit={handleSubmit}
                 className="space-y-4"
                 initial={{ opacity: 0.7 }}
-                animate={{ opacity: status === 'error' ? 0.7 : 1 }}
+                animate={{ opacity: status === "error" ? 0.7 : 1 }}
                 transition={{ duration: 0.2 }}
               >
                 <div className="relative">
@@ -574,7 +653,9 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     type="text"
                     placeholder="Business name *"
                     value={formData.business_name}
-                    onChange={(e) => handleInputChange('business_name', e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("business_name", e.target.value)
+                    }
                     className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                     required
                   />
@@ -586,7 +667,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     type="email"
                     placeholder="Email address *"
                     value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
                     className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                     required
                   />
@@ -598,19 +679,21 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     type="tel"
                     placeholder="WhatsApp number (optional)"
                     value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
                     className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                   />
                 </div>
 
-                {mode === 'demo' && (
+                {mode === "demo" && (
                   <div className="relative">
                     <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Preferred demo time * (e.g. Monday 3pm)"
                       value={formData.demo_time}
-                      onChange={(e) => handleInputChange('demo_time', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("demo_time", e.target.value)
+                      }
                       className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                       required
                     />
@@ -619,23 +702,27 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
 
                 <motion.button
                   type="submit"
-                  disabled={status === 'loading'}
-                  whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
-                  whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+                  disabled={status === "loading"}
+                  whileHover={status !== "loading" ? { scale: 1.02 } : {}}
+                  whileTap={status !== "loading" ? { scale: 0.98 } : {}}
                   className={`w-full flex items-center justify-center gap-3 py-4 px-8 rounded-xl font-bold transition-all ${
-                    status === 'loading'
-                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]'
+                    status === "loading"
+                      ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                      : "bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]"
                   }`}
                 >
-                  {status === 'loading' ? (
+                  {status === "loading" ? (
                     <>
                       <div className="w-5 h-5 border-2 border-gray-300 border-t-transparent rounded-full animate-spin" />
                       Processing...
                     </>
                   ) : (
                     <>
-                      {mode === 'demo' ? 'Book My Demo' : mode === 'waitlist' ? 'Join VIP List' : 'Start Free Trial'}
+                      {mode === "demo"
+                        ? "Book My Demo"
+                        : mode === "waitlist"
+                          ? "Join VIP List"
+                          : "Start Free Trial"}
                       <ArrowRight className="w-5 h-5" />
                     </>
                   )}

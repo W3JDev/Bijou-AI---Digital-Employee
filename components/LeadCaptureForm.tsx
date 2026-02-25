@@ -1,6 +1,14 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Building2, Mail, User, Phone, CheckCircle, AlertCircle } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import {
+    AlertCircle,
+    ArrowRight,
+    Building2,
+    CheckCircle,
+    Mail,
+    Phone,
+    User,
+} from "lucide-react";
+import React, { useState } from "react";
 
 interface LeadCaptureFormProps {
   source: string;
@@ -9,69 +17,74 @@ interface LeadCaptureFormProps {
 }
 
 const INDUSTRIES = [
-  { value: 'real_estate', label: 'Real Estate' },
-  { value: 'insurance', label: 'Insurance' },
-  { value: 'automotive', label: 'Automotive' },
-  { value: 'retail', label: 'Retail & E-commerce' },
-  { value: 'hospitality', label: 'Hospitality & Tourism' },
-  { value: 'financial', label: 'Financial Services' },
-  { value: 'healthcare', label: 'Healthcare' },
-  { value: 'education', label: 'Education' },
-  { value: 'technology', label: 'Technology' },
-  { value: 'other', label: 'Other' }
+  { value: "real_estate", label: "Real Estate" },
+  { value: "insurance", label: "Insurance" },
+  { value: "automotive", label: "Automotive" },
+  { value: "retail", label: "Retail & E-commerce" },
+  { value: "hospitality", label: "Hospitality & Tourism" },
+  { value: "financial", label: "Financial Services" },
+  { value: "healthcare", label: "Healthcare" },
+  { value: "education", label: "Education" },
+  { value: "technology", label: "Technology" },
+  { value: "other", label: "Other" },
 ];
 
-export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({ 
-  source = 'hero_form', 
-  className = '',
-  onSuccess 
+export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
+  source = "hero_form",
+  className = "",
+  onSuccess,
 }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    industry: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    industry: "",
   });
-  
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [marketingConsent, setMarketingConsent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
+    setStatus("loading");
+    setErrorMessage("");
 
     // Client-side validation
     if (!formData.name.trim() || !formData.email.trim()) {
-      setStatus('error');
-      setErrorMessage('Name and email are required');
+      setStatus("error");
+      setErrorMessage("Name and email are required");
       return;
     }
 
     // Email validation
     const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/;
     if (!emailRegex.test(formData.email)) {
-      setStatus('error');
-      setErrorMessage('Please enter a valid email address');
+      setStatus("error");
+      setErrorMessage("Please enter a valid email address");
       return;
     }
 
     try {
-      // Convert form data to match onboarding API format
-      const onboardingPayload = {
-        business_name: formData.company || formData.name,
+      const leadPayload = {
+        name: formData.name.trim(),
         email: formData.email.toLowerCase().trim(),
-        phone: formData.phone || '',
+        phone: formData.phone || "",
+        company: formData.company || "",
+        industry: formData.industry || "",
+        source: source,
+        marketing_consent: marketingConsent,
       };
 
-      const response = await fetch('/api/onboarding/signup', {
-        method: 'POST',
+      const response = await fetch("/api/leads", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(onboardingPayload)
+        body: JSON.stringify(leadPayload),
       });
 
       const result = await response.json();
@@ -80,11 +93,11 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         if (result.detail?.[0]?.msg) {
           throw new Error(result.detail[0].msg);
         }
-        throw new Error(result.message || 'Failed to submit form');
+        throw new Error(result.message || "Failed to submit form");
       }
 
-      setStatus('success');
-      
+      setStatus("success");
+
       // Call success callback if provided
       if (onSuccess) {
         onSuccess(result);
@@ -92,33 +105,45 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
       // Reset form after delay
       setTimeout(() => {
-        setFormData({ name: '', email: '', phone: '', company: '', industry: '' });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          industry: "",
+        });
         setMarketingConsent(false);
-        setStatus('idle');
-      }, 3000);
-
+        setStatus("idle");
+      }, 5000);
     } catch (error: any) {
-      setStatus('error');
-      if (error.message.includes('duplicate')) {
-        setErrorMessage('Already registered! Check your email.');
+      setStatus("error");
+      if (
+        error.message.includes("duplicate") ||
+        error.message.includes("already")
+      ) {
+        setErrorMessage(
+          "Already registered! Check your email for the onboarding link.",
+        );
       } else {
-        setErrorMessage(error.message || 'Aiyo, something went wrong boss. Please try again.');
+        setErrorMessage(
+          error.message || "Aiyo, something went wrong boss. Please try again.",
+        );
       }
     }
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (status === 'error') {
-      setStatus('idle');
-      setErrorMessage('');
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMessage("");
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-6 ${className}`}>
       <AnimatePresence>
-        {status === 'success' && (
+        {status === "success" && (
           <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -127,13 +152,18 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           >
             <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0" />
             <div>
-              <p className="text-emerald-400 font-semibold">Swee! Got your details!</p>
-              <p className="text-emerald-300 text-sm">We'll be in touch within 24 hours.</p>
+              <p className="text-emerald-400 font-semibold">
+                Swee! Got your details, boss!
+              </p>
+              <p className="text-emerald-300 text-sm">
+                Check your email — we've sent a confirmation with your
+                onboarding link.
+              </p>
             </div>
           </motion.div>
         )}
 
-        {status === 'error' && (
+        {status === "error" && (
           <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -142,7 +172,9 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           >
             <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0" />
             <div>
-              <p className="text-red-400 font-semibold">Aiyo, something went wrong</p>
+              <p className="text-red-400 font-semibold">
+                Aiyo, something went wrong
+              </p>
               <p className="text-red-300 text-sm">{errorMessage}</p>
             </div>
           </motion.div>
@@ -156,7 +188,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="text"
             placeholder="Your name *"
             value={formData.name}
-            onChange={(e) => handleInputChange('name', e.target.value)}
+            onChange={(e) => handleInputChange("name", e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 text-lg transition-all"
             required
           />
@@ -168,7 +200,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="email"
             placeholder="Email address *"
             value={formData.email}
-            onChange={(e) => handleInputChange('email', e.target.value)}
+            onChange={(e) => handleInputChange("email", e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 text-lg transition-all"
             required
           />
@@ -180,7 +212,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="tel"
             placeholder="Phone number"
             value={formData.phone}
-            onChange={(e) => handleInputChange('phone', e.target.value)}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 text-lg transition-all"
           />
         </div>
@@ -191,7 +223,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             type="text"
             placeholder="Company name"
             value={formData.company}
-            onChange={(e) => handleInputChange('company', e.target.value)}
+            onChange={(e) => handleInputChange("company", e.target.value)}
             className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 text-lg transition-all"
           />
         </div>
@@ -201,12 +233,18 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         <Building2 className="absolute left-3 top-6 w-5 h-5 text-gray-400" />
         <select
           value={formData.industry}
-          onChange={(e) => handleInputChange('industry', e.target.value)}
+          onChange={(e) => handleInputChange("industry", e.target.value)}
           className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white text-lg transition-all appearance-none bg-transparent"
         >
-          <option value="" className="bg-gray-800 text-white">Select your industry</option>
+          <option value="" className="bg-gray-800 text-white">
+            Select your industry
+          </option>
           {INDUSTRIES.map((industry) => (
-            <option key={industry.value} value={industry.value} className="bg-gray-800 text-white">
+            <option
+              key={industry.value}
+              value={industry.value}
+              className="bg-gray-800 text-white"
+            >
               {industry.label}
             </option>
           ))}
@@ -221,24 +259,27 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           onChange={(e) => setMarketingConsent(e.target.checked)}
           className="mt-1 w-4 h-4 text-emerald-500 bg-transparent border border-white/30 rounded focus:ring-emerald-500 focus:ring-2"
         />
-        <label htmlFor="marketing-consent" className="text-sm text-gray-300 leading-relaxed">
-          I want to receive updates about Bijou AI, exclusive tips for Malaysian SMEs, and special offers. 
-          You can unsubscribe anytime with one click.
+        <label
+          htmlFor="marketing-consent"
+          className="text-sm text-gray-300 leading-relaxed"
+        >
+          I want to receive updates about Bijou AI, exclusive tips for Malaysian
+          SMEs, and special offers. You can unsubscribe anytime with one click.
         </label>
       </div>
 
       <motion.button
         type="submit"
-        disabled={status === 'loading'}
-        whileHover={status !== 'loading' ? { scale: 1.02 } : {}}
-        whileTap={status !== 'loading' ? { scale: 0.98 } : {}}
+        disabled={status === "loading"}
+        whileHover={status !== "loading" ? { scale: 1.02 } : {}}
+        whileTap={status !== "loading" ? { scale: 0.98 } : {}}
         className={`w-full flex items-center justify-center gap-3 py-5 px-8 rounded-xl font-bold text-lg transition-all ${
-          status === 'loading'
-            ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-            : 'bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]'
+          status === "loading"
+            ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+            : "bg-gradient-to-r from-emerald-500 to-emerald-400 text-dark-900 shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]"
         }`}
       >
-        {status === 'loading' ? (
+        {status === "loading" ? (
           <>
             <div className="w-5 h-5 border-2 border-gray-300 border-t-transparent rounded-full animate-spin" />
             Processing...
@@ -252,8 +293,13 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
       </motion.button>
 
       <p className="text-xs text-gray-400 text-center leading-relaxed">
-        By submitting this form, you agree to our{' '}
-        <a href="/privacy" className="text-emerald-400 hover:text-emerald-300 transition-colors">Privacy Policy</a>{' '}
+        By submitting this form, you agree to our{" "}
+        <a
+          href="/privacy"
+          className="text-emerald-400 hover:text-emerald-300 transition-colors"
+        >
+          Privacy Policy
+        </a>{" "}
         and consent to being contacted by our team. PDPA compliant.
       </p>
     </form>
