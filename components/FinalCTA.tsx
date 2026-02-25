@@ -5,9 +5,10 @@ import { LeadCaptureForm } from './LeadCaptureForm';
 
 interface FinalCTAProps {
   onOpenModal?: () => void;
+  onOpenSlideDeck?: () => void;
 }
 
-export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
+export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal, onOpenSlideDeck }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <section className="py-24 relative overflow-hidden border-t border-white/5 bg-dark-900">
@@ -23,11 +24,22 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenModal }) => {
         
         <button 
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all transform hover:scale-[1.02] text-xl mb-16"
+          className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-5 px-12 rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all transform hover:scale-[1.02] text-xl mb-4"
         >
           Start Free Trial
           <ArrowRight className="w-6 h-6" />
         </button>
+
+        {onOpenSlideDeck && (
+          <div className="mb-16">
+            <button
+              onClick={onOpenSlideDeck}
+              className="text-sm text-gray-500 hover:text-gold-400 transition-colors underline underline-offset-4"
+            >
+              Not ready yet? Get our pitch deck &amp; user guide →
+            </button>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-3 gap-8 text-left border-t border-white/10 pt-12">
           <div>

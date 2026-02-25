@@ -243,30 +243,51 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="py-12 flex flex-col items-center justify-center text-center"
+                    className="py-8 flex flex-col items-center justify-center text-center"
                   >
-                    <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 relative">
+                    <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mb-5 relative">
                       <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping" />
-                      <CheckCircle2 className="w-10 h-10 text-emerald-400 relative z-10" />
+                      <CheckCircle2 className="w-8 h-8 text-emerald-400 relative z-10" />
                     </div>
-                    <h3 className="text-3xl font-display font-bold text-white mb-4">
+                    <h3 className="text-2xl font-display font-bold text-white mb-2">
                       Swee, got your details!
                     </h3>
-                    <p className="text-gray-300 mb-4 max-w-sm">
-                      Awesome, {formData.name.split(" ")[0] || "Boss"}! Check
-                      your email — we've sent a confirmation with your
-                      onboarding link.
+                    <p className="text-gray-300 text-sm mb-2 max-w-xs leading-relaxed">
+                      Awesome, {formData.name.split(" ")[0] || "Boss"}! Check your email — we've sent a confirmation with your onboarding link &amp; resources.
                     </p>
-                    <p className="text-sm text-gray-400 mb-8 max-w-sm">
-                      Our team will also WhatsApp you within 24 hours to help
-                      you get set up.
+                    <p className="text-gray-500 text-xs mb-6 max-w-xs">
+                      Our team will also WhatsApp you within 24 hours.
                     </p>
-                    <button
-                      onClick={resetAndClose}
-                      className="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-xl transition-all"
-                    >
-                      Back to Website
-                    </button>
+
+                    {/* Quick resource links */}
+                    <div className="w-full space-y-2 mb-5">
+                      {[
+                        { label: "View Slide Deck", url: "https://app.mybijou.xyz/static/sales-presentation.html", emoji: "📊" },
+                        { label: "Read User Guide", url: "https://app.mybijou.xyz/static/user-guide.html", emoji: "📖" },
+                        { label: "Create My Account", url: "https://app.mybijou.xyz/signup", emoji: "🚀" },
+                      ].map((r) => (
+                        <a key={r.label} href={r.url} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-xl bg-white/5 border border-white/8 hover:bg-white/10 transition-colors w-full text-left"
+                        >
+                          <span className="text-white text-sm font-medium">{r.emoji} {r.label}</span>
+                          <span className="text-gray-500 text-xs">→</span>
+                        </a>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-3 w-full">
+                      <a href="mailto:"
+                        className="flex-1 flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 font-semibold py-3 rounded-xl transition-all text-sm"
+                      >
+                        ✉️ Open Email App
+                      </a>
+                      <button
+                        onClick={resetAndClose}
+                        className="flex-1 bg-white/5 hover:bg-white/10 text-gray-300 font-semibold py-3 rounded-xl transition-all text-sm"
+                      >
+                        Close
+                      </button>
+                    </div>
                   </motion.div>
                 )}
               </div>

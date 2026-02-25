@@ -14,9 +14,11 @@ import { WhatsAppCTA } from './components/WhatsAppCTA';
 import { WaitlistStrip } from './components/WaitlistStrip';
 import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 import { OnboardingModal } from './components/OnboardingModal';
+import { SlideDeckModal } from './components/SlideDeckModal';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [slideDeckOpen, setSlideDeckOpen] = useState(false);
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     mode: 'signup' | 'waitlist' | 'demo';
@@ -67,7 +69,7 @@ export default function App() {
           <Playbooks />
           <CaseStudies />
           <DemoChat onOpenModal={() => openModal('demo', 'demo_chat')} />
-          <FinalCTA />
+          <FinalCTA onOpenModal={() => openModal('signup', 'final_cta')} onOpenSlideDeck={() => setSlideDeckOpen(true)} />
         </main>
         <Footer />
         
@@ -82,6 +84,12 @@ export default function App() {
           onClose={closeModal}
           mode={modalState.mode}
           source={modalState.source}
+        />
+
+        {/* Slide Deck / Resources Modal */}
+        <SlideDeckModal
+          isOpen={slideDeckOpen}
+          onClose={() => setSlideDeckOpen(false)}
         />
       </div>
     </div>

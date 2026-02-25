@@ -25,75 +25,97 @@ function normaliseSource(raw) {
   return "website";
 }
 
-function buildConfirmationEmail(name, company) {
-  const displayName = name || company || "Boss";
+const LOGO_URL =
+  "https://w3jdev.github.io/bijou-ai-assets/assets/logos/bijouai-logo-transparent.png";
+
+function emailBase(headerContent, bodyContent) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>We got your details!</title>
 </head>
 <body style="margin:0;padding:0;background:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#e5e7eb;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:40px 0;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0a0a;padding:40px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
-        <!-- Header -->
-        <tr><td style="background:linear-gradient(135deg,#064e3b,#065f46);border-radius:16px 16px 0 0;padding:40px 40px 32px;text-align:center;">
-          <div style="font-size:36px;margin-bottom:12px;">🤖</div>
-          <h1 style="margin:0;font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;">Bijou AI</h1>
-          <p style="margin:8px 0 0;font-size:14px;color:#6ee7b7;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Your Digital Employee</p>
+        <!-- HEADER -->
+        <tr><td style="background:linear-gradient(135deg,#052e16,#064e3b,#065f46);border-radius:16px 16px 0 0;padding:36px 40px 28px;text-align:center;">
+          <img src="${LOGO_URL}" alt="Bijou AI" width="52" height="52" style="display:block;margin:0 auto 14px;border-radius:10px;" />
+          <div style="display:inline-flex;align-items:center;gap:6px;">
+            <span style="font-size:24px;font-weight:900;color:#d4af37;letter-spacing:-0.5px;">Bijou</span><span style="font-size:24px;font-weight:900;color:#ffffff;">AI</span>
+          </div>
+          <p style="margin:6px 0 0;font-size:11px;color:#6ee7b7;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Your Digital Employee · by W3J</p>
+          ${headerContent}
         </td></tr>
 
-        <!-- Body -->
-        <tr><td style="background:#111827;padding:40px;">
-          <h2 style="margin:0 0 8px;font-size:24px;font-weight:700;color:#fff;">
-            We got your details, ${displayName}! 🎉
-          </h2>
-          <p style="margin:0 0 24px;font-size:16px;color:#9ca3af;line-height:1.6;">
-            Fuyoh, thank you for your interest in Bijou AI! Our team has received your details and we'll be reaching out to you within <strong style="color:#10b981;">24 hours</strong> to discuss how we can automate your business.
-          </p>
+        <!-- BODY -->
+        <tr><td style="background:#0f172a;padding:40px;">
+          ${bodyContent}
 
-          <div style="background:#0a0a0a;border:1px solid #1f2937;border-radius:12px;padding:24px;margin-bottom:32px;">
-            <h3 style="margin:0 0 16px;font-size:16px;font-weight:700;color:#10b981;">What happens next?</h3>
-            <div style="display:flex;align-items:flex-start;margin-bottom:14px;">
-              <span style="background:#064e3b;color:#10b981;border-radius:50%;width:24px;height:24px;display:inline-block;text-align:center;line-height:24px;font-size:12px;font-weight:700;flex-shrink:0;margin-right:12px;">1</span>
-              <p style="margin:0;font-size:14px;color:#9ca3af;line-height:1.5;">Our team reviews your details and prepares a personalised demo for your industry</p>
-            </div>
-            <div style="display:flex;align-items:flex-start;margin-bottom:14px;">
-              <span style="background:#064e3b;color:#10b981;border-radius:50%;width:24px;height:24px;display:inline-block;text-align:center;line-height:24px;font-size:12px;font-weight:700;flex-shrink:0;margin-right:12px;">2</span>
-              <p style="margin:0;font-size:14px;color:#9ca3af;line-height:1.5;">We WhatsApp you to schedule a quick 15-minute walkthrough</p>
-            </div>
-            <div style="display:flex;align-items:flex-start;">
-              <span style="background:#064e3b;color:#10b981;border-radius:50%;width:24px;height:24px;display:inline-block;text-align:center;line-height:24px;font-size:12px;font-weight:700;flex-shrink:0;margin-right:12px;">3</span>
-              <p style="margin:0;font-size:14px;color:#9ca3af;line-height:1.5;">You decide if Bijou is right for your business — zero pressure, boss!</p>
-            </div>
-          </div>
+          <!-- RESOURCES BOX -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e3a5f;border-radius:14px;overflow:hidden;margin-bottom:32px;">
+            <tr><td style="background:#0a1628;padding:20px 24px;border-bottom:1px solid #1e3a5f;">
+              <p style="margin:0;font-size:13px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:1px;">📦 Your Bijou Resources</p>
+            </td></tr>
+            <tr><td style="padding:20px 24px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="40" style="vertical-align:top;padding-top:2px;"><span style="font-size:20px;">🚀</span></td>
+                  <td style="padding-bottom:16px;">
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#fff;">Create Your Account</p>
+                    <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">14-day free trial, no credit card required</p>
+                    <a href="https://app.mybijou.xyz/signup" style="color:#10b981;font-size:13px;font-weight:600;text-decoration:none;">app.mybijou.xyz/signup →</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40" style="vertical-align:top;padding-top:2px;"><span style="font-size:20px;">📖</span></td>
+                  <td style="padding-bottom:16px;">
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#fff;">User Guide</p>
+                    <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">Step-by-step onboarding &amp; setup walkthrough</p>
+                    <a href="https://app.mybijou.xyz/static/user-guide.html" style="color:#10b981;font-size:13px;font-weight:600;text-decoration:none;">View User Guide →</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="40" style="vertical-align:top;padding-top:2px;"><span style="font-size:20px;">📊</span></td>
+                  <td>
+                    <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#fff;">Sales Presentation</p>
+                    <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">See exactly how Bijou AI works for your business</p>
+                    <a href="https://app.mybijou.xyz/static/sales-presentation.html" style="color:#10b981;font-size:13px;font-weight:600;text-decoration:none;">View Slide Deck →</a>
+                  </td>
+                </tr>
+              </table>
+            </td></tr>
+          </table>
 
-          <!-- CTA -->
-          <div style="text-align:center;margin-bottom:32px;">
-            <p style="margin:0 0 16px;font-size:14px;color:#6b7280;">Ready to get started right now? Create your account here:</p>
-            <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#10b981,#059669);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:16px 40px;border-radius:12px;box-shadow:0 0 30px rgba(16,185,129,0.3);">
-              Create My Bijou Account →
-            </a>
-            <p style="margin:12px 0 0;font-size:12px;color:#4b5563;">14-day free trial • No credit card required • Cancel anytime</p>
-          </div>
-
-          <!-- Questions -->
-          <div style="border-top:1px solid #1f2937;padding-top:24px;text-align:center;">
-            <p style="margin:0 0 12px;font-size:14px;color:#9ca3af;">Got questions? We're on WhatsApp 24/7:</p>
-            <a href="https://wa.me/60174106981" style="color:#10b981;text-decoration:none;font-weight:600;font-size:14px;">+60 17-410 6981</a>
-          </div>
+          <!-- SUPPORT -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #1e293b;padding-top:24px;">
+            <tr>
+              <td align="center">
+                <p style="margin:0 0 10px;font-size:13px;color:#64748b;font-weight:600;">Need help? We're always here:</p>
+                <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">
+                  📧 <a href="mailto:hello@mybijou.xyz" style="color:#10b981;text-decoration:none;">hello@mybijou.xyz</a>
+                  &nbsp;&nbsp;|&nbsp;&nbsp;
+                  💬 <a href="https://wa.me/60174106981" style="color:#10b981;text-decoration:none;">+60 17-410 6981</a>
+                </p>
+              </td>
+            </tr>
+          </table>
         </td></tr>
 
-        <!-- Footer -->
-        <tr><td style="background:#0a0a0a;border-radius:0 0 16px 16px;padding:24px 40px;text-align:center;border-top:1px solid #1f2937;">
-          <p style="margin:0 0 8px;font-size:12px;color:#4b5563;">
-            Bijou AI Sdn Bhd • Kuala Lumpur, Malaysia
+        <!-- FOOTER -->
+        <tr><td style="background:#020617;border-radius:0 0 16px 16px;padding:20px 40px;text-align:center;border-top:1px solid #0f172a;">
+          <p style="margin:0 0 6px;font-size:11px;color:#334155;">
+            <strong style="color:#475569;">Bijou AI</strong> is a product of <strong style="color:#475569;">W3J Sdn Bhd</strong> &nbsp;·&nbsp; Kuala Lumpur, Malaysia
           </p>
-          <p style="margin:0;font-size:12px;color:#374151;">
-            You're receiving this because you submitted your details at <a href="https://mybijou.xyz" style="color:#10b981;text-decoration:none;">mybijou.xyz</a>
+          <p style="margin:0 0 6px;font-size:11px;color:#334155;">
+            <a href="https://mybijou.xyz" style="color:#10b981;text-decoration:none;">mybijou.xyz</a>
+            &nbsp;·&nbsp;
+            <a href="https://w3j.my" style="color:#10b981;text-decoration:none;">w3j.my</a>
+          </p>
+          <p style="margin:0;font-size:10px;color:#1e293b;">
+            You received this because you submitted your details at mybijou.xyz
           </p>
         </td></tr>
 
@@ -102,6 +124,64 @@ function buildConfirmationEmail(name, company) {
   </table>
 </body>
 </html>`;
+}
+
+function buildConfirmationEmail(name, company) {
+  const firstName = (name || company || "Boss").split(" ")[0];
+
+  const header = `<p style="margin:16px 0 0;font-size:13px;color:#a7f3d0;">Interest confirmed ✓</p>`;
+
+  const body = `
+    <h2 style="margin:0 0 6px;font-size:22px;font-weight:800;color:#fff;">
+      Fuyoh, we got your details! 🎉
+    </h2>
+    <p style="margin:0 0 24px;font-size:15px;color:#94a3b8;line-height:1.7;">
+      Hi <strong style="color:#e2e8f0;">${firstName}</strong>, thank you for your interest in Bijou AI!<br/>
+      Our team will reach out within <strong style="color:#10b981;">24 hours</strong> to discuss how we can automate your business.
+    </p>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;border:1px solid #1e3a5f;border-radius:14px;padding:0;margin-bottom:28px;overflow:hidden;">
+      <tr><td style="padding:20px 24px;border-bottom:1px solid #1e3a5f;">
+        <p style="margin:0;font-size:13px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:1px;">⚡ What happens next?</p>
+      </td></tr>
+      <tr><td style="padding:20px 24px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr><td width="32" style="vertical-align:top;padding-top:1px;"><span style="display:inline-block;background:#064e3b;color:#10b981;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:11px;font-weight:800;">1</span></td>
+              <td style="padding-bottom:14px;font-size:13px;color:#94a3b8;line-height:1.5;">Our team reviews your details and prepares a personalised demo for your industry</td></tr>
+          <tr><td width="32" style="vertical-align:top;padding-top:1px;"><span style="display:inline-block;background:#064e3b;color:#10b981;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:11px;font-weight:800;">2</span></td>
+              <td style="padding-bottom:14px;font-size:13px;color:#94a3b8;line-height:1.5;">We WhatsApp you to schedule a quick 15-minute walkthrough</td></tr>
+          <tr><td width="32" style="vertical-align:top;padding-top:1px;"><span style="display:inline-block;background:#064e3b;color:#10b981;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-size:11px;font-weight:800;">3</span></td>
+              <td style="font-size:13px;color:#94a3b8;line-height:1.5;">You decide if Bijou is right for you — zero pressure, boss!</td></tr>
+        </table>
+      </td></tr>
+    </table>
+
+    <div style="text-align:center;margin-bottom:28px;">
+      <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#10b981,#059669);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 36px;border-radius:12px;">
+        Create My Account Now →
+      </a>
+      <p style="margin:10px 0 0;font-size:11px;color:#475569;">14-day free trial · No credit card · Cancel anytime</p>
+    </div>
+  `;
+
+  return emailBase(header, body);
+}
+
+function buildResourcesEmail(name) {
+  const firstName = (name || "Boss").split(" ")[0];
+
+  const header = `<p style="margin:16px 0 0;font-size:13px;color:#a7f3d0;">Resources sent ✓</p>`;
+
+  const body = `
+    <h2 style="margin:0 0 6px;font-size:22px;font-weight:800;color:#fff;">
+      Here are your Bijou AI resources! 📦
+    </h2>
+    <p style="margin:0 0 28px;font-size:15px;color:#94a3b8;line-height:1.7;">
+      Hi <strong style="color:#e2e8f0;">${firstName}</strong>, everything you need to explore Bijou AI is below — slide deck, user guide, and your onboarding link. Take your time, boss!
+    </p>
+  `;
+
+  return emailBase(header, body);
 }
 
 export default async function handler(req, res) {
@@ -135,12 +215,10 @@ export default async function handler(req, res) {
     }
     const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/;
     if (!emailRegex.test(email)) {
-      return res
-        .status(400)
-        .json({
-          error: "Please provide a valid email address",
-          code: "INVALID_EMAIL",
-        });
+      return res.status(400).json({
+        error: "Please provide a valid email address",
+        code: "INVALID_EMAIL",
+      });
     }
     if (!name && !company) {
       return res
@@ -162,8 +240,10 @@ export default async function handler(req, res) {
 
     // ── 1. Save to Supabase ──────────────────────────────────────────────────
     let leadId = null;
-    const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl =
+      process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+    const supabaseKey =
+      process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (supabaseUrl && supabaseKey) {
       try {
@@ -199,13 +279,14 @@ export default async function handler(req, res) {
     if (resendKey) {
       try {
         const resend = new Resend(resendKey);
-        const emailFrom = process.env.EMAIL_FROM || "Bijou AI <hello@mybijou.xyz>";
+        const emailFrom =
+          process.env.EMAIL_FROM || "Bijou AI <hello@mybijou.xyz>";
 
         // Confirmation to lead
         await resend.emails.send({
           from: emailFrom,
           to: leadData.email,
-          subject: `We got your details, ${leadData.name.split(" ")[0]}! 🤖`,
+          subject: `Your Bijou AI details are confirmed! 🤖`,
           html: buildConfirmationEmail(leadData.name, leadData.company),
         });
         console.log("✅ Confirmation email sent to:", leadData.email);
@@ -213,17 +294,21 @@ export default async function handler(req, res) {
         // Notification to owner
         const notifyEmail = process.env.EMAIL_NOTIFY;
         if (notifyEmail) {
-          await resend.emails.send({
-            from: emailFrom,
-            to: notifyEmail,
-            subject: `🎯 New Lead: ${leadData.name} (${leadData.company || leadData.source})`,
-            html: `<p><strong>Name:</strong> ${leadData.name}</p>
+          await resend.emails
+            .send({
+              from: emailFrom,
+              to: notifyEmail,
+              subject: `🎯 New Lead: ${leadData.name} (${leadData.company || leadData.source})`,
+              html: `<p><strong>Name:</strong> ${leadData.name}</p>
 <p><strong>Email:</strong> ${leadData.email}</p>
-<p><strong>Phone:</strong> ${leadData.phone || 'N/A'}</p>
-<p><strong>Company:</strong> ${leadData.company || 'N/A'}</p>
+<p><strong>Phone:</strong> ${leadData.phone || "N/A"}</p>
+<p><strong>Company:</strong> ${leadData.company || "N/A"}</p>
 <p><strong>Source:</strong> ${leadData.source}</p>
-<p><strong>Time:</strong> ${new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' })} MYT</p>`,
-          }).catch(e => console.warn('Owner notify email failed:', e.message));
+<p><strong>Time:</strong> ${new Date().toLocaleString("en-MY", { timeZone: "Asia/Kuala_Lumpur" })} MYT</p>`,
+            })
+            .catch((e) =>
+              console.warn("Owner notify email failed:", e.message),
+            );
         }
 
         // Mark email sent in DB
