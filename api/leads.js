@@ -162,8 +162,8 @@ export default async function handler(req, res) {
 
     // ── 1. Save to Supabase ──────────────────────────────────────────────────
     let leadId = null;
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (supabaseUrl && supabaseKey) {
       try {
@@ -190,7 +190,7 @@ export default async function handler(req, res) {
       }
     } else {
       console.warn(
-        "⚠️  SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set — skipping DB save",
+        "⚠️  SUPABASE_URL / SUPABASE_SERVICE_KEY not set — skipping DB save",
       );
     }
 
@@ -199,13 +199,32 @@ export default async function handler(req, res) {
     if (resendKey) {
       try {
         const resend = new Resend(resendKey);
+        const emailFrom = process.env.EMAIL_FROM || "Bijou AI <hello@mybijou.xyz>";
+
+        // Confirmation to lead
         await resend.emails.send({
-          from: "Bijou AI <hello@mybijou.xyz>",
+          from: emailFrom,
           to: leadData.email,
           subject: `We got your details, ${leadData.name.split(" ")[0]}! 🤖`,
           html: buildConfirmationEmail(leadData.name, leadData.company),
         });
         console.log("✅ Confirmation email sent to:", leadData.email);
+
+        // Notification to owner
+        const notifyEmail = process.env.EMAIL_NOTIFY;
+        if (notifyEmail) {
+          await resend.emails.send({
+            from: emailFrom,
+            to: notifyEmail,
+            subject: `🎯 New Lead: ${leadData.name} (${leadData.company || leadData.source})`,
+            html: `<p><strong>Name:</strong> ${leadData.name}</p>
+<p><strong>Email:</strong> ${leadData.email}</p>
+<p><strong>Phone:</strong> ${leadData.phone || 'N/A'}</p>
+<p><strong>Company:</strong> ${leadData.company || 'N/A'}</p>
+<p><strong>Source:</strong> ${leadData.source}</p>
+<p><strong>Time:</strong> ${new Date().toLocaleString('en-MY', { timeZone: 'Asia/Kuala_Lumpur' })} MYT</p>`,
+          }).catch(e => console.warn('Owner notify email failed:', e.message));
+        }
 
         // Mark email sent in DB
         if (leadId && supabaseUrl && supabaseKey) {
