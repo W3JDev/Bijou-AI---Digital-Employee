@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Download, X, Smartphone } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import { Download, Smartphone, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 interface PWAInstallPromptProps {
   className?: string;
 }
 
-export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = '' }) => {
+export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({
+  className = "",
+}) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
     // Check if running in standalone mode (already installed)
-    setIsStandalone(window.matchMedia('(display-mode: standalone)').matches);
-    
+    setIsStandalone(window.matchMedia("(display-mode: standalone)").matches);
+
     // Check if iOS device
     const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
     setIsIOS(iOS);
@@ -27,15 +29,22 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
       }
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     // Show iOS install instructions after delay
-    if (iOS && !isStandalone && !localStorage.getItem('bijou-ios-install-dismissed')) {
+    if (
+      iOS &&
+      !isStandalone &&
+      !localStorage.getItem("bijou-ios-install-dismissed")
+    ) {
       setTimeout(() => setShowPrompt(true), 3000);
     }
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt,
+      );
     };
   }, [isStandalone]);
 
@@ -53,14 +62,14 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
         setShowPrompt(false);
       }
     } catch (error) {
-      console.error('Failed to install PWA:', error);
+      console.error("Failed to install PWA:", error);
     }
   };
 
   const handleDismiss = () => {
     setShowPrompt(false);
     if (isIOS) {
-      localStorage.setItem('bijou-ios-install-dismissed', 'true');
+      localStorage.setItem("bijou-ios-install-dismissed", "true");
     }
   };
 
@@ -72,7 +81,7 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
   return (
     <div
       className={`fixed left-4 right-4 z-50 ${className}`}
-      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 80px)' }}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 80px)" }}
     >
       <AnimatePresence>
         <motion.div
@@ -94,16 +103,15 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
               <div className="w-12 h-12 bg-emerald-400/20 rounded-xl flex items-center justify-center flex-shrink-0">
                 <Smartphone className="w-6 h-6 text-emerald-400" />
               </div>
-              
+
               <div className="flex-1 min-w-0">
                 <h4 className="text-white font-bold text-lg mb-1">
                   Install Bijou AI
                 </h4>
                 <p className="text-white/80 text-sm mb-4">
-                  {isIOS 
+                  {isIOS
                     ? "Add to Home Screen for easy access to your Manglish digital employee!"
-                    : "Install as an app for faster access and offline features!"
-                  }
+                    : "Install as an app for faster access and offline features!"}
                 </p>
 
                 {isIOS ? (
@@ -123,7 +131,7 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
                     Install App
                   </motion.button>
                 )}
-                
+
                 {!isIOS && (
                   <p className="text-white/50 text-xs mt-2 text-center">
                     Works offline • Fast loading • Native feel

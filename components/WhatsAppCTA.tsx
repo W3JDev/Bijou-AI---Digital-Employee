@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, ArrowRight, Clock } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Clock, MessageCircle, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 interface WhatsAppCTAProps {
   phoneNumber?: string;
   className?: string;
 }
 
-export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({ 
-  phoneNumber = '60174106981',
-  className = ''
+export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
+  phoneNumber = "60174106981",
+  className = "",
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -27,9 +27,9 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
       setIsVisible(true);
     }, 3000); // Show after 3 seconds
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       clearTimeout(timer);
     };
   }, []);
@@ -48,23 +48,25 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
 
   const handleClick = () => {
     setHasInteracted(true);
-    
+
     // Track the click (optional - removed to prevent 500 errors)
     // We can track this via analytics later if needed
 
     // Generate contextual message based on time
     const hour = new Date().getHours();
-    let message = '';
+    let message = "";
 
     if (hour >= 9 && hour < 18) {
-      message = 'Hi! Saw your Bijou AI website. Can you show me how it works for my business?';
+      message =
+        "Hi! Saw your Bijou AI website. Can you show me how it works for my business?";
     } else {
-      message = 'Hi! Interested in Bijou AI. Can we chat tomorrow about how it can help my late-night leads?';
+      message =
+        "Hi! Interested in Bijou AI. Can we chat tomorrow about how it can help my late-night leads?";
     }
 
     // Open WhatsApp
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   const handleExpand = () => {
@@ -77,7 +79,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
   return (
     <div
       className={`fixed right-4 z-50 ${className}`}
-      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 72px)' }}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 72px)" }}
     >
       <AnimatePresence>
         {isExpanded && (
@@ -99,7 +101,9 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
                 <MessageCircle className="w-6 h-6 text-green-400" />
               </div>
               <div>
-                <h4 className="text-white font-semibold">Chat with Bijou Team</h4>
+                <h4 className="text-white font-semibold">
+                  Chat with Bijou Team
+                </h4>
                 <div className="flex items-center gap-2 text-green-400 text-sm">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                   <Clock className="w-3 h-3" />
@@ -109,7 +113,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
             </div>
 
             <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-              Get instant answers about how Bijou can stop your revenue leaks. 
+              Get instant answers about how Bijou can stop your revenue leaks.
               Our Malaysian team speaks your language! 🇲🇾
             </p>
 
@@ -142,9 +146,9 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
       >
         {/* Pulse animation */}
         <div className="absolute inset-0 rounded-full bg-green-500/30 animate-ping"></div>
-        
+
         <MessageCircle className="w-8 h-8 text-white relative z-10 group-hover:scale-110 transition-transform" />
-        
+
         {/* Notification badge */}
         <motion.div
           initial={{ scale: 0 }}
