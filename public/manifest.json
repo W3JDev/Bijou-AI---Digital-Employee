@@ -4,6 +4,7 @@
   "description": "RM159/month Manglish Digital Employee for Malaysian SMEs. 24/7 WhatsApp automation that speaks fluent Manglish and closes sales while you sleep.",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "background_color": "#030810",
   "theme_color": "#10b981",
   "orientation": "portrait-primary",
@@ -21,7 +22,36 @@
       "src": "/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Free Trial",
+      "short_name": "Trial",
+      "description": "Sign up for your 7-day free trial",
+      "url": "/?action=signup",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Chat on WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Talk to the Bijou team on WhatsApp",
+      "url": "https://wa.me/60174106981",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Book a Demo",
+      "short_name": "Demo",
+      "description": "Schedule a live product demonstration",
+      "url": "https://cal.com/getbijou",
+      "icons": [{ "src": "/favicon.png", "sizes": "96x96" }]
     }
   ],
   "related_applications": [],

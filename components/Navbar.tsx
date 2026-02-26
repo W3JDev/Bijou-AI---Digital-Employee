@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavbarProps {
@@ -18,6 +18,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpe
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
+    }
+    // Close mobile menu on scroll
+    if (latest > 100 && isMenuOpen) {
+      setIsMenuOpen(false);
     }
   });
 
@@ -59,7 +63,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpe
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="touch-target text-gray-300 hover:text-white focus:outline-none p-2 -mr-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -68,28 +74,32 @@ export const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen, onOpe
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden glass-panel border-t border-gold-400/10 bg-dark-900"
-        >
-          <div className="px-4 pt-2 pb-6 space-y-4">
-            <a href="#features" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Features</a>
-            <a href="#roadmap" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Roadmap</a>
-            <a href="#demo" className="block text-base font-medium text-gray-300 hover:text-gold-400" onClick={() => setIsMenuOpen(false)}>Live Demo</a>
-            <div className="pt-2">
-              <LanguageSwitcher />
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="md:hidden glass-panel border-t border-gold-400/10 bg-dark-900 overflow-hidden"
+          >
+            <div className="px-4 pt-2 pb-6 space-y-1">
+              <a href="#features" className="block text-base font-medium text-gray-300 hover:text-gold-400 py-3 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Features</a>
+              <a href="#roadmap" className="block text-base font-medium text-gray-300 hover:text-gold-400 py-3 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Roadmap</a>
+              <a href="#demo" className="block text-base font-medium text-gray-300 hover:text-gold-400 py-3 border-b border-white/5" onClick={() => setIsMenuOpen(false)}>Live Demo</a>
+              <div className="pt-3 pb-2">
+                <LanguageSwitcher />
+              </div>
+              <button 
+                onClick={() => { setIsMenuOpen(false); onOpenModal(); }}
+                className="w-full mt-2 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-3.5 px-6 rounded-lg"
+              >
+                Get Early Access
+              </button>
             </div>
-            <button 
-              onClick={() => { setIsMenuOpen(false); onOpenModal(); }}
-              className="w-full mt-4 bg-gradient-to-r from-gold-500 to-gold-300 hover:from-gold-400 hover:to-gold-300 text-black font-bold py-3 px-6 rounded-lg"
-            >
-              Get Early Access
-            </button>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

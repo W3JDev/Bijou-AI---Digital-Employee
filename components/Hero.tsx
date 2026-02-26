@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   };
   
   return (
-    <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-48 overflow-hidden">
+    <section className="relative pt-24 pb-24 lg:pt-48 lg:pb-48 overflow-hidden">
       {/* Enhanced Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[120px] animate-pulse-slow" />
@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               {t('hero.badge')}
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-8">
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-6 lg:mb-8">
               {t('hero.title.part1')} <span className="text-gradient-gold">{t('hero.title.savingsAmount')}</span> {t('hero.title.part2')} <span className="text-gradient-premium">{t('hero.title.priceAmount')}</span>
             </motion.h1>
             
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
             <motion.div variants={itemVariants} className="mb-12">
               {/* Lead Capture Tabs */}
-              <div className="flex items-center justify-center lg:justify-start gap-4 mb-8">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8">
                 <button
                   onClick={() => {
                     trackTrialSignup(i18n.language);

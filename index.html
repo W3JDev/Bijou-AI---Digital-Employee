@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -257,6 +257,23 @@
         color: var(--emerald-bright);
       }
       
+      /* Safe-area utilities for iPhone notch / home-bar */
+      body {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top:    env(safe-area-inset-top,    0px); }
+      .bottom-safe { bottom: env(safe-area-inset-bottom, 0px); }
+      
+      /* Min touch-target helper */
+      .touch-target {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       /* Performance Optimizations */
       .will-change-transform {
         will-change: transform;

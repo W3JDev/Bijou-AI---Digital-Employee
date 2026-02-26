@@ -1,5 +1,5 @@
 // Bijou AI PWA Service Worker
-const CACHE_NAME = 'bijou-ai-v1.0.0';
+const CACHE_NAME = 'bijou-ai-v2.0.0';
 const OFFLINE_URL = '/offline.html';
 
 // Assets to cache on install
@@ -13,8 +13,8 @@ const CORE_ASSETS = [
 
 // API endpoints that should be cached
 const API_CACHE_PATTERNS = [
-  '/api/onboarding',
-  '/api/demo',
+  '/api/leads',
+  '/api/slide-deck',
   '/api/send'
 ];
 

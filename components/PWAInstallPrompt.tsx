@@ -70,7 +70,10 @@ export const PWAInstallPrompt: React.FC<PWAInstallPromptProps> = ({ className = 
   }
 
   return (
-    <div className={`fixed bottom-20 left-4 right-4 z-50 ${className}`}>
+    <div
+      className={`fixed left-4 right-4 z-50 ${className}`}
+      style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 80px)' }}
+    >
       <AnimatePresence>
         <motion.div
           initial={{ y: 100, opacity: 0 }}
