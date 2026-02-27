@@ -13,7 +13,7 @@ import {
     Shield,
     Sparkles,
     Users,
-    X
+    X,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -44,6 +44,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
     business_name: "",
     email: "",
     phone: "",
+    industry: "",
     demo_time: "",
   });
 
@@ -294,6 +295,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
           business_name: formData.business_name.trim(),
           email: formData.email.toLowerCase().trim(),
           phone: formData.phone || "",
+          industry: formData.industry || "",
         };
 
         // Simulate progress for better UX
@@ -347,6 +349,7 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
           business_name: formData.business_name.trim(),
           email: formData.email.toLowerCase().trim(),
           phone: formData.phone || "",
+          industry: formData.industry || "",
         };
 
         setTimeout(() => setLoadingProgress(60), 500);
@@ -683,6 +686,48 @@ export const OnboardingModal: React.FC<OnboardingModalProps> = ({
                     className="w-full pl-12 pr-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                   />
                 </div>
+
+                <select
+                  value={formData.industry}
+                  onChange={(e) =>
+                    handleInputChange("industry", e.target.value)
+                  }
+                  className="w-full px-4 py-4 rounded-xl glass-panel-3d border border-white/10 focus:border-emerald-500/50 focus:outline-none text-white bg-transparent transition-all appearance-none cursor-pointer"
+                >
+                  <option value="" disabled className="bg-gray-900">
+                    Industry (optional)
+                  </option>
+                  <option value="real_estate" className="bg-gray-900">
+                    Real Estate / Property
+                  </option>
+                  <option value="healthcare" className="bg-gray-900">
+                    Healthcare / Dental / Clinic
+                  </option>
+                  <option value="fnb" className="bg-gray-900">
+                    F&amp;B / Restaurant / Cafe
+                  </option>
+                  <option value="retail" className="bg-gray-900">
+                    Retail / E-commerce
+                  </option>
+                  <option value="education" className="bg-gray-900">
+                    Education / Tuition
+                  </option>
+                  <option value="beauty" className="bg-gray-900">
+                    Beauty / Wellness / Spa
+                  </option>
+                  <option value="automotive" className="bg-gray-900">
+                    Automotive
+                  </option>
+                  <option value="professional_services" className="bg-gray-900">
+                    Professional Services / Legal / Accounting
+                  </option>
+                  <option value="logistics" className="bg-gray-900">
+                    Logistics / Courier
+                  </option>
+                  <option value="other" className="bg-gray-900">
+                    Other
+                  </option>
+                </select>
 
                 {mode === "demo" && (
                   <div className="relative">

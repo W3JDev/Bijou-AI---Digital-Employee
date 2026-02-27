@@ -25,8 +25,8 @@ function normaliseSource(raw) {
   return "website";
 }
 
-const LOGO_URL =
-  "https://w3jdev.github.io/bijou-ai-assets/assets/logos/bijouai-logo-transparent.png";
+const LOGO_URL = "https://mybijou.xyz/brand/logo.png";
+const QR_URL = "https://mybijou.xyz/brand/qr.png";
 
 function emailBase(headerContent, bodyContent) {
   return `<!DOCTYPE html>
@@ -57,7 +57,7 @@ function emailBase(headerContent, bodyContent) {
           <!-- RESOURCES BOX -->
           <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #1e3a5f;border-radius:14px;overflow:hidden;margin-bottom:32px;">
             <tr><td style="background:#0a1628;padding:20px 24px;border-bottom:1px solid #1e3a5f;">
-              <p style="margin:0;font-size:13px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:1px;">📦 Your Bijou Resources</p>
+              <p style="margin:0;font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:1px;">📦 Your Bijou Resources</p>
             </td></tr>
             <tr><td style="padding:20px 24px;">
               <table width="100%" cellpadding="0" cellspacing="0">
@@ -95,7 +95,7 @@ function emailBase(headerContent, bodyContent) {
               <td align="center">
                 <p style="margin:0 0 10px;font-size:13px;color:#64748b;font-weight:600;">Need help? We're always here:</p>
                 <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">
-                  📧 <a href="mailto:hello@mybijou.xyz" style="color:#10b981;text-decoration:none;">hello@mybijou.xyz</a>
+                  📧 <a href="mailto:support@mybijou.xyz" style="color:#10b981;text-decoration:none;">support@mybijou.xyz</a>
                   &nbsp;&nbsp;|&nbsp;&nbsp;
                   💬 <a href="https://wa.me/60174106981" style="color:#10b981;text-decoration:none;">+60 17-410 6981</a>
                 </p>
@@ -113,6 +113,13 @@ function emailBase(headerContent, bodyContent) {
             <a href="https://mybijou.xyz" style="color:#10b981;text-decoration:none;">mybijou.xyz</a>
             &nbsp;·&nbsp;
             <a href="https://w3j.my" style="color:#10b981;text-decoration:none;">w3j.my</a>
+          </p>
+          <p style="margin:0 0 8px;font-size:11px;color:#334155;">
+            <a href="https://linkedin.com/company/mybijou" style="color:#6366f1;text-decoration:none;">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="https://instagram.com/mybijouai" style="color:#6366f1;text-decoration:none;">Instagram</a>
+            &nbsp;·&nbsp;
+            <a href="https://x.com/meetbijou" style="color:#6366f1;text-decoration:none;">X (Twitter)</a>
           </p>
           <p style="margin:0;font-size:10px;color:#1e293b;">
             You received this because you submitted your details at mybijou.xyz
@@ -142,7 +149,7 @@ function buildConfirmationEmail(name, company) {
 
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a1628;border:1px solid #1e3a5f;border-radius:14px;padding:0;margin-bottom:28px;overflow:hidden;">
       <tr><td style="padding:20px 24px;border-bottom:1px solid #1e3a5f;">
-        <p style="margin:0;font-size:13px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:1px;">⚡ What happens next?</p>
+        <p style="margin:0;font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:1px;">⚡ What happens next?</p>
       </td></tr>
       <tr><td style="padding:20px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0">
@@ -157,11 +164,19 @@ function buildConfirmationEmail(name, company) {
     </table>
 
     <div style="text-align:center;margin-bottom:28px;">
-      <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#10b981,#059669);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 36px;border-radius:12px;">
-        Create My Account Now →
+      <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 36px;border-radius:12px;">
+        Start Free Trial →
       </a>
       <p style="margin:10px 0 0;font-size:11px;color:#475569;">14-day free trial · No credit card · Cancel anytime</p>
     </div>
+
+    <!-- QR CODE -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:8px;">
+      <tr><td align="center">
+        <p style="margin:0 0 10px;font-size:12px;color:#64748b;">Scan to visit mybijou.xyz on your phone:</p>
+        <img src="${QR_URL}" alt="mybijou.xyz QR Code" width="110" height="110" style="display:block;margin:0 auto;border-radius:10px;" />
+      </td></tr>
+    </table>
   `;
 
   return emailBase(header, body);

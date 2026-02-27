@@ -4,8 +4,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
 
-const LOGO_URL =
-  "https://w3jdev.github.io/bijou-ai-assets/assets/logos/bijouai-logo-transparent.png";
+const LOGO_URL = "https://mybijou.xyz/brand/logo.png";
+const QR_URL = "https://mybijou.xyz/brand/qr.png";
 
 function buildResourcesEmail(name) {
   const firstName = (name || "Boss").split(" ")[0];
@@ -47,12 +47,12 @@ function buildResourcesEmail(name) {
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="48" style="vertical-align:middle;padding-right:16px;">
-                    <div style="width:44px;height:44px;background:linear-gradient(135deg,#1e40af,#3b82f6);border-radius:12px;text-align:center;line-height:44px;font-size:22px;">📊</div>
+                    <div style="width:44px;height:44px;background:linear-gradient(135deg,#065f46,#10b981);border-radius:12px;text-align:center;line-height:44px;font-size:22px;">📊</div>
                   </td>
                   <td>
                     <p style="margin:0 0 4px;font-size:15px;font-weight:800;color:#fff;">Sales Presentation</p>
                     <p style="margin:0 0 12px;font-size:13px;color:#64748b;line-height:1.5;">See exactly how Bijou AI works, pricing, case studies, and ROI breakdown</p>
-                    <a href="https://app.mybijou.xyz/static/sales-presentation.html" style="display:inline-block;background:linear-gradient(135deg,#1d4ed8,#2563eb);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:10px 20px;border-radius:8px;">
+                    <a href="https://app.mybijou.xyz/static/sales-presentation.html" style="display:inline-block;background:linear-gradient(135deg,#10b981,#059669);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:10px 20px;border-radius:8px;">
                       Open Slide Deck →
                     </a>
                   </td>
@@ -92,8 +92,8 @@ function buildResourcesEmail(name) {
                   <td>
                     <p style="margin:0 0 4px;font-size:15px;font-weight:800;color:#fff;">Start Free Trial</p>
                     <p style="margin:0 0 12px;font-size:13px;color:#64748b;line-height:1.5;">14 days free, no credit card needed. Set up in under 5 minutes</p>
-                    <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#b45309,#d4af37);color:#000;text-decoration:none;font-weight:800;font-size:13px;padding:10px 20px;border-radius:8px;">
-                      Create My Account →
+                    <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:10px 20px;border-radius:8px;">
+                      Start Free Trial →
                     </a>
                   </td>
                 </tr>
@@ -106,7 +106,7 @@ function buildResourcesEmail(name) {
             <tr><td style="padding-top:24px;text-align:center;">
               <p style="margin:0 0 10px;font-size:13px;color:#64748b;font-weight:600;">Questions? We're always here:</p>
               <p style="margin:0;font-size:13px;color:#94a3b8;">
-                📧 <a href="mailto:hello@mybijou.xyz" style="color:#10b981;text-decoration:none;">hello@mybijou.xyz</a>
+                📧 <a href="mailto:support@mybijou.xyz" style="color:#10b981;text-decoration:none;">support@mybijou.xyz</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 💬 <a href="https://wa.me/60174106981" style="color:#10b981;text-decoration:none;">+60 17-410 6981</a>
               </p>
@@ -123,6 +123,13 @@ function buildResourcesEmail(name) {
             <a href="https://mybijou.xyz" style="color:#10b981;text-decoration:none;">mybijou.xyz</a>
             &nbsp;·&nbsp;
             <a href="https://w3j.my" style="color:#10b981;text-decoration:none;">w3j.my</a>
+          </p>
+          <p style="margin:0 0 8px;font-size:11px;color:#334155;">
+            <a href="https://linkedin.com/company/mybijou" style="color:#6366f1;text-decoration:none;">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="https://instagram.com/mybijouai" style="color:#6366f1;text-decoration:none;">Instagram</a>
+            &nbsp;·&nbsp;
+            <a href="https://x.com/meetbijou" style="color:#6366f1;text-decoration:none;">X (Twitter)</a>
           </p>
           <p style="margin:0;font-size:10px;color:#1e293b;">
             You received this because you requested resources at mybijou.xyz

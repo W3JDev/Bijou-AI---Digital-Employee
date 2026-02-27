@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, Twitter, Linkedin, Instagram, Mail, Github } from 'lucide-react';
+import { Twitter, Linkedin, Instagram, Mail, Github } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import { InfoModal } from './InfoModal';
 import { EnterpriseContactForm } from './EnterpriseContactForm';
@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="https://w3jdev.github.io/bijou-ai-assets/assets/logos/bijouai-logo-transparent.png" 
+                  src="/brand/logo.png" 
                   alt="Bijou AI" 
                   className="w-8 h-8"
                 />

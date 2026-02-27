@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CaseStudies } from "./components/CaseStudies";
 import { DemoChat } from "./components/DemoChat";
+import { Features } from "./components/Features";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
@@ -11,6 +12,7 @@ import { Playbooks } from "./components/Playbooks";
 import { Pricing } from "./components/Pricing";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { RevenueCalculator } from "./components/RevenueCalculator";
+import { Roadmap } from "./components/Roadmap";
 import { SlideDeckModal } from "./components/SlideDeckModal";
 import { ViralPillars } from "./components/ViralPillars";
 import { WaitlistStrip } from "./components/WaitlistStrip";
@@ -68,6 +70,7 @@ export default function App() {
         />
         <main>
           <Hero onOpenModal={() => openModal("signup", "hero")} />
+          <Features />
           <ViralPillars
             onOpenModal={() => openModal("signup", "viral_pillars")}
           />
@@ -76,8 +79,11 @@ export default function App() {
           />
           <Pricing onOpenModal={() => openModal("signup", "pricing")} />
           <HowItWorks />
+          <Roadmap />
           <Playbooks />
-          <CaseStudies />
+          <CaseStudies
+            onOpenModal={() => openModal("signup", "case_studies")}
+          />
           <DemoChat onOpenModal={() => openModal("demo", "demo_chat")} />
           <FinalCTA
             onOpenModal={() => openModal("signup", "final_cta")}

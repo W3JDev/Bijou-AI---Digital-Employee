@@ -5,7 +5,11 @@
   "installCommand": "npm install",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/brand/(.*)",
+      "destination": "/brand/$1"
+    },
+    {
+      "source": "/((?!brand/).*)",
       "destination": "/index.html"
     }
   ],

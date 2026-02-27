@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Search, Activity, Moon, X, Clock, Send, FileText, User, ChevronRight, Zap, Database, Calendar, Bell } from 'lucide-react';
+import { Check, Moon, Clock, Send, FileText, User, ChevronRight, Zap, Database, Calendar, Bell } from 'lucide-react';
 
 // --- Simulation 1: Stress Test (Chat UI) ---
 interface ChatMessageProps {
@@ -63,7 +63,7 @@ const StressTestSimulation = () => {
             <div className="text-xs text-gray-400">Online</div>
           </div>
         </div>
-        <div className="flex-1 bg-[#0b141a] p-4 bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-opacity-10">
+        <div className="flex-1 bg-[#0b141a] p-4">
           <AnimatePresence mode='wait'>
             {step >= 0 && <ChatMessage key="g1" text="Walau eh, so expensive ah?" isUser={true} timestamp="10:42 AM" />}
             {step >= 1 && (
@@ -91,7 +91,7 @@ const StressTestSimulation = () => {
             <div className="text-xs text-emerald-400 font-medium">Typing...</div>
           </div>
         </div>
-        <div className="flex-1 bg-[#0b141a] p-4 bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-opacity-20">
+        <div className="flex-1 bg-[#0b141a] p-4">
           <AnimatePresence mode='wait'>
             {step >= 0 && <ChatMessage key="b1" text="Walau eh, so expensive ah?" isUser={true} timestamp="10:42 AM" />}
             {step >= 1 && (

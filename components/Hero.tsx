@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import {
+    AlertTriangle,
     Calendar,
+    ExternalLink,
     ShieldCheck,
-    Users
+    Users,
 } from "lucide-react";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -95,29 +97,42 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
             <motion.div variants={itemVariants} className="mb-12">
               {/* Lead Capture Tabs */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8">
-                <button
-                  onClick={() => {
-                    trackTrialSignup(i18n.language);
-                    onOpenModal();
-                  }}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all bg-gradient-to-r from-gold-500 to-gold-300 text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02]"
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-4">
+                <a
+                  href="https://app.mybijou.xyz/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackTrialSignup(i18n.language)}
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all bg-gradient-to-r from-gold-500 to-gold-300 text-black shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02]"
                 >
                   <Users className="w-5 h-5" />
                   {t("hero.cta.trial")}
-                </button>
+                  <ExternalLink className="w-4 h-4 opacity-70" />
+                </a>
 
                 <a
                   href="https://cal.com/getbijou"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackDemoBooking(i18n.language)}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all glass-panel-3d text-white border-gold-400/30 hover:border-gold-400/60 hover:bg-gold-400/5 hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all glass-panel-3d text-white border-gold-400/30 hover:border-gold-400/60 hover:bg-gold-400/5 hover:scale-[1.02]"
                 >
                   <Calendar className="w-5 h-5" />
                   {t("hero.cta.demo")}
                 </a>
               </div>
+
+              {/* Stop The Bleeding — pain-point secondary CTA */}
+              <a
+                href="#revenue"
+                className="inline-flex items-center gap-2 text-sm font-bold text-red-400 hover:text-red-300 transition-colors group/bleed"
+              >
+                <AlertTriangle className="w-4 h-4 animate-pulse" />
+                Still losing leads every night? See how much it's costing you
+                <span className="group-hover/bleed:translate-x-1 transition-transform inline-block">
+                  →
+                </span>
+              </a>
 
               <p className="text-sm text-gray-400 text-center lg:text-left">
                 {t("hero.trustFooter")}

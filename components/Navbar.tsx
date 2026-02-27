@@ -47,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logo with Image */}
           <div className="flex items-center gap-3 cursor-pointer">
             <img
-              src="https://w3jdev.github.io/bijou-ai-assets/assets/logos/bijouai-logo-transparent.png"
+              src="/brand/logo.png"
               alt="Bijou AI Logo"
               className="h-10 w-auto"
             />

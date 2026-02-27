@@ -64,3 +64,16 @@ coverage/
 # OpenCode agent files (keep structure but not sensitive content)
 .opencode/node_modules
 .opencode/bun.lock
+
+#Media_Folder
+Bijou_AI_Digital_Staff_Media_files_&QR
+
+# Email template suite — standalone dev tool, not deployed to Vercel
+# Contains test scripts that reference env vars; keep out of public repo
+email-templates/
+
+# Internal brand/product docs — not for public repo
+Docs/
+
+# NOTE: public/brand/ is intentionally tracked — Vercel must serve these assets
+# public/brand/logo.png and qr.png are referenced by email templates & the landing page
