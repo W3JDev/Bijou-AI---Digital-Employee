@@ -242,7 +242,11 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                   <div className="flex items-start gap-3 mb-4">
                     <motion.div
                       animate={{ scale: [1, 1.18, 1], rotate: [0, -5, 5, 0] }}
-                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 3,
+                        ease: "easeInOut",
+                      }}
                       className="flex-shrink-0 w-9 h-9 rounded-xl bg-gold-500/20 flex items-center justify-center"
                     >
                       <Lock className="w-4 h-4 text-gold-400" />
@@ -266,7 +270,8 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                   <div className="mb-3">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-gold-400/70 text-[10px] font-semibold">
-                        {spotsTotal - remaining} of {spotsTotal} founding spots claimed
+                        {spotsTotal - remaining} of {spotsTotal} founding spots
+                        claimed
                       </span>
                       <span className="text-gold-300 text-[10px] font-black">
                         {remaining} left
@@ -294,7 +299,9 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-1.5">
                         <span className="text-sm">{item.icon}</span>
-                        <span className="text-gray-300 text-[10px] leading-tight">{item.text}</span>
+                        <span className="text-gray-300 text-[10px] leading-tight">
+                          {item.text}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -350,17 +357,51 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
           {/* Phase timeline */}
           <div className="flex items-center gap-0 mb-8 overflow-x-auto pb-2">
             {[
-              { phase: "Now",    label: "Live",   color: "bg-emerald-400", text: "text-emerald-400", border: "border-emerald-400/40" },
-              { phase: "Q2 2026", label: "Phase 5", color: "bg-blue-400",   text: "text-blue-400",   border: "border-blue-400/40" },
-              { phase: "Q3 2026", label: "Phase 6", color: "bg-purple-400", text: "text-purple-400", border: "border-purple-400/40" },
-              { phase: "Q4 2026", label: "Phase 7", color: "bg-orange-400", text: "text-orange-400", border: "border-orange-400/40" },
+              {
+                phase: "Now",
+                label: "Live",
+                color: "bg-emerald-400",
+                text: "text-emerald-400",
+                border: "border-emerald-400/40",
+              },
+              {
+                phase: "Q2 2026",
+                label: "Phase 5",
+                color: "bg-blue-400",
+                text: "text-blue-400",
+                border: "border-blue-400/40",
+              },
+              {
+                phase: "Q3 2026",
+                label: "Phase 6",
+                color: "bg-purple-400",
+                text: "text-purple-400",
+                border: "border-purple-400/40",
+              },
+              {
+                phase: "Q4 2026",
+                label: "Phase 7",
+                color: "bg-orange-400",
+                text: "text-orange-400",
+                border: "border-orange-400/40",
+              },
             ].map((p, i) => (
               <React.Fragment key={i}>
-                <div className={`flex-shrink-0 flex flex-col items-center gap-1 px-4 py-2 rounded-xl border ${p.border} bg-white/5`}>
-                  <span className={`text-[10px] font-black uppercase tracking-widest ${p.text}`}>{p.label}</span>
-                  <span className="text-white text-xs font-bold">{p.phase}</span>
+                <div
+                  className={`flex-shrink-0 flex flex-col items-center gap-1 px-4 py-2 rounded-xl border ${p.border} bg-white/5`}
+                >
+                  <span
+                    className={`text-[10px] font-black uppercase tracking-widest ${p.text}`}
+                  >
+                    {p.label}
+                  </span>
+                  <span className="text-white text-xs font-bold">
+                    {p.phase}
+                  </span>
                 </div>
-                {i < 3 && <div className="flex-1 h-px bg-white/10 min-w-[20px]" />}
+                {i < 3 && (
+                  <div className="flex-1 h-px bg-white/10 min-w-[20px]" />
+                )}
               </React.Fragment>
             ))}
           </div>
@@ -390,8 +431,14 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                     {addon.name}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider ${timeBadge[addon.when] ?? "text-gray-500"}`}>{addon.when}</span>
-                    <span className="text-gold-400 text-xs font-bold">{addon.price}</span>
+                    <span
+                      className={`text-[10px] font-bold uppercase tracking-wider ${timeBadge[addon.when] ?? "text-gray-500"}`}
+                    >
+                      {addon.when}
+                    </span>
+                    <span className="text-gold-400 text-xs font-bold">
+                      {addon.price}
+                    </span>
                   </div>
                 </motion.div>
               );
@@ -400,7 +447,8 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 pt-5 border-t border-white/5">
             <p className="text-emerald-400 text-xs font-semibold">
-              ✅ Pro customers get first access — free during trial period when each feature ships
+              ✅ Pro customers get first access — free during trial period when
+              each feature ships
             </p>
             <p className="text-gray-500 text-xs">
               Roadmap subject to change. No delivery dates guaranteed.

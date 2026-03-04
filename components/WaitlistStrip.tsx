@@ -37,16 +37,21 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-10">
           <div className="flex items-center justify-between gap-4">
-
             {/* Left: headline + pills */}
             <div className="flex-1 min-w-0">
               {/* Headline */}
               <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                 <motion.span
                   animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeInOut",
+                  }}
                   className="text-lg"
-                >🔥</motion.span>
+                >
+                  🔥
+                </motion.span>
                 <span className="text-white font-black text-sm sm:text-base leading-tight">
                   Only 7 Early Adopter Spots Left — RM299/mo Forever
                 </span>
@@ -77,7 +82,10 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
             <div className="flex-shrink-0">
               <motion.button
                 onClick={onOpenModal}
-                whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(16,185,129,0.5)" }}
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow: "0 0 30px rgba(16,185,129,0.5)",
+                }}
                 whileTap={{ scale: 0.97 }}
                 className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-black text-sm sm:text-base whitespace-nowrap bg-gradient-to-r from-emerald-500 to-green-400 text-black shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
               >
@@ -86,7 +94,6 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                 <ArrowRight className="w-4 h-4 hidden sm:block" />
               </motion.button>
             </div>
-
           </div>
         </div>
       </div>

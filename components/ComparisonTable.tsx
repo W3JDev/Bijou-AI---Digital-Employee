@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, X, Minus, ChevronDown } from "lucide-react";
+import { Check, Minus, X } from "lucide-react";
+import React, { useState } from "react";
 
 type CellValue = true | false | null | string;
 
@@ -17,52 +17,230 @@ interface Row {
 
 const rows: Row[] = [
   // Pricing
-  { feature: "Monthly Price",        category: "Pricing",   bijou: "RM299/mo",  chatdaddy: "RM75+ (see below)", dahreply: "RM499/mo", wati: "RM280+",      staff: "RM1,500–2,500", highlight: true },
-  { feature: "WABA Required",        category: "Pricing",   bijou: false,       chatdaddy: true,                dahreply: true,       wati: true,          staff: false },
-  { feature: "Hidden Conversation Fees", category: "Pricing", bijou: false,     chatdaddy: true,                dahreply: true,       wati: "20% markup",  staff: false, highlight: true },
-  { feature: "Annual Lock-in",       category: "Pricing",   bijou: false,       chatdaddy: true,                dahreply: false,      wati: "Some plans",  staff: "Resignation required" },
-  { feature: "30-Day Money-Back",    category: "Pricing",   bijou: true,        chatdaddy: false,               dahreply: true,       wati: false,         staff: false },
+  {
+    feature: "Monthly Price",
+    category: "Pricing",
+    bijou: "RM299/mo",
+    chatdaddy: "RM75+ (see below)",
+    dahreply: "RM499/mo",
+    wati: "RM280+",
+    staff: "RM1,500–2,500",
+    highlight: true,
+  },
+  {
+    feature: "WABA Required",
+    category: "Pricing",
+    bijou: false,
+    chatdaddy: true,
+    dahreply: true,
+    wati: true,
+    staff: false,
+  },
+  {
+    feature: "Hidden Conversation Fees",
+    category: "Pricing",
+    bijou: false,
+    chatdaddy: true,
+    dahreply: true,
+    wati: "20% markup",
+    staff: false,
+    highlight: true,
+  },
+  {
+    feature: "Annual Lock-in",
+    category: "Pricing",
+    bijou: false,
+    chatdaddy: true,
+    dahreply: false,
+    wati: "Some plans",
+    staff: "Resignation required",
+  },
+  {
+    feature: "30-Day Money-Back",
+    category: "Pricing",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: true,
+    wati: false,
+    staff: false,
+  },
 
   // Channels
-  { feature: "WhatsApp (no WABA)",   category: "Channels",  bijou: true,        chatdaddy: false,               dahreply: false,      wati: false,         staff: true, highlight: true },
-  { feature: "Telegram",             category: "Channels",  bijou: true,        chatdaddy: false,               dahreply: false,      wati: false,         staff: true, highlight: true },
-  { feature: "Facebook Messenger",   category: "Channels",  bijou: "Q3 2026",   chatdaddy: true,                dahreply: "Partial",  wati: false,         staff: true },
+  {
+    feature: "WhatsApp (no WABA)",
+    category: "Channels",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: false,
+    wati: false,
+    staff: true,
+    highlight: true,
+  },
+  {
+    feature: "Telegram",
+    category: "Channels",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: false,
+    wati: false,
+    staff: true,
+    highlight: true,
+  },
+  {
+    feature: "Facebook Messenger",
+    category: "Channels",
+    bijou: "Q3 2026",
+    chatdaddy: true,
+    dahreply: "Partial",
+    wati: false,
+    staff: true,
+  },
 
   // AI & Language
-  { feature: "Manglish / Malaysian AI",  category: "AI & Language", bijou: true, chatdaddy: false,             dahreply: "Partial",  wati: false,         staff: "If Malaysian", highlight: true },
-  { feature: "English + BM + 中文 + தமிழ்", category: "AI & Language", bijou: true, chatdaddy: "English only", dahreply: "Partial", wati: "English only", staff: true },
-  { feature: "No-hallucination KB",       category: "AI & Language", bijou: true, chatdaddy: false,            dahreply: "Basic",    wati: false,         staff: "Depends" },
-  { feature: "Emotion & Frustration Detection", category: "AI & Language", bijou: true, chatdaddy: false,      dahreply: false,      wati: false,         staff: true },
+  {
+    feature: "Manglish / Malaysian AI",
+    category: "AI & Language",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: "Partial",
+    wati: false,
+    staff: "If Malaysian",
+    highlight: true,
+  },
+  {
+    feature: "English + BM + 中文 + தமிழ்",
+    category: "AI & Language",
+    bijou: true,
+    chatdaddy: "English only",
+    dahreply: "Partial",
+    wati: "English only",
+    staff: true,
+  },
+  {
+    feature: "No-hallucination KB",
+    category: "AI & Language",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: "Basic",
+    wati: false,
+    staff: "Depends",
+  },
+  {
+    feature: "Emotion & Frustration Detection",
+    category: "AI & Language",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: false,
+    wati: false,
+    staff: true,
+  },
 
   // Automation
-  { feature: "Cal.com Calendar Booking",  category: "Automation", bijou: true,  chatdaddy: "Via Zapier",        dahreply: "Basic",    wati: "Via Zapier",  staff: "Manual", highlight: true },
-  { feature: "Auto Email Booking Confirm", category: "Automation", bijou: true, chatdaddy: false,               dahreply: "Partial",  wati: false,         staff: "Manual" },
-  { feature: "Escalation Email Alerts",   category: "Automation", bijou: true,  chatdaddy: false,               dahreply: false,      wati: false,         staff: true },
-  { feature: "Lead Qualification Tags",   category: "Automation", bijou: true,  chatdaddy: "Basic",             dahreply: "Basic",    wati: false,         staff: "Manual" },
+  {
+    feature: "Cal.com Calendar Booking",
+    category: "Automation",
+    bijou: true,
+    chatdaddy: "Via Zapier",
+    dahreply: "Basic",
+    wati: "Via Zapier",
+    staff: "Manual",
+    highlight: true,
+  },
+  {
+    feature: "Auto Email Booking Confirm",
+    category: "Automation",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: "Partial",
+    wati: false,
+    staff: "Manual",
+  },
+  {
+    feature: "Escalation Email Alerts",
+    category: "Automation",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: false,
+    wati: false,
+    staff: true,
+  },
+  {
+    feature: "Lead Qualification Tags",
+    category: "Automation",
+    bijou: true,
+    chatdaddy: "Basic",
+    dahreply: "Basic",
+    wati: false,
+    staff: "Manual",
+  },
 
   // Setup & Support
-  { feature: "Setup Time",            category: "Setup & Support", bijou: "15 minutes", chatdaddy: "2–3 days", dahreply: "1 week+",  wati: "2–3 days",    staff: "2 weeks hiring", highlight: true },
-  { feature: "Self-Serve (No Dev)",   category: "Setup & Support", bijou: true,         chatdaddy: false,      dahreply: false,      wati: false,         staff: false },
-  { feature: "Human Support",         category: "Setup & Support", bijou: "WhatsApp direct", chatdaddy: false, dahreply: "Slow",     wati: "Slow",        staff: true },
-  { feature: "ROI Payback Period",    category: "Setup & Support", bijou: "~8 days",    chatdaddy: "Unknown",  dahreply: "3–6 mo",   wati: "3–6 mo",      staff: "Never" },
+  {
+    feature: "Setup Time",
+    category: "Setup & Support",
+    bijou: "15 minutes",
+    chatdaddy: "2–3 days",
+    dahreply: "1 week+",
+    wati: "2–3 days",
+    staff: "2 weeks hiring",
+    highlight: true,
+  },
+  {
+    feature: "Self-Serve (No Dev)",
+    category: "Setup & Support",
+    bijou: true,
+    chatdaddy: false,
+    dahreply: false,
+    wati: false,
+    staff: false,
+  },
+  {
+    feature: "Human Support",
+    category: "Setup & Support",
+    bijou: "WhatsApp direct",
+    chatdaddy: false,
+    dahreply: "Slow",
+    wati: "Slow",
+    staff: true,
+  },
+  {
+    feature: "ROI Payback Period",
+    category: "Setup & Support",
+    bijou: "~8 days",
+    chatdaddy: "Unknown",
+    dahreply: "3–6 mo",
+    wati: "3–6 mo",
+    staff: "Never",
+  },
 ];
 
 const categories = ["All", ...Array.from(new Set(rows.map((r) => r.category)))];
 
 const providers = [
-  { key: "bijou",    label: "Bijou PRO",   price: "RM299/mo", highlight: true },
-  { key: "chatdaddy", label: "ChatDaddy",  price: "RM75+*" },
-  { key: "dahreply", label: "DahReply",    price: "RM499/mo" },
-  { key: "wati",     label: "Wati",        price: "RM280+" },
-  { key: "staff",    label: "Human Staff", price: "RM1,500+" },
+  { key: "bijou", label: "Bijou PRO", price: "RM299/mo", highlight: true },
+  { key: "chatdaddy", label: "ChatDaddy", price: "RM75+*" },
+  { key: "dahreply", label: "DahReply", price: "RM499/mo" },
+  { key: "wati", label: "Wati", price: "RM280+" },
+  { key: "staff", label: "Human Staff", price: "RM1,500+" },
 ];
 
-const Cell: React.FC<{ value: CellValue; isBijou?: boolean }> = ({ value, isBijou }) => {
-  if (value === true)  return <Check className={`w-4 h-4 mx-auto ${isBijou ? "text-emerald-400" : "text-gray-400"}`} />;
+const Cell: React.FC<{ value: CellValue; isBijou?: boolean }> = ({
+  value,
+  isBijou,
+}) => {
+  if (value === true)
+    return (
+      <Check
+        className={`w-4 h-4 mx-auto ${isBijou ? "text-emerald-400" : "text-gray-400"}`}
+      />
+    );
   if (value === false) return <X className="w-4 h-4 mx-auto text-red-400/60" />;
-  if (value === null)  return <Minus className="w-4 h-4 mx-auto text-gray-600" />;
+  if (value === null)
+    return <Minus className="w-4 h-4 mx-auto text-gray-600" />;
   return (
-    <span className={`text-xs font-medium leading-tight ${isBijou ? "text-emerald-300 font-bold" : "text-gray-400"}`}>
+    <span
+      className={`text-xs font-medium leading-tight ${isBijou ? "text-emerald-300 font-bold" : "text-gray-400"}`}
+    >
       {value}
     </span>
   );
@@ -72,7 +250,10 @@ export const ComparisonTable: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [expanded, setExpanded] = useState(true);
 
-  const visible = activeCategory === "All" ? rows : rows.filter((r) => r.category === activeCategory);
+  const visible =
+    activeCategory === "All"
+      ? rows
+      : rows.filter((r) => r.category === activeCategory);
 
   return (
     <section id="comparison" className="py-24 relative">
@@ -100,13 +281,15 @@ export const ComparisonTable: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            No cherry-picked metrics. Every row is verifiable. We included the ones where competitors beat us too.
+            No cherry-picked metrics. Every row is verifiable. We included the
+            ones where competitors beat us too.
           </p>
 
           {/* Disclaimer on ChatDaddy asterisk */}
           <div className="mt-4 inline-block px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20">
             <p className="text-amber-400 text-xs">
-              * ChatDaddy advertises RM75/mo but requires a WABA account (+RM150–400/mo in Meta fees). Real total: RM280–500+/mo.
+              * ChatDaddy advertises RM75/mo but requires a WABA account
+              (+RM150–400/mo in Meta fees). Real total: RM280–500+/mo.
             </p>
           </div>
         </motion.div>
@@ -148,7 +331,9 @@ export const ComparisonTable: React.FC = () => {
                       key={p.key}
                       className={`px-4 py-4 text-center ${p.highlight ? "bg-emerald-500/5" : ""}`}
                     >
-                      <div className={`text-sm font-bold ${p.highlight ? "text-emerald-400" : "text-gray-300"}`}>
+                      <div
+                        className={`text-sm font-bold ${p.highlight ? "text-emerald-400" : "text-gray-300"}`}
+                      >
                         {p.highlight && (
                           <span className="block text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-0.5">
                             ★ Best Value
@@ -156,7 +341,9 @@ export const ComparisonTable: React.FC = () => {
                         )}
                         {p.label}
                       </div>
-                      <div className={`text-xs mt-0.5 ${p.highlight ? "text-emerald-300 font-bold" : "text-gray-500"}`}>
+                      <div
+                        className={`text-xs mt-0.5 ${p.highlight ? "text-emerald-300 font-bold" : "text-gray-500"}`}
+                      >
                         {p.price}
                       </div>
                     </th>
@@ -195,7 +382,9 @@ export const ComparisonTable: React.FC = () => {
                         className={`border-b border-white/[0.04] transition-colors hover:bg-white/[0.02] ${row.highlight ? "bg-emerald-500/[0.02]" : ""}`}
                       >
                         <td className="px-5 py-3.5">
-                          <span className={`text-sm ${row.highlight ? "text-white font-semibold" : "text-gray-400"}`}>
+                          <span
+                            className={`text-sm ${row.highlight ? "text-white font-semibold" : "text-gray-400"}`}
+                          >
                             {row.feature}
                           </span>
                         </td>
@@ -204,7 +393,10 @@ export const ComparisonTable: React.FC = () => {
                             key={p.key}
                             className={`px-4 py-3.5 text-center ${p.highlight ? "bg-emerald-500/[0.04]" : ""}`}
                           >
-                            <Cell value={row[p.key as keyof Row] as CellValue} isBijou={p.highlight} />
+                            <Cell
+                              value={row[p.key as keyof Row] as CellValue}
+                              isBijou={p.highlight}
+                            />
                           </td>
                         ))}
                       </motion.tr>
@@ -228,7 +420,8 @@ export const ComparisonTable: React.FC = () => {
             You have seen the numbers. Judge for yourself.
           </p>
           <p className="text-gray-400 text-sm mb-6 max-w-xl mx-auto">
-            RM299/mo. No WABA. No hidden Meta fees. No annual trap. WhatsApp direct to the founder if you have any questions.
+            RM299/mo. No WABA. No hidden Meta fees. No annual trap. WhatsApp
+            direct to the founder if you have any questions.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -238,7 +431,7 @@ export const ComparisonTable: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-emerald-500 hover:bg-emerald-400 text-black transition-all shadow-[0_0_30px_rgba(16,185,129,0.35)]"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
               Ask Jewel on WhatsApp
             </a>
