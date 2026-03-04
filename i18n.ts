@@ -13,19 +13,19 @@ const resources = {
       "nav.getStarted": "Get Started",
 
       // Hero Section
-      "hero.badge": "🎯 First 100 Customers: RM159/month (Limited Time)",
-      "hero.title.part1": "Your",
-      "hero.title.savingsAmount": "RM9,201/month",
-      "hero.title.part2": "24/7 Digital Employee for",
-      "hero.title.priceAmount": "Just RM159",
+      "hero.badge": "🚀 RM0 to start — no credit card, no WABA needed",
+      "hero.title.part1": "Your WhatsApp goes",
+      "hero.title.savingsAmount": "offline at 10pm.",
+      "hero.title.part2": "Your competitors'",
+      "hero.title.priceAmount": "doesn't.",
       "hero.subtitle.part1":
-        "Close sales at 2AM in fluent Manglish. Book viewings instantly. Send property brochures automatically.",
-      "hero.subtitle.roi": "335% ROI",
-      "hero.subtitle.part2": "guaranteed for Malaysian SMEs.",
-      "hero.cta.trial": "Start Free Trial",
+        "Bijou is a Malaysian AI for WhatsApp & Telegram. Replies instantly in Manglish, books Cal.com appointments, qualifies leads automatically —",
+      "hero.subtitle.roi": "while you sleep.",
+      "hero.subtitle.part2": "",
+      "hero.cta.trial": "Start Free — RM0",
       "hero.cta.demo": "Book Demo",
       "hero.trustFooter":
-        "✅ 14-day free trial • ✅ RM159 launch price • ✅ 335% ROI guaranteed",
+        "✅ 30-day money-back · ✅ No WABA needed · ✅ Cancel anytime",
       "hero.trustedBy": "Trusted & Backed By",
       "hero.trust.mdec": "MDEC",
       "hero.trust.cradle": "Cradle",
@@ -44,14 +44,55 @@ const resources = {
       "hero.roiCard.comparison": "vs Junior Customer Service Agent",
       "hero.roiCard.roi": "335% ROI",
 
-      // Pricing Section
-      "pricing.badge": "💎 Limited Time Offer",
-      "pricing.title": "Simple, Transparent Pricing",
-      "pricing.subtitle.part1": "Start with a",
-      "pricing.subtitle.trial": "14-day free trial",
-      "pricing.subtitle.part2": ". No credit card required. Cancel anytime.",
+      // Pricing Section — Single PRO Tier (RM 249/month, updated March 2026)
+      "pricing.badge": "💎 Honest, Simple Pricing",
+      "pricing.title": "One Plan. Everything That's Live.",
+      "pricing.subtitle.part1": "Backed by a",
+      "pricing.subtitle.trial": "30-day money-back guarantee",
+      "pricing.subtitle.part2": ". No contract. Cancel anytime.",
 
-      // Starter Plan
+      // PRO Plan — Single Tier
+      "pricing.pro.name": "PRO",
+      "pricing.pro.price": "299",
+      "pricing.pro.yearlyPrice": "2,990",
+      "pricing.pro.yearlySaving": "Save RM598 — 2 months free",
+      "pricing.pro.description": "Everything you need to never miss a lead",
+      "pricing.pro.badge": "THE ONLY PLAN",
+      "pricing.pro.features.0": "WhatsApp AI Agent — no WABA, no Meta fees",
+      "pricing.pro.features.1": "Telegram AI Agent — same brain, same Manglish",
+      "pricing.pro.features.2": "3,000 Conversations/month (~100/day)",
+      "pricing.pro.features.3": "Full TRACE AI — 4-agent empathy pipeline",
+      "pricing.pro.features.4": "Manglish + EN / BM / Mandarin / Tamil",
+      "pricing.pro.features.5":
+        "Cal.com Booking — create, check, cancel appointments",
+      "pricing.pro.features.6": "Auto email confirmations to customers",
+      "pricing.pro.features.7":
+        "Lead Qualification — Hot / Warm / Cold auto-detection",
+      "pricing.pro.features.8":
+        "Escalation alerts — email you when AI can't handle it",
+      "pricing.pro.features.9": "Knowledge Base — 50 FAQs / up to 2 documents",
+      "pricing.pro.betaFeature": "",
+      "pricing.pro.earlyAccessNote":
+        "Pro customers get early access FREE when new features ship — multi-user seats, extra channels, SMS reminders & more.",
+
+      // Add-ons Roadmap
+      "pricing.addons.title": "Coming Q2–Q4 2026 (Paid Add-ons)",
+      "pricing.addons.subtitle":
+        "Every feature that ships = a revenue event. Pro customers get early access free.",
+
+      // CTA + Enterprise footnote
+      "pricing.cta.trial": "Start 30-Day Trial",
+      "pricing.cta.contact": "Contact Sales",
+      "pricing.cta.enterprise": "Contact us →",
+      "pricing.cta.enterprisePrompt":
+        "Need multi-team, multi-number, or a custom setup?",
+
+      // Guarantee
+      "pricing.guarantee.title": "30-Day Money-Back Guarantee",
+      "pricing.guarantee.subtitle":
+        "If Bijou doesn't deliver in 30 days, get 100% refunded — no questions asked",
+
+      // LEGACY KEYS — kept for rollback reference, no longer rendered
       "pricing.starter.name": "Starter",
       "pricing.starter.price": "159",
       "pricing.starter.originalPrice": "499",
@@ -65,8 +106,6 @@ const resources = {
       "pricing.starter.features.3": "Property brochure automation",
       "pricing.starter.features.4": "Standard analytics",
       "pricing.starter.features.5": "Email support",
-
-      // Professional Plan
       "pricing.professional.name": "Professional",
       "pricing.professional.price": "299",
       "pricing.professional.originalPrice": "799",
@@ -82,8 +121,6 @@ const resources = {
       "pricing.professional.features.4": "CRM integration (coming soon)",
       "pricing.professional.features.5": "Priority WhatsApp support",
       "pricing.professional.features.6": "Custom branding options",
-
-      // Enterprise Plan
       "pricing.enterprise.name": "Enterprise",
       "pricing.enterprise.price": "Custom",
       "pricing.enterprise.description": "For large teams & franchises",
@@ -95,12 +132,6 @@ const resources = {
       "pricing.enterprise.features.4": "White-label solution",
       "pricing.enterprise.features.5": "SLA guarantee (99.9% uptime)",
       "pricing.enterprise.features.6": "24/7 phone + WhatsApp support",
-
-      "pricing.cta.trial": "Start Free Trial",
-      "pricing.cta.contact": "Contact Sales",
-      "pricing.guarantee.title": "335% ROI Guarantee",
-      "pricing.guarantee.subtitle":
-        "If Bijou doesn't save you at least 3x your subscription cost, we'll refund 100%",
 
       // Case Studies Section
       "cases.title": "Real Results",
@@ -167,19 +198,20 @@ const resources = {
       "nav.getStarted": "Mulakan",
 
       // Hero Section
-      "hero.badge": "🎯 100 Pelanggan Pertama: RM159/bulan (Tawaran Terhad)",
-      "hero.title.part1": "",
-      "hero.title.savingsAmount": "RM9,201/bulan",
-      "hero.title.part2": "Pekerja Digital 24/7 Anda untuk",
-      "hero.title.priceAmount": "Cuma RM159",
+      "hero.badge":
+        "🚀 RM0 untuk mulakan — tiada kad kredit, tiada WABA diperlukan",
+      "hero.title.part1": "WhatsApp anda",
+      "hero.title.savingsAmount": "offline pada 10 malam.",
+      "hero.title.part2": "Pesaing anda",
+      "hero.title.priceAmount": "tidak.",
       "hero.subtitle.part1":
-        "Tutup jualan pukul 2 pagi dalam Manglish yang lancar. Buat temujanji viewing segera. Hantar brosur hartanah automatik.",
-      "hero.subtitle.roi": "ROI 335%",
-      "hero.subtitle.part2": "dijamin untuk PKS Malaysia.",
-      "hero.cta.trial": "Cuba Percuma",
+        "Bijou ialah AI Malaysia untuk WhatsApp & Telegram. Balas segera dalam Manglish, tempah temujanji Cal.com, kelayakan leads automatik —",
+      "hero.subtitle.roi": "semasa anda tidur.",
+      "hero.subtitle.part2": "",
+      "hero.cta.trial": "Mulakan Percuma — RM0",
       "hero.cta.demo": "Tempah Demo",
       "hero.trustFooter":
-        "✅ Percubaan 14 hari percuma • ✅ Harga pelancaran RM159 • ✅ ROI 335% dijamin",
+        "✅ Wang dikembalikan dalam 30 hari · ✅ Tiada WABA diperlukan · ✅ Batal bila-bila masa",
       "hero.trustedBy": "Dipercayai & Disokong Oleh",
       "hero.trust.mdec": "MDEC",
       "hero.trust.cradle": "Cradle",
@@ -198,15 +230,55 @@ const resources = {
       "hero.roiCard.comparison": "berbanding Ejen Khidmat Pelanggan Junior",
       "hero.roiCard.roi": "ROI 335%",
 
-      // Pricing Section
-      "pricing.badge": "💎 Tawaran Masa Terhad",
-      "pricing.title": "Harga Mudah, Telus",
-      "pricing.subtitle.part1": "Mulakan dengan",
-      "pricing.subtitle.trial": "percubaan percuma 14 hari",
-      "pricing.subtitle.part2":
-        ". Tiada kad kredit diperlukan. Batalkan bila-bila masa.",
+      // Pricing Section — Satu Peringkat PRO (RM 249/bulan, dikemaskini Mac 2026)
+      "pricing.badge": "💎 Harga Jujur, Mudah",
+      "pricing.title": "Satu Pelan. Semua Yang Sedia Ada.",
+      "pricing.subtitle.part1": "Dijamin oleh",
+      "pricing.subtitle.trial": "jaminan wang dikembalikan 30 hari",
+      "pricing.subtitle.part2": ". Tiada kontrak. Batalkan bila-bila masa.",
 
-      // Starter Plan
+      // Pelan PRO — Satu Peringkat
+      "pricing.pro.name": "PRO",
+      "pricing.pro.price": "299",
+      "pricing.pro.yearlyPrice": "2,990",
+      "pricing.pro.yearlySaving": "Jimat RM598 — 2 bulan percuma",
+      "pricing.pro.description":
+        "Semua yang anda perlukan supaya tiada petunjuk terlepas",
+      "pricing.pro.badge": "SATU-SATUNYA PELAN",
+      "pricing.pro.features.0":
+        "Ejen AI WhatsApp — tanpa WABA, tanpa bayaran Meta",
+      "pricing.pro.features.1": "Ejen AI Telegram — otak sama, Manglish sama",
+      "pricing.pro.features.2": "3,000 Perbualan/bulan (~100/hari)",
+      "pricing.pro.features.3": "AI TRACE Penuh — 4 ejen empati",
+      "pricing.pro.features.4": "Manglish + EN / BM / Mandarin / Tamil",
+      "pricing.pro.features.5":
+        "Tempahan Cal.com — cipta, semak, batal temujanji",
+      "pricing.pro.features.6": "E-mel pengesahan automatik kepada pelanggan",
+      "pricing.pro.features.7":
+        "Kelayakan Petunjuk — Pengesan Hot / Warm / Cold automatik",
+      "pricing.pro.features.8":
+        "Amaran eskalasi — e-mel anda apabila AI tidak dapat handle",
+      "pricing.pro.features.9": "Pangkalan Pengetahuan — 50 FAQ / 2 dokumen",
+      "pricing.pro.betaFeature": "",
+      "pricing.pro.earlyAccessNote":
+        "Pelanggan Pro mendapat akses awal PERCUMA apabila ciri baharu dilancarkan — tempat berbilang pengguna, saluran tambahan & lebih.",
+
+      // Bahagian Tambahan
+      "pricing.addons.title": "Akan Datang Q2–Q4 2026 (Tambahan Berbayar)",
+      "pricing.addons.subtitle":
+        "Setiap ciri baharu = peluang hasil. Pelanggan Pro dapat akses awal percuma.",
+
+      "pricing.cta.trial": "Mulakan Percubaan 30 Hari",
+      "pricing.cta.contact": "Hubungi Jualan",
+      "pricing.cta.enterprise": "Hubungi kami →",
+      "pricing.cta.enterprisePrompt":
+        "Perlukan berbilang pengguna, nombor, atau setup tersuai?",
+
+      "pricing.guarantee.title": "Jaminan Wang Dikembalikan 30 Hari",
+      "pricing.guarantee.subtitle":
+        "Jika Bijou tidak memberikan hasil dalam 30 hari, kami pulangkan 100% — tanpa soal",
+
+      // KUNCI LAMA — untuk rujukan rollback, tidak dipaparkan lagi
       "pricing.starter.name": "Permulaan",
       "pricing.starter.price": "159",
       "pricing.starter.originalPrice": "499",
@@ -221,8 +293,6 @@ const resources = {
       "pricing.starter.features.3": "Automasi brosur hartanah",
       "pricing.starter.features.4": "Analitik standard",
       "pricing.starter.features.5": "Sokongan e-mel",
-
-      // Professional Plan
       "pricing.professional.name": "Profesional",
       "pricing.professional.price": "299",
       "pricing.professional.originalPrice": "799",
@@ -239,8 +309,6 @@ const resources = {
       "pricing.professional.features.4": "Integrasi CRM (akan datang)",
       "pricing.professional.features.5": "Sokongan WhatsApp keutamaan",
       "pricing.professional.features.6": "Pilihan penjenamaan tersuai",
-
-      // Enterprise Plan
       "pricing.enterprise.name": "Perusahaan",
       "pricing.enterprise.price": "Tersuai",
       "pricing.enterprise.description": "Untuk pasukan besar & francais",
@@ -252,12 +320,6 @@ const resources = {
       "pricing.enterprise.features.4": "Penyelesaian white-label",
       "pricing.enterprise.features.5": "Jaminan SLA (99.9% uptime)",
       "pricing.enterprise.features.6": "Sokongan telefon + WhatsApp 24/7",
-
-      "pricing.cta.trial": "Cuba Percuma",
-      "pricing.cta.contact": "Hubungi Jualan",
-      "pricing.guarantee.title": "Jaminan ROI 335%",
-      "pricing.guarantee.subtitle":
-        "Jika Bijou tak jimat sekurang-kurangnya 3x kos langganan anda, kami pulangkan 100%",
 
       // Case Studies Section
       "cases.title": "Hasil Sebenar",
@@ -326,19 +388,18 @@ const resources = {
       "nav.getStarted": "开始使用",
 
       // Hero Section
-      "hero.badge": "🎯 前100名客户: RM159/月 (限时优惠)",
-      "hero.title.part1": "您的",
-      "hero.title.savingsAmount": "RM9,201/月",
-      "hero.title.part2": "24/7数字员工 只需",
-      "hero.title.priceAmount": "仅需RM159",
+      "hero.badge": "🚀 RM0起步 — 无需信用卡，无需WABA",
+      "hero.title.part1": "您的WhatsApp",
+      "hero.title.savingsAmount": "晚上10点就下线。",
+      "hero.title.part2": "竞争对手的",
+      "hero.title.priceAmount": "不会。",
       "hero.subtitle.part1":
-        "凌晨2点用流利的马来式英语成交销售。即时预约看房。自动发送房产手册。",
-      "hero.subtitle.roi": "335% 投资回报率",
-      "hero.subtitle.part2": "为马来西亚中小企业保证。",
-      "hero.cta.trial": "免费试用",
+        "Bijou是针对WhatsApp和Telegram的马来西AI。用Manglish即时回复，预约Cal.com资讯，自动筛选潜在客户 —",
+      "hero.subtitle.roi": "当您熟睡时。",
+      "hero.subtitle.part2": "",
+      "hero.cta.trial": "免费开始 — RM0",
       "hero.cta.demo": "预约演示",
-      "hero.trustFooter":
-        "✅ 14天免费试用 • ✅ RM159发布价 • ✅ 335%投资回报率保证",
+      "hero.trustFooter": "✅ 30天退款保证 · ✅ 无需WABA · ✅ 随时取消",
       "hero.trustedBy": "信任与支持方",
       "hero.trust.mdec": "MDEC",
       "hero.trust.cradle": "Cradle",
@@ -357,14 +418,49 @@ const resources = {
       "hero.roiCard.comparison": "相比初级客服专员",
       "hero.roiCard.roi": "335% 投资回报率",
 
-      // Pricing Section
-      "pricing.badge": "💎 限时优惠",
-      "pricing.title": "简单透明的定价",
-      "pricing.subtitle.part1": "以",
-      "pricing.subtitle.trial": "14天免费试用",
-      "pricing.subtitle.part2": "开始。无需信用卡。随时取消。",
+      // 定价部分 — 单一PRO套餐（RM 249/月，2026年3月更新）
+      "pricing.badge": "💎 诚实透明定价",
+      "pricing.title": "一个套餐。所有已上线功能。",
+      "pricing.subtitle.part1": "享有",
+      "pricing.subtitle.trial": "30天退款保证",
+      "pricing.subtitle.part2": "。无合同。随时取消。",
 
-      // Starter Plan
+      // PRO套餐 — 单一定价
+      "pricing.pro.name": "PRO",
+      "pricing.pro.price": "299",
+      "pricing.pro.yearlyPrice": "2,990",
+      "pricing.pro.yearlySaving": "节省RM598 — 免费使用2个月",
+      "pricing.pro.description": "您需要的一切，永不错过任何线索",
+      "pricing.pro.badge": "唯一方案",
+      "pricing.pro.features.0": "WhatsApp AI代理 — 无需WABA，无Meta费用",
+      "pricing.pro.features.1": "Telegram AI代理 — 相同大脑，相同马来式英语",
+      "pricing.pro.features.2": "每月3,000次对话（约100次/天）",
+      "pricing.pro.features.3": "完整TRACE AI — 4智能体共情管道",
+      "pricing.pro.features.4": "Manglish + 英语/马来语/普通话/泰米尔语",
+      "pricing.pro.features.5": "Cal.com预约 — 创建、查询、取消预约",
+      "pricing.pro.features.6": "自动向客户发送预约确认邮件",
+      "pricing.pro.features.7": "线索资格认定 — 自动热/温/冷检测",
+      "pricing.pro.features.8": "升级警报 — AI无法处理时邮件给您",
+      "pricing.pro.features.9": "知识库 — 50个FAQ / 最多2份文件",
+      "pricing.pro.betaFeature": "",
+      "pricing.pro.earlyAccessNote":
+        "Pro客户可在新功能上线时免费获得早期访问权限 — 多用户席位、额外渠道等。",
+
+      // 插件路线图
+      "pricing.addons.title": "2026年Q2–Q4即将推出（付费插件）",
+      "pricing.addons.subtitle":
+        "每项新功能 = 一次收入机会。Pro客户优先免费体验。",
+
+      "pricing.cta.trial": "开始30天试用",
+      "pricing.cta.contact": "联系销售",
+      "pricing.cta.enterprise": "联系我们 →",
+      "pricing.cta.enterprisePrompt": "需要多用户、多号码或自定义方案？",
+
+      "pricing.guarantee.title": "30天退款保证",
+      "pricing.guarantee.subtitle":
+        "如果Bijou在30天内未能达到预期，100%退款，无需解释",
+
+      // 旧版密钥 — 保留供回滚参考，不再渲染
       "pricing.starter.name": "入门版",
       "pricing.starter.price": "159",
       "pricing.starter.originalPrice": "499",
@@ -378,8 +474,6 @@ const resources = {
       "pricing.starter.features.3": "房产手册自动化",
       "pricing.starter.features.4": "标准分析",
       "pricing.starter.features.5": "电子邮件支持",
-
-      // Professional Plan
       "pricing.professional.name": "专业版",
       "pricing.professional.price": "299",
       "pricing.professional.originalPrice": "799",
@@ -395,8 +489,6 @@ const resources = {
       "pricing.professional.features.4": "CRM集成（即将推出）",
       "pricing.professional.features.5": "优先WhatsApp支持",
       "pricing.professional.features.6": "自定义品牌选项",
-
-      // Enterprise Plan
       "pricing.enterprise.name": "企业版",
       "pricing.enterprise.price": "定制",
       "pricing.enterprise.description": "适合大型团队和特许经营",
@@ -408,12 +500,6 @@ const resources = {
       "pricing.enterprise.features.4": "白标解决方案",
       "pricing.enterprise.features.5": "SLA保证（99.9%正常运行时间）",
       "pricing.enterprise.features.6": "24/7电话+WhatsApp支持",
-
-      "pricing.cta.trial": "免费试用",
-      "pricing.cta.contact": "联系销售",
-      "pricing.guarantee.title": "335% 投资回报率保证",
-      "pricing.guarantee.subtitle":
-        "如果Bijou未能为您节省至少3倍订阅费用，我们将100%退款",
 
       // Case Studies Section
       "cases.title": "真实成果",
@@ -479,19 +565,19 @@ const resources = {
 
       // Hero Section
       "hero.badge":
-        "🎯 முதல் 100 வாடிக்கையாளர்கள்: RM159/மாதம் (வரையறுக்கப்பட்ட காலம்)",
-      "hero.title.part1": "உங்கள்",
-      "hero.title.savingsAmount": "RM9,201/மாதம்",
-      "hero.title.part2": "24/7 டிஜிட்டல் ஊழியர்",
-      "hero.title.priceAmount": "வெறும் RM159",
+        "🚀 RM0-இல் தொடங்கவும் — கிரெடிட் கார்டு தேவையில்லை, WABA தேவையில்லை",
+      "hero.title.part1": "உங்கள் WhatsApp",
+      "hero.title.savingsAmount": "இரவு 10 மணிக்கு offline.",
+      "hero.title.part2": "உங்கள் போட்டி வியாபாரிதர்களுக்கு",
+      "hero.title.priceAmount": "இல்லை.",
       "hero.subtitle.part1":
-        "காலை 2 மணிக்கு சரளமான Manglish-இல் விற்பனையை முடியுங்கள். உடனடியாக காட்சி சந்திப்புகளை பதிவு செய்யுங்கள். சொத்து தகவல் புத்தகங்களை தானாக அனுப்புங்கள்.",
-      "hero.subtitle.roi": "335% ROI",
-      "hero.subtitle.part2": "மலேசிய SMEக்களுக்கு உத்தரவாதம்.",
-      "hero.cta.trial": "இலவச சோதனை தொடங்கவும்",
+        "Bijou மலேசிய WhatsApp & Telegram-க்கான AI. Manglish-இல் தக்ஷணமாக பதில், Cal.com சந்திப்புகளை பதிவு செய்கிறது, leads தானாக தெரிவு செய்கிறது —",
+      "hero.subtitle.roi": "நீங்கள் தூங்கும்போது.",
+      "hero.subtitle.part2": "",
+      "hero.cta.trial": "இலவசமாக தொடங்குங்கள் — RM0",
       "hero.cta.demo": "டெமோ பதிவு செய்யவும்",
       "hero.trustFooter":
-        "✅ 14 நாள் இலவச சோதனை • ✅ RM159 வெளியீட்டு விலை • ✅ 335% ROI உத்தரவாதம்",
+        "✅ 30 நாள் பண திரும்பி உத்தரவாதம் · ✅ WABA தேவையில்லை · ✅ எப்போதும் ரத்து செய்யலாம்",
       "hero.trustedBy": "நம்பிக்கை & ஆதரவு",
       "hero.trust.mdec": "MDEC",
       "hero.trust.cradle": "Cradle",
@@ -511,15 +597,57 @@ const resources = {
         "ஜூனியர் வாடிக்கையாளர் சேவை அதிகாரியுடன் ஒப்பிடும்போது",
       "hero.roiCard.roi": "335% ROI",
 
-      // Pricing Section
-      "pricing.badge": "💎 வரையறுக்கப்பட்ட கால சலுகை",
-      "pricing.title": "எளிய, வெளிப்படையான விலை",
-      "pricing.subtitle.part1": "",
-      "pricing.subtitle.trial": "14 நாள் இலவச சோதனை",
+      // விலை பிரிவு — ஒற்றை PRO திட்டம் (RM 249/மாதம், மார்ச் 2026 புதுப்பிக்கப்பட்டது)
+      "pricing.badge": "💎 நேர்மையான, எளிய விலை",
+      "pricing.title": "ஒரே ஒரு திட்டம். இப்போது உள்ள அனைத்தும்.",
+      "pricing.subtitle.part1": "உத்தரவாதம்:",
+      "pricing.subtitle.trial": "30 நாள் பணத்திரும்ப உத்தரவாதம்",
       "pricing.subtitle.part2":
-        " உடன் தொடங்குங்கள். கிரெடிட் கார்டு தேவையில்லை. எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்.",
+        ". ஒப்பந்தம் இல்லை. எப்போது வேண்டுமானாலும் ரத்து செய்யலாம்.",
 
-      // Starter Plan
+      // PRO திட்டம் — ஒற்றை நிலை
+      "pricing.pro.name": "PRO",
+      "pricing.pro.price": "299",
+      "pricing.pro.yearlyPrice": "2,990",
+      "pricing.pro.yearlySaving": "RM598 சேமிக்கவும் — 2 மாதங்கள் இலவசம்",
+      "pricing.pro.description":
+        "எந்த வாய்ப்பும் தவற விடாமல் இருக்க தேவையான அனைத்தும்",
+      "pricing.pro.badge": "ஒரே ஒரு திட்டம்",
+      "pricing.pro.features.0":
+        "WhatsApp AI — WABA இல்லாமல், Meta கட்டணம் இல்லாமல்",
+      "pricing.pro.features.1": "Telegram AI — ஒரே மூளை, ஒரே Manglish",
+      "pricing.pro.features.2": "மாதத்திற்கு 3,000 உரையாடல்கள் (~100/நாள்)",
+      "pricing.pro.features.3": "முழு TRACE AI — 4-முகவர் பச்சாதாப குழாய்",
+      "pricing.pro.features.4": "Manglish + EN / BM / மண்டரின் / தமிழ்",
+      "pricing.pro.features.5":
+        "Cal.com தேர்வு — பதிவு, சரிபார்க்கல், ரத்து செய்யலாம்",
+      "pricing.pro.features.6":
+        "பதிவு உறுதிப்படுத்தல் மின்னஞ்சல் தானாக அனுப்பப்படும்",
+      "pricing.pro.features.7":
+        "லீட் தகுதி — Hot / Warm / Cold தானியக்க கண்டறிதல்",
+      "pricing.pro.features.8":
+        "எஸ்கலேஷன் எமைல் — AI தடுமாறும்போது மின்னஞ்சல் வரும்",
+      "pricing.pro.features.9": "அறிவுத் தளம் — 50 FAQ / மேல் 2 ஆவணங்கள்",
+      "pricing.pro.betaFeature": "",
+      "pricing.pro.earlyAccessNote":
+        "Pro வாடிக்கையாளர்கள் புதிய அம்சங்கள் வெளியிடப்படும்போது இலவச ஆரம்ப அணுகல் பெறுவார்கள்.",
+
+      // சேர்க்கை வரைபடம்
+      "pricing.addons.title": "Q2–Q4 2026-இல் வரவிருக்கும் (கட்டண சேர்க்கைகள்)",
+      "pricing.addons.subtitle":
+        "ஒவ்வொரு புதிய அம்சமும் = வருவாய் நிகழ்வு. Pro வாடிக்கையாளர்கள் முதலில் இலவசமாக பெறுவார்கள்.",
+
+      "pricing.cta.trial": "30 நாள் சோதனை தொடங்கவும்",
+      "pricing.cta.contact": "விற்பனையைத் தொடர்பு கொள்ளவும்",
+      "pricing.cta.enterprise": "எங்களை தொடர்பு கொள்ளுங்கள் →",
+      "pricing.cta.enterprisePrompt":
+        "பல பயனர்கள், பல எண்கள், அல்லது தனிப்பயன் அமைப்பு தேவையா?",
+
+      "pricing.guarantee.title": "30 நாள் பணத்திரும்ப உத்தரவாதம்",
+      "pricing.guarantee.subtitle":
+        "30 நாட்களில் Bijou பலன் தரவில்லை என்றால், கேள்வியின்றி 100% திரும்பப் பெறுவோம்",
+
+      // பழைய விசைகள் — rollback குறிப்புக்காக வைக்கப்பட்டுள்ளன, இனி பயன்படுத்தப்படவில்லை
       "pricing.starter.name": "தொடக்கம்",
       "pricing.starter.price": "159",
       "pricing.starter.originalPrice": "499",
@@ -535,8 +663,6 @@ const resources = {
       "pricing.starter.features.3": "சொத்து தகவல் புத்தக தானியங்கு",
       "pricing.starter.features.4": "நிலையான பகுப்பாய்வு",
       "pricing.starter.features.5": "மின்னஞ்சல் ஆதரவு",
-
-      // Professional Plan
       "pricing.professional.name": "தொழில்முறை",
       "pricing.professional.price": "299",
       "pricing.professional.originalPrice": "799",
@@ -554,8 +680,6 @@ const resources = {
       "pricing.professional.features.4": "CRM ஒருங்கிணைப்பு (விரைவில் வரும்)",
       "pricing.professional.features.5": "முன்னுரிமை WhatsApp ஆதரவு",
       "pricing.professional.features.6": "தனிப்பயன் பிராண்டிங் விருப்பங்கள்",
-
-      // Enterprise Plan
       "pricing.enterprise.name": "நிறுவனம்",
       "pricing.enterprise.price": "தனிப்பயன்",
       "pricing.enterprise.description": "பெரிய குழுக்கள் & உரிமையாளர்களுக்கு",
@@ -568,12 +692,6 @@ const resources = {
       "pricing.enterprise.features.4": "வெள்ளை-லேபிள் தீர்வு",
       "pricing.enterprise.features.5": "SLA உத்தரவாதம் (99.9% uptime)",
       "pricing.enterprise.features.6": "24/7 தொலைபேசி + WhatsApp ஆதரவு",
-
-      "pricing.cta.trial": "இலவச சோதனை தொடங்கவும்",
-      "pricing.cta.contact": "விற்பனையைத் தொடர்பு கொள்ளவும்",
-      "pricing.guarantee.title": "335% ROI உத்தரவாதம்",
-      "pricing.guarantee.subtitle":
-        "Bijou குறைந்தபட்சம் உங்கள் சந்தா கட்டணத்தின் 3x சேமிக்கவில்லை என்றால், நாங்கள் 100% திரும்பப் பெறுவோம்",
 
       // Case Studies Section
       "cases.title": "உண்மையான முடிவுகள்",

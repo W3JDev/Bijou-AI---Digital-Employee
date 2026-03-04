@@ -101,7 +101,7 @@ export const LeadCaptureModal: React.FC<LeadCaptureModalProps> = ({
                   >
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-6">
                       <Sparkles className="w-3.5 h-3.5" />
-                      14-Day Free Trial
+                      Start Free — RM0
                     </div>
 
                     <h3 className="text-3xl font-display font-bold text-white mb-2">

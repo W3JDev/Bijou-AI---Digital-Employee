@@ -29,7 +29,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
           Ready to Stop Losing Leads?
         </h2>
         <p className="text-xl text-gray-300 mb-10 font-light">
-          14-day free trial. No credit card. Cancel anytime.
+          Start free — RM0. 30-day money-back. No credit card. Cancel anytime.
         </p>
 
         <button
@@ -58,8 +58,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
               What happens after the trial?
             </h4>
             <p className="text-sm text-gray-400 leading-relaxed">
-              It's RM159/month. You can cancel anytime with one click. No
-              long-term contracts.
+              It's RM299/month (or RM2,990/year). You can cancel anytime with
+              one click. No long-term contracts.
             </p>
           </div>
           <div>
@@ -142,8 +142,9 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
                     </div>
 
                     <p className="text-gray-300 mb-6 leading-relaxed">
-                      Jump straight into your 14-day free trial. Perfect if
-                      you're ready to test Bijou with your leads immediately.
+                      Start free at RM0 — no credit card, no WABA required. Get
+                      set up in minutes and test Bijou with your leads
+                      immediately.
                     </p>
 
                     <div className="space-y-2 text-sm text-gray-400 mb-6">

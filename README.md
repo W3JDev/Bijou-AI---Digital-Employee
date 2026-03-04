@@ -1,6 +1,6 @@
 # Bijou AI Enterprise — WhatsApp AI Sales & Support Platform 🇲🇾
 
-![Status](https://img.shields.io/badge/Status-Production_v3.2.0-success)
+![Status](https://img.shields.io/badge/Status-Production_v4.0.0-success)
 ![License](https://img.shields.io/badge/License-Proprietary-red)
 ![Tech](https://img.shields.io/badge/Stack-React_19_|_TypeScript_|_Vite-blue)
 ![Made by](https://img.shields.io/badge/Made_by-W3J_LLC-gold)
@@ -11,7 +11,21 @@ This repository contains the **landing page** for Bijou AI at [mybijou.xyz](http
 
 ---
 
-## ✨ What's New in v3.2.0 (Feb 2026)
+## ✨ What's New in v4.0.0 (March 2026)
+
+| Feature                         | Detail                                                                                 |
+| ------------------------------- | -------------------------------------------------------------------------------------- |
+| **Single PRO Tier — RM299**     | Retired 3-tier model. One flat plan: RM299/month or RM2,990/year (save RM598)          |
+| **Telegram Included**           | Telegram bot now bundled in PRO — no longer a paid add-on                              |
+| **Cal.com Live**                | Cal.com appointment booking fully live (removed Beta label)                            |
+| **PainSection component**       | New conversion section: real competitor reviews flip to Bijou differentiators          |
+| **Early Adopter counter**       | Pulsing price-lock badge in pricing card — "7 of 10 spots remaining"                   |
+| **Zero Hidden Fees strip**      | ✕ WABA markup ✕ per-message charges ✕ annual lock-in ✕ bot-wall — all called out in UI |
+| **New hero headline**           | "Your WhatsApp goes offline at 10pm. Your competitors' doesn't."                       |
+| **Email booking confirmations** | Transactional booking confirmation emails live                                         |
+| **Escalation email alerts**     | Human escalation alerts via email live                                                 |
+
+### ✨ What's New in v3.2.0 (Feb 2026)
 
 | Feature                     | Detail                                                                  |
 | --------------------------- | ----------------------------------------------------------------------- |
@@ -38,13 +52,11 @@ This repository contains the **landing page** for Bijou AI at [mybijou.xyz](http
 
 ## 💰 Pricing
 
-| Plan             | Launch Price | Original            | Trial         |
-| ---------------- | ------------ | ------------------- | ------------- |
-| **Starter**      | RM159/month  | ~~RM499~~ (68% off) | 14 days free  |
-| **Professional** | RM299/month  | ~~RM799~~ (63% off) | 14 days free  |
-| **Enterprise**   | Custom       | —                   | Contact sales |
+| Plan       | Monthly     | Annual (save RM598) | Includes                                         |
+| ---------- | ----------- | ------------------- | ------------------------------------------------ |
+| **PRO** ⭐ | RM299/month | RM2,990/year        | WhatsApp + Telegram + Cal.com + CRM + Escalation |
 
-> ⚠️ Launch pricing limited to first 100 customers. No credit card required for trial.
+> 🔒 Early Adopter Price Lock — 7 of 10 spots remaining. Price locked forever for founding customers. No credit card required. 30-day money-back guarantee.
 
 ---
 
@@ -147,8 +159,9 @@ This is a **static frontend** - no API keys needed for the landing page. The liv
 bijou-ai/
 ├── components/              # React UI Components
 │   ├── Navbar.tsx          # Navigation with modal triggers
-│   ├── Hero.tsx            # Hero section with ROI messaging
-│   ├── Pricing.tsx         # 3-tier pricing component
+│   ├── Hero.tsx            # Hero section — "WhatsApp offline at 10pm" headline
+│   ├── PainSection.tsx     # Competitor pain quotes → Bijou flip (conversion)
+│   ├── Pricing.tsx         # Single PRO tier — RM299/month with early adopter counter
 │   ├── RevenueCalculator.tsx  # Interactive ROI calculator
 │   ├── CaseStudies.tsx     # Malaysian testimonials
 │   ├── FinalCTA.tsx        # Lead capture CTA
@@ -209,16 +222,17 @@ npm run build
 
 ### Target Markets
 
-1. **Malaysia** - Home market, RM159 pricing, FPX/DuitNow payments
+1. **Malaysia** - Home market, RM299 PRO pricing, FPX/DuitNow payments
 2. **Dubai/UAE** - 87% WhatsApp penetration, property agents
 3. **Singapore** - Premium SEA hub, SGD pricing
 4. **Bangladesh** - Origin market advantage
 
 ### Success Metrics
 
-- **0 → 7 Malaysian customers** = RM1,113/month baseline runway
-- **10 Dubai Pro customers** = USD international revenue
-- **Target:** RM 1.08M ARR by December 2026
+- **10 PRO customers** = RM2,990/month baseline runway (RM299 × 10)
+- **50 PRO customers** = RM14,950/month → RM179,400 ARR
+- **Target:** RM 1.08M ARR by December 2026 (~300 customers)
+- **No credit card at signup** — 30-day money-back as conversion lever
 
 ---
 

@@ -14,7 +14,7 @@ export const RevenueCalculator: React.FC<RevenueCalculatorProps> = ({
   const annualLoss = Math.floor(
     inquiries * (missedRate / 100) * commission * 12,
   );
-  const bijouCost = 159 * 12; // Updated to RM159/month
+  const bijouCost = 299 * 12; // RM299/month PRO plan
   const roi = Math.floor(((annualLoss - bijouCost) / bijouCost) * 100);
 
   return (

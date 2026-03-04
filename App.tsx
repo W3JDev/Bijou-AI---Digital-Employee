@@ -8,6 +8,7 @@ import { Hero } from "./components/Hero";
 import { HowItWorks } from "./components/HowItWorks";
 import { Navbar } from "./components/Navbar";
 import { OnboardingModal } from "./components/OnboardingModal";
+import { PainSection } from "./components/PainSection";
 import { Playbooks } from "./components/Playbooks";
 import { Pricing } from "./components/Pricing";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
@@ -70,6 +71,7 @@ export default function App() {
         />
         <main>
           <Hero onOpenModal={() => openModal("signup", "hero")} />
+          <PainSection />
           <Features />
           <ViralPillars
             onOpenModal={() => openModal("signup", "viral_pillars")}

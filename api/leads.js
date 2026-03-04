@@ -65,7 +65,7 @@ function emailBase(headerContent, bodyContent) {
                   <td width="40" style="vertical-align:top;padding-top:2px;"><span style="font-size:20px;">🚀</span></td>
                   <td style="padding-bottom:16px;">
                     <p style="margin:0 0 4px;font-size:14px;font-weight:700;color:#fff;">Create Your Account</p>
-                    <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">14-day free trial, no credit card required</p>
+                    <p style="margin:0 0 6px;font-size:13px;color:#94a3b8;">30-day money-back guarantee, no credit card required</p>
                     <a href="https://app.mybijou.xyz/signup" style="color:#10b981;font-size:13px;font-weight:600;text-decoration:none;">app.mybijou.xyz/signup →</a>
                   </td>
                 </tr>
@@ -167,7 +167,7 @@ function buildConfirmationEmail(name, company) {
       <a href="https://app.mybijou.xyz/signup" style="display:inline-block;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:14px 36px;border-radius:12px;">
         Start Free Trial →
       </a>
-      <p style="margin:10px 0 0;font-size:11px;color:#475569;">14-day free trial · No credit card · Cancel anytime</p>
+      <p style="margin:10px 0 0;font-size:11px;color:#475569;">30-day money-back · No credit card · Cancel anytime</p>
     </div>
 
     <!-- QR CODE -->

@@ -1,7 +1,7 @@
 {
   "name": "Bijou AI - Digital Employee",
   "short_name": "Bijou AI",
-  "description": "RM159/month Manglish Digital Employee for Malaysian SMEs. 24/7 WhatsApp automation that speaks fluent Manglish and closes sales while you sleep.",
+  "description": "RM299/month WhatsApp & Telegram AI for Malaysian SMEs. Replies in Manglish, books Cal.com appointments, and captures leads 24/7 while you sleep.",
   "start_url": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
