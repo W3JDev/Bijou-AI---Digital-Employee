@@ -292,7 +292,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
           </p>
         </motion.div>
 
-        {/* Add-ons Roadmap */}
+        {/* Roadmap & Add-ons */}
         <div id="roadmap" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -302,40 +302,76 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
           className="glass-panel-3d rounded-3xl p-8 border border-white/10 mb-12"
         >
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-white mb-2">
+            <div className="inline-block px-3 py-1 mb-3 rounded-full bg-purple-500/10 border border-purple-400/20 text-purple-400 text-xs font-bold uppercase tracking-wider">
+              Product Roadmap
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
               {t("pricing.addons.title")}
             </h3>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
               {t("pricing.addons.subtitle")}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {addOns.map((addon, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white/5 border border-white/[0.08] rounded-xl p-4 hover:border-gold-400/20 transition-colors"
-              >
-                <p className="text-white text-sm font-semibold leading-snug mb-2">
-                  🚧 {addon.name}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-500 text-xs">{addon.when}</span>
-                  <span className="text-gold-400 text-xs font-bold">
-                    {addon.price}
-                  </span>
+          {/* Phase timeline */}
+          <div className="flex items-center gap-0 mb-8 overflow-x-auto pb-2">
+            {[
+              { phase: "Now",    label: "Live",   color: "bg-emerald-400", text: "text-emerald-400", border: "border-emerald-400/40" },
+              { phase: "Q2 2026", label: "Phase 5", color: "bg-blue-400",   text: "text-blue-400",   border: "border-blue-400/40" },
+              { phase: "Q3 2026", label: "Phase 6", color: "bg-purple-400", text: "text-purple-400", border: "border-purple-400/40" },
+              { phase: "Q4 2026", label: "Phase 7", color: "bg-orange-400", text: "text-orange-400", border: "border-orange-400/40" },
+            ].map((p, i) => (
+              <React.Fragment key={i}>
+                <div className={`flex-shrink-0 flex flex-col items-center gap-1 px-4 py-2 rounded-xl border ${p.border} bg-white/5`}>
+                  <span className={`text-[10px] font-black uppercase tracking-widest ${p.text}`}>{p.label}</span>
+                  <span className="text-white text-xs font-bold">{p.phase}</span>
                 </div>
-              </motion.div>
+                {i < 3 && <div className="flex-1 h-px bg-white/10 min-w-[20px]" />}
+              </React.Fragment>
             ))}
           </div>
 
-          <p className="text-center text-emerald-400 text-xs font-semibold mt-6">
-            ✅ Pro customers get early access FREE when each feature ships
-          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {addOns.map((addon, i) => {
+              const phaseColors: Record<string, string> = {
+                "Q2 2026": "border-blue-400/20 hover:border-blue-400/40",
+                "Q3 2026": "border-purple-400/20 hover:border-purple-400/40",
+                "Q4 2026": "border-orange-400/20 hover:border-orange-400/40",
+              };
+              const timeBadge: Record<string, string> = {
+                "Q2 2026": "text-blue-400",
+                "Q3 2026": "text-purple-400",
+                "Q4 2026": "text-orange-400",
+              };
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className={`bg-white/5 border rounded-xl p-4 transition-colors ${phaseColors[addon.when] ?? "border-white/10"}`}
+                >
+                  <p className="text-white text-sm font-semibold leading-snug mb-3">
+                    {addon.name}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className={`text-[10px] font-bold uppercase tracking-wider ${timeBadge[addon.when] ?? "text-gray-500"}`}>{addon.when}</span>
+                    <span className="text-gold-400 text-xs font-bold">{addon.price}</span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 pt-5 border-t border-white/5">
+            <p className="text-emerald-400 text-xs font-semibold">
+              ✅ Pro customers get first access — free during trial period when each feature ships
+            </p>
+            <p className="text-gray-500 text-xs">
+              Roadmap subject to change. No delivery dates guaranteed.
+            </p>
+          </div>
         </motion.div>
 
         {/* Money-Back Guarantee */}

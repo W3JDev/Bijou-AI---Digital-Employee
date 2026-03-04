@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CaseStudies } from "./components/CaseStudies";
+import { ComparisonTable } from "./components/ComparisonTable";
 import { DemoChat } from "./components/DemoChat";
 import { FAQ } from "./components/FAQ";
 import { Features } from "./components/Features";
@@ -73,6 +74,7 @@ export default function App() {
           <Hero onOpenModal={() => openModal("signup", "hero")} />
           <PainSection />
           <Features />
+          <ComparisonTable />
           <ViralPillars
             onOpenModal={() => openModal("signup", "viral_pillars")}
           />

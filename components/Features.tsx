@@ -1,156 +1,402 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IconCommunication, IconIntelligence, IconAutomation, IconSecurity } from './Icons';
-import { Scan, ShieldCheck, Lock, TrendingUp, FileImage, Sliders, Server, EyeOff, FileKey } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  MessageCircle,
+  Send,
+  Brain,
+  Languages,
+  CalendarCheck,
+  Bell,
+  BookOpen,
+  UserCheck,
+  Shield,
+  ChevronDown,
+  Server,
+  EyeOff,
+  FileKey,
+  ShieldCheck,
+} from "lucide-react";
 
+// --- Interactive Widgets ---
+const ManglishDialWidget = () => {
+  const [level, setLevel] = useState(50);
+  const responses = [
+    "Good morning. How may I assist you today?",
+    "Hi boss, can I help you find something?",
+    "Walao boss! What you need? I settle for you fast fast lah!",
+  ];
+  const tier = level < 33 ? 0 : level < 66 ? 1 : 2;
+  return (
+    <div className="w-full flex flex-col gap-3 px-1">
+      <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-500">
+        <span>Corporate</span>
+        <span>Full Manglish</span>
+      </div>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value={level}
+        onChange={(e) => setLevel(parseInt(e.target.value))}
+        className="w-full h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+      />
+      <div className="bg-[#1a2530] p-3 rounded-lg border border-white/5 relative">
+        <div className="absolute -top-2 left-4 w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[5px] border-b-[#1a2530]" />
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={tier}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.2 }}
+            className="text-sm text-emerald-100 italic"
+          >
+            &quot;{responses[tier]}&quot;
+          </motion.p>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
+
+const TraceWidget = () => {
+  const steps = [
+    { label: "Emotion", bg: "bg-rose-500/10 border-rose-500/20", dot: "bg-rose-400", color: "text-rose-400" },
+    { label: "Cause",   bg: "bg-amber-500/10 border-amber-500/20", dot: "bg-amber-400", color: "text-amber-400" },
+    { label: "Plan",    bg: "bg-blue-500/10 border-blue-500/20",   dot: "bg-blue-400",  color: "text-blue-400" },
+    { label: "Respond", bg: "bg-emerald-500/10 border-emerald-500/20", dot: "bg-emerald-400", color: "text-emerald-400" },
+  ];
+  return (
+    <div className="flex items-center gap-1.5 w-full flex-wrap">
+      {steps.map((s, i) => (
+        <React.Fragment key={i}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: i * 0.15 }}
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-bold ${s.bg} ${s.color}`}
+          >
+            <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
+            {s.label}
+          </motion.div>
+          {i < steps.length - 1 && <span className="text-gray-600 text-xs">&#8594;</span>}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
+const CalWidget = () => (
+  <div className="space-y-2 w-full">
+    {[
+      { time: "Tomorrow 10am", status: "Confirmed", color: "text-emerald-400", icon: "✅" },
+      { time: "Fri 2pm",       status: "Available", color: "text-blue-400",    icon: "📅" },
+      { time: "Sat 11am",      status: "Taken",     color: "text-red-400",     icon: "❌" },
+    ].map((slot, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, x: -10 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: i * 0.1 }}
+        className="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2 border border-white/5"
+      >
+        <span className="text-gray-300 text-xs">{slot.time}</span>
+        <span className={`text-xs font-semibold ${slot.color}`}>{slot.icon} {slot.status}</span>
+      </motion.div>
+    ))}
+  </div>
+);
+
+const SecurityWidget = () => (
+  <div className="grid grid-cols-2 gap-2 w-full">
+    {[
+      { icon: <Server className="w-4 h-4" />,    label: "Row-Level Security", color: "text-blue-400" },
+      { icon: <ShieldCheck className="w-4 h-4" />, label: "PDPA Ready",       color: "text-emerald-400" },
+      { icon: <EyeOff className="w-4 h-4" />,    label: "Data Isolation",     color: "text-purple-400" },
+      { icon: <FileKey className="w-4 h-4" />,   label: "AES-256",            color: "text-orange-400" },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2.5 border border-white/5 gap-1"
+      >
+        <span className={item.color}>{item.icon}</span>
+        <span className="text-[10px] text-gray-400 text-center leading-tight">{item.label}</span>
+      </div>
+    ))}
+  </div>
+);
+
+const EscalationWidget = () => {
+  const [triggered, setTriggered] = useState(false);
+  return (
+    <div className="w-full space-y-2">
+      <div className="bg-[#1a2530] rounded-lg p-2.5 border border-white/5 space-y-1.5">
+        <div className="flex gap-2 items-start">
+          <span className="text-[10px] text-gray-500 shrink-0">Customer:</span>
+          <span className="text-xs text-gray-300 italic">&quot;This is the third time I am asking. No one is helping!&quot;</span>
+        </div>
+        <div className="flex gap-2 items-start">
+          <span className="text-[10px] text-emerald-400 font-bold shrink-0">Bijou:</span>
+          <span className="text-xs text-gray-300 italic">&quot;I am escalating you to our team right now boss.&quot;</span>
+        </div>
+      </div>
+      <button
+        onClick={() => setTriggered(true)}
+        className="w-full text-xs py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold transition-all hover:bg-amber-500/20"
+      >
+        {triggered ? "📧 Owner Notified via Email ✓" : "Simulate Escalation →"}
+      </button>
+    </div>
+  );
+};
+
+// --- Feature Definitions ---
 const features = [
   {
-    icon: <IconCommunication className="w-12 h-12" />,
-    title: "Manglish Intensity Control",
-    description: "Not every brand speaks 'Pasar Malam'. Adjust Bijou's tone from Corporate Professional to Full Manglish Casual.",
-    exampleType: 'dial'
+    icon: <MessageCircle className="w-5 h-5" />,
+    color: "emerald",
+    badge: "Live Now",
+    title: "WhatsApp AI Agent",
+    subtitle: "No WABA. No Meta fees. No markups.",
+    description:
+      "Connect your existing WhatsApp number in minutes via QR scan. No Facebook Business Manager, no WABA application, no RM0.05/message Meta fees. Bijou handles inbound queries flat at RM299/mo.",
+    bullets: ["Scan QR → live in 15 min", "No per-conversation charges", "No Meta markup ever"],
+    widget: null,
   },
   {
-    icon: <IconSecurity className="w-12 h-12" />,
-    title: "Enterprise-Grade Security",
-    description: "Fully PDPA & GDPR Compliant. We use Row-Level Security (RLS) to ensure your customer data is isolated and encrypted.",
-    exampleType: 'security_enterprise'
-  }
+    icon: <Send className="w-5 h-5" />,
+    color: "blue",
+    badge: "Live Now",
+    title: "Telegram AI Agent",
+    subtitle: "Same brain. Second channel. Included free.",
+    description:
+      "The same AI, knowledge base and Manglish personality runs simultaneously on Telegram at no extra cost. Reach customers on whichever app they prefer.",
+    bullets: ["Included in Pro — no extra fee", "Same TRACE engine and knowledge base", "Independent channel, unified setup"],
+    widget: null,
+  },
+  {
+    icon: <Brain className="w-5 h-5" />,
+    color: "purple",
+    badge: "Unique to Bijou",
+    title: "TRACE Empathy Engine",
+    subtitle: "4-agent pipeline. Not just a keyword matcher.",
+    description:
+      "Every message runs through 4 specialist AI agents in sequence: emotion detection → causal analysis → response planning → human-like synthesis. The result feels human — not scripted.",
+    bullets: ["Detects frustration before it escalates", "Understands context, not just keywords", "Answers only from your data — no hallucination"],
+    widget: <TraceWidget />,
+  },
+  {
+    icon: <Languages className="w-5 h-5" />,
+    color: "gold",
+    badge: "Unique to Bijou",
+    title: "Manglish Engine",
+    subtitle: "Can lah. Got or not? Sorted.",
+    description:
+      "20+ regex patterns handle Malaysian code-switching natively — BM, English, Mandarin, Tamil and Manglish blended naturally. Adjust tone from full corporate to full pasar malam.",
+    bullets: ["English, Malay, Mandarin, Tamil", "Tone slider: formal to full Manglish", "No robotic 'Certainly, I can assist you'"],
+    widget: <ManglishDialWidget />,
+  },
+  {
+    icon: <CalendarCheck className="w-5 h-5" />,
+    color: "cyan",
+    badge: "Live Now",
+    title: "Cal.com Booking",
+    subtitle: "Book, check, cancel — all via WhatsApp chat.",
+    description:
+      "Full two-way calendar integration via Cal.com. Customers book appointments, check availability and cancel — entirely through a WhatsApp or Telegram conversation. No links, no forms.",
+    bullets: ["Book, check & cancel via chat", "Automated email confirmation sent to customer", "Zero dev work needed"],
+    widget: <CalWidget />,
+  },
+  {
+    icon: <Bell className="w-5 h-5" />,
+    color: "amber",
+    badge: "Live Now",
+    title: "Smart Escalation Alerts",
+    subtitle: "You are emailed before the customer rage-quits.",
+    description:
+      "Bijou detects frustration signals, 3+ unanswered questions and explicit human requests — then instantly emails you the full conversation thread. Never miss a hot lead or angry customer.",
+    bullets: ["Frustration detection built-in", "Full conversation context in alert email", "Custom domain email (Growth plan)"],
+    widget: <EscalationWidget />,
+  },
+  {
+    icon: <BookOpen className="w-5 h-5" />,
+    color: "rose",
+    badge: "Live Now",
+    title: "Knowledge Base",
+    subtitle: "Your FAQs. Your voice. Zero hallucination.",
+    description:
+      "Upload up to 50 FAQs and 2 documents. Bijou answers only from what you have taught it — no making things up. Update an FAQ and the AI knows instantly, no retraining required.",
+    bullets: ["50 FAQs + 2 document uploads (Pro)", "Instant updates — no retraining", "AI stays in-lane, never guesses"],
+    widget: null,
+  },
+  {
+    icon: <UserCheck className="w-5 h-5" />,
+    color: "emerald",
+    badge: "Live Now",
+    title: "Lead Qualification",
+    subtitle: "Hot, warm, cold — tagged automatically.",
+    description:
+      "Bijou probes for budget, timeline and intent naturally in conversation. Every lead is tagged automatically so you know exactly who to call back first.",
+    bullets: ["Budget + timeline detection", "Hot / warm / cold tagging", "Included in escalation alert summary"],
+    widget: null,
+  },
+  {
+    icon: <Shield className="w-5 h-5" />,
+    color: "blue",
+    badge: "Enterprise-Grade",
+    title: "PDPA-Ready Security",
+    subtitle: "Your data. Fully isolated. Always.",
+    description:
+      "Row-Level Security means your customer data is 100% isolated from every other Bijou tenant. AES-256 encryption at rest. PDPA and GDPR compliant. Hosted on Fly.io Singapore region.",
+    bullets: ["Row-level multi-tenant data isolation", "AES-256 + PDPA + GDPR ready", "99.9% uptime — Singapore region"],
+    widget: <SecurityWidget />,
+  },
 ];
 
-// --- Widget: Manglish Dial ---
-const ManglishDialWidget = () => {
-    const [level, setLevel] = useState(50);
-    const [text, setText] = useState("Hi boss, can I help you?");
-
-    const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const val = parseInt(e.target.value);
-        setLevel(val);
-        if (val < 33) setText("Good morning. How may I assist you today?");
-        else if (val < 66) setText("Hi boss, can I help you find something?");
-        else setText("Walao boss! What you need? I settle for you fast fast. 🚀");
-    };
-
-    return (
-        <div className="w-full h-full min-h-[140px] flex flex-col justify-center px-6 gap-4">
-            <div className="flex justify-between text-xs font-bold uppercase tracking-wider text-gray-500">
-                <span>Formal</span>
-                <span>Casual</span>
-            </div>
-            <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                value={level} 
-                onChange={handleSliderChange}
-                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-            />
-            <div className="bg-[#202c33] p-3 rounded-lg border border-white/5 relative">
-                <div className="absolute -top-2 left-3 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[6px] border-b-[#202c33]"></div>
-                <p className="text-sm text-emerald-100 italic transition-all duration-300">"{text}"</p>
-            </div>
-        </div>
-    );
+// Color token map (static Tailwind classes — never dynamic)
+const colorMap: Record<string, { icon: string; badge: string; badgeBg: string; glow: string; bullet: string }> = {
+  emerald: { icon: "text-emerald-400", badge: "text-emerald-400", badgeBg: "bg-emerald-500/10 border-emerald-500/20", glow: "bg-emerald-500/8",  bullet: "bg-emerald-400" },
+  blue:    { icon: "text-blue-400",    badge: "text-blue-400",    badgeBg: "bg-blue-500/10 border-blue-500/20",       glow: "bg-blue-500/8",    bullet: "bg-blue-400" },
+  purple:  { icon: "text-purple-400",  badge: "text-purple-400",  badgeBg: "bg-purple-500/10 border-purple-500/20",   glow: "bg-purple-500/8",  bullet: "bg-purple-400" },
+  gold:    { icon: "text-yellow-400",  badge: "text-yellow-400",  badgeBg: "bg-yellow-500/10 border-yellow-500/20",   glow: "bg-yellow-500/8",  bullet: "bg-yellow-400" },
+  cyan:    { icon: "text-cyan-400",    badge: "text-cyan-400",    badgeBg: "bg-cyan-500/10 border-cyan-500/20",       glow: "bg-cyan-500/8",    bullet: "bg-cyan-400" },
+  amber:   { icon: "text-amber-400",   badge: "text-amber-400",   badgeBg: "bg-amber-500/10 border-amber-500/20",     glow: "bg-amber-500/8",   bullet: "bg-amber-400" },
+  rose:    { icon: "text-rose-400",    badge: "text-rose-400",    badgeBg: "bg-rose-500/10 border-rose-500/20",       glow: "bg-rose-500/8",    bullet: "bg-rose-400" },
 };
 
-// --- Widget: Enterprise Security ---
-const EnterpriseSecurityWidget = () => {
-    return (
-        <div className="w-full h-full min-h-[140px] grid grid-cols-2 gap-3 p-4">
-             <motion.div 
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(59, 130, 246, 0.3)" }}
-                className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2 border border-white/5 cursor-pointer transition-all"
-             >
-                <Server className="w-6 h-6 text-blue-400 mb-2 animate-pulse-slow" />
-                <span className="text-[10px] text-gray-400 text-center">Row-Level Security</span>
-             </motion.div>
-             <motion.div 
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(16, 185, 129, 0.3)" }}
-                className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2 border border-white/5 cursor-pointer transition-all"
-             >
-                <ShieldCheck className="w-6 h-6 text-emerald-400 mb-2 animate-pulse-slow" />
-                <span className="text-[10px] text-gray-400 text-center">PDPA Ready</span>
-             </motion.div>
-             <motion.div 
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(168, 85, 247, 0.3)" }}
-                className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2 border border-white/5 cursor-pointer transition-all"
-             >
-                <EyeOff className="w-6 h-6 text-purple-400 mb-2 animate-pulse-slow" />
-                <span className="text-[10px] text-gray-400 text-center">Data Isolation</span>
-             </motion.div>
-             <motion.div 
-                whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2 border border-white/5 cursor-pointer transition-all"
-             >
-                <FileKey className="w-6 h-6 text-orange-400 mb-2 animate-pulse-slow" />
-                <span className="text-[10px] text-gray-400 text-center">AES-256</span>
-             </motion.div>
-        </div>
-    );
-};
+const FeatureCard: React.FC<{ feature: typeof features[0]; index: number }> = ({ feature, index }) => {
+  const [open, setOpen] = useState(false);
+  const c = colorMap[feature.color] ?? colorMap.emerald;
 
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.45, delay: (index % 3) * 0.07 }}
+      className="group relative glass-panel-3d rounded-2xl border border-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden"
+    >
+      <div className={`absolute top-0 right-0 w-32 h-32 ${c.glow} rounded-full blur-[60px] pointer-events-none`} />
+
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full text-left p-5 flex items-start gap-4"
+      >
+        <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${c.icon}`}>
+          {feature.icon}
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border mb-1 ${c.badgeBg} ${c.badge}`}>
+            {feature.badge}
+          </span>
+          <h3 className="text-sm font-bold text-white leading-tight">{feature.title}</h3>
+          <p className="text-gray-500 text-xs mt-0.5">{feature.subtitle}</p>
+        </div>
+        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }} className="flex-shrink-0 mt-1">
+          <ChevronDown className="w-4 h-4 text-gray-500" />
+        </motion.div>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 space-y-4">
+              <div className="h-px bg-white/5" />
+              <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+              <ul className="space-y-1.5">
+                {feature.bullets.map((b, i) => (
+                  <li key={i} className="flex items-center gap-2.5 text-sm text-gray-300">
+                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.bullet}`} />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              {feature.widget && (
+                <div className="bg-black/30 rounded-xl border border-white/5 p-4">
+                  {feature.widget}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 export const Features: React.FC = () => {
   return (
     <section id="features" className="py-24 relative">
-      <div className="absolute inset-0 bg-dark-900/80 backdrop-blur-3xl z-0" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Localized & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Secure</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Built for the Malaysian market, secured for the Global Enterprise.
-          </p>
-        </div>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-emerald-900/6 rounded-full blur-[140px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-900/5 rounded-full blur-[120px]" />
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-block px-3 py-1 mb-4 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+            What You Actually Get
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Every Feature,{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+              Clearly Explained
+            </span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            No buzzwords. No vague icons. Click any feature below to see exactly what it does and how it works.
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-5 flex-wrap">
+            <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              All features are live and working today
+            </span>
+            <span className="text-gray-600 text-xs">·</span>
+            <span className="text-xs text-gray-500">No beta. No waitlist. No asterisk.</span>
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative group rounded-3xl p-[1px] overflow-hidden"
-            >
-              {/* Animated Gradient Border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-white via-red-500 to-blue-500 animate-shine opacity-30 group-hover:opacity-100 transition-opacity duration-700 bg-[length:200%_200%]" />
-              
-              {/* Inner Card Content */}
-              <div className="relative bg-dark-900/90 backdrop-blur-xl h-full p-8 md:p-10 rounded-3xl overflow-hidden flex flex-col">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-[50px] group-hover:bg-emerald-500/20 transition-all" />
-                  
-                  <div className="flex items-start justify-between mb-8 relative z-10">
-                    <div className="relative p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:border-emerald-500/40 transition-colors">
-                      <motion.div
-                        animate={{ 
-                           y: [0, -3, 0],
-                           filter: ["drop-shadow(0 0 5px rgba(16,185,129,0.1))", "drop-shadow(0 0 15px rgba(16,185,129,0.4))", "drop-shadow(0 0 5px rgba(16,185,129,0.1))"]
-                        }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 1 }}
-                      >
-                        {feature.icon}
-                      </motion.div>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-emerald-300 transition-colors relative z-10">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed mb-8 text-base relative z-10 flex-grow">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Dynamic Example Area */}
-                  <div className="bg-black/30 rounded-xl border-l-2 border-emerald-500/50 relative overflow-hidden group-hover:border-emerald-400 transition-colors min-h-[140px] flex items-center justify-center">
-                    {feature.exampleType === 'dial' && <ManglishDialWidget />}
-                    {feature.exampleType === 'security_enterprise' && <EnterpriseSecurityWidget />}
-                  </div>
-              </div>
-            </motion.div>
+            <FeatureCard key={index} feature={feature} index={index} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 glass-panel-3d rounded-2xl border border-white/[0.07] p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
+        >
+          {[
+            { value: "9",      label: "Live Features",       sub: "all working today" },
+            { value: "15 min", label: "Setup Time",          sub: "self-serve, no dev" },
+            { value: "3,000",  label: "Conversations/mo",    sub: "~100 per day" },
+            { value: "4",      label: "Languages Supported", sub: "EN · BM · 中文 · தமிழ்" },
+          ].map((stat, i) => (
+            <div key={i}>
+              <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                {stat.value}
+              </div>
+              <div className="text-white text-sm font-bold mt-1">{stat.label}</div>
+              <div className="text-gray-500 text-xs mt-0.5">{stat.sub}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
