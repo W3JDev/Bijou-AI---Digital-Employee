@@ -25,7 +25,11 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
         await fetch("/api/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email.trim(), source: "waitlist", name: "" }),
+          body: JSON.stringify({
+            email: email.trim(),
+            source: "waitlist",
+            name: "",
+          }),
         });
         setSubmitted(true);
       } catch {}
@@ -118,19 +122,31 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                 {/* Outer pulse ring */}
                 <motion.div
                   animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeOut",
+                  }}
                   className="absolute inset-0 rounded-xl bg-emerald-400/30 pointer-events-none"
                 />
                 <motion.button
                   onClick={handleChat}
                   disabled={submitting}
-                  whileHover={{ scale: 1.07, boxShadow: "0 0 28px rgba(16,185,129,0.55)" }}
+                  whileHover={{
+                    scale: 1.07,
+                    boxShadow: "0 0 28px rgba(16,185,129,0.55)",
+                  }}
                   whileTap={{ scale: 0.94 }}
                   className="relative flex items-center gap-1.5 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-black/60 border border-emerald-500/40 text-emerald-400 shadow-[0_0_14px_rgba(16,185,129,0.25)] transition-all disabled:opacity-60"
                 >
                   <motion.div
                     animate={{ rotate: [0, -8, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 3, ease: "easeInOut", repeatDelay: 1 }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 3,
+                      ease: "easeInOut",
+                      repeatDelay: 1,
+                    }}
                   >
                     <MessageCircle className="w-4 h-4" />
                   </motion.div>
