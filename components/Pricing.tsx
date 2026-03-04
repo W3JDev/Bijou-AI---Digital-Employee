@@ -1,7 +1,19 @@
 import { motion } from "framer-motion";
 import { Check, Crown, Lock, Zap } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+function getUrgencyMessage(remaining: number): string {
+  if (remaining >= 10) return "🎉 All 10 Early Adopter Spots Available";
+  if (remaining >= 8)
+    return `⏰ Price increases to RM399/mo after spot #${10 - remaining + 1} fills`;
+  if (remaining >= 5) return `🔥 Only ${remaining} spots left at RM299/mo`;
+  if (remaining >= 3) return `🚨 LAST ${remaining} SPOTS — Lock Your Rate Now!`;
+  if (remaining === 2)
+    return "⚡ 2 SPOTS LEFT — Price Jumps to RM399 After This!";
+  if (remaining === 1) return "🔴 FINAL SPOT — RM299 Rate Expires Tonight!";
+  return "✅ All Early Adopter Spots Claimed — New Price: RM399/mo";
+}
 
 interface PricingProps {
   onOpenModal: () => void;
@@ -24,6 +36,22 @@ const addOns = [
 
 export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
   const { t } = useTranslation();
+  const [spots, setSpots] = useState<{
+    remaining: number;
+    total: number;
+    spotsTotal: number;
+  } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/spots")
+      .then((r) => r.json())
+      .then((data) => setSpots(data))
+      .catch(() => setSpots({ remaining: 7, total: 3, spotsTotal: 10 }));
+  }, []);
+
+  const remaining = spots?.remaining ?? 7;
+  const spotsTotal = spots?.spotsTotal ?? 10;
+  const filledPct = Math.round(((spotsTotal - remaining) / spotsTotal) * 100);
 
   const liveFeatures = [
     t("pricing.pro.features.0"),
@@ -186,7 +214,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                 ))}
               </ul>
 
-              {/* Early Adopter Counter */}
+              {/* Early Adopter Counter — live from /api/spots */}
               <div className="border-t border-white/5 pt-4 mt-2">
                 <div className="flex items-center gap-3 bg-gold-500/10 border border-gold-400/30 rounded-xl px-4 py-3">
                   <motion.div
@@ -205,11 +233,18 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                       Early Adopter Price Lock
                     </div>
                     <div className="text-white text-xs font-semibold">
-                      <span className="text-gold-400">7 of 10 spots</span>{" "}
-                      remaining — price locked forever
+                      {getUrgencyMessage(remaining)}
                     </div>
                     <div className="mt-1.5 w-full bg-black/30 rounded-full h-1">
-                      <div className="bg-gradient-to-r from-gold-500 to-gold-300 h-1 rounded-full w-[70%]" />
+                      <motion.div
+                        className="bg-gradient-to-r from-gold-500 to-gold-300 h-1 rounded-full"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${filledPct}%` }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                      />
+                    </div>
+                    <div className="text-gold-400/60 text-[10px] mt-1">
+                      {spotsTotal - remaining} of {spotsTotal} spots claimed
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CaseStudies } from "./components/CaseStudies";
 import { DemoChat } from "./components/DemoChat";
+import { FAQ } from "./components/FAQ";
 import { Features } from "./components/Features";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
@@ -86,6 +87,7 @@ export default function App() {
             onOpenModal={() => openModal("signup", "case_studies")}
           />
           <DemoChat onOpenModal={() => openModal("demo", "demo_chat")} />
+          <FAQ />
           <FinalCTA
             onOpenModal={() => openModal("signup", "final_cta")}
             onOpenSlideDeck={() => setSlideDeckOpen(true)}
