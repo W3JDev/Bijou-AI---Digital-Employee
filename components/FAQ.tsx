@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, HelpCircle, Mail, MessageCircle } from "lucide-react";
+import { ChevronDown, Mail, MessageCircle } from "lucide-react";
 import React, { useState } from "react";
 
 interface FAQItem {
@@ -233,7 +233,7 @@ export const FAQ: React.FC = () => {
   return (
     <section
       id="faq"
-      className="py-32 relative overflow-hidden bg-gradient-to-b from-black/0 via-black/40 to-black/0"
+      className="py-24 relative overflow-hidden bg-gradient-to-b from-black/0 via-black/40 to-black/0"
     >
       {/* Background glows */}
       <div className="absolute inset-0 pointer-events-none">
@@ -245,34 +245,22 @@ export const FAQ: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full glass-panel-3d border border-gold-400/25 text-gold-400 text-xs font-black uppercase tracking-widest">
-            <HelpCircle className="w-3.5 h-3.5" />
-            Everything You Want To Know
+          <div className="inline-block px-3 py-1 mb-4 rounded-full bg-gold-500/10 border border-gold-400/20 text-gold-400 text-xs font-bold uppercase tracking-wider">
+            Got Questions?
           </div>
-          <h2 className="text-5xl md:text-6xl font-display font-extrabold mb-5 tracking-tight">
-            Frequently <span className="text-gradient-gold">Asked</span>{" "}
-            Questions
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Frequently Asked{" "}
+            <span className="text-gradient-gold">Questions</span>
           </h2>
-          <p className="text-gray-400 text-xl max-w-2xl mx-auto leading-relaxed">
-            Real answers from the Bijou team. No sales scripts, no vague
-            promises.
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Real answers from the Bijou team. No sales scripts, no vague promises.
           </p>
-          <div className="flex items-center justify-center gap-6 mt-6 text-sm text-gray-500">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-gold-400 rounded-full inline-block" />
-              {faqs.length} questions answered
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-emerald-400 rounded-full inline-block" />
-              Updated March 2026
-            </span>
-          </div>
         </motion.div>
 
         {/* Category Filter */}
@@ -281,7 +269,7 @@ export const FAQ: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-wrap gap-2.5 justify-center mb-12"
+          className="flex flex-wrap gap-2 justify-center mb-10"
         >
           {["All", ...categories].map((cat) => {
             const isActive = activeCategory === cat;
@@ -296,7 +284,7 @@ export const FAQ: React.FC = () => {
                   setActiveCategory(cat);
                   setOpenIndex(null);
                 }}
-                className={`px-5 py-2.5 rounded-full text-sm font-bold border transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all duration-200 ${
                   isActive ? activeClass : inactiveClass
                 }`}
               >
@@ -340,15 +328,15 @@ export const FAQ: React.FC = () => {
                   }`}
                 >
                   <button
-                    className="w-full text-left px-6 py-5 flex items-start gap-4"
+                    className="w-full text-left px-6 py-4 flex items-start gap-3"
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
                   >
                     <span
-                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2.5 ${dotClass} ${
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 ${dotClass} ${
                         isOpen ? "opacity-100" : "opacity-40"
                       }`}
                     />
-                    <span className="flex-1 font-semibold text-white text-base leading-snug">
+                    <span className="flex-1 font-semibold text-white text-sm leading-snug">
                       {item.q}
                     </span>
                     <ChevronDown
@@ -367,8 +355,8 @@ export const FAQ: React.FC = () => {
                         transition={{ duration: 0.28, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-6 pl-8 text-gray-300 text-sm leading-relaxed border-t border-white/5 pt-4">
-                          <span className="text-[9px] font-black uppercase tracking-widest text-gold-400/50 block mb-3">
+                        <div className="px-6 pb-5 pl-8 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-3">
+                          <span className="text-[9px] font-bold uppercase tracking-widest text-gold-400/50 block mb-2">
                             {item.category}
                           </span>
                           {item.a}
@@ -388,46 +376,39 @@ export const FAQ: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-16"
+          className="mt-12"
         >
-          <div className="relative rounded-3xl overflow-hidden border border-gold-400/20">
-            {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gold-900/25 via-black/60 to-emerald-900/15 pointer-events-none" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-gold-500/10 rounded-full blur-[80px] pointer-events-none" />
-
-            <div className="relative z-10 p-10 md:p-14">
-              <div className="flex flex-col md:flex-row md:items-center gap-8">
-                <div className="flex-1">
-                  <p className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">
-                    Still have a question?
-                  </p>
-                  <p className="text-gray-400 text-base">
-                    The founder replies personally. No bots, no waiting days for
-                    support tickets.
-                  </p>
-                  <div className="mt-4 flex items-center gap-3 text-sm text-gray-500">
-                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    Usually responds within 2 hours
-                  </div>
+          <div className="glass-panel-3d rounded-2xl p-8 border border-white/10">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-1">
+                <p className="text-xl font-bold text-white mb-2">
+                  Still have a specific question?
+                </p>
+                <p className="text-gray-400 text-sm">
+                  The founder replies personally — no bots, no support ticket queues.
+                </p>
+                <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                  Usually responds within 2 hours
                 </div>
-                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:w-56">
-                  <a
-                    href="https://api.whatsapp.com/send/?phone=60174106981&text=Hi+Jewel!+I+have+a+question+about+Bijou+AI."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded-xl transition-all shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] text-sm"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp Founder
-                  </a>
-                  <a
-                    href="mailto:jewel@mybijou.xyz"
-                    className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gold-500/15 border border-gold-400/30 hover:bg-gold-500/25 text-gold-300 font-bold rounded-xl transition-all text-sm"
-                  >
-                    <Mail className="w-4 h-4" />
-                    jewel@mybijou.xyz
-                  </a>
-                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://api.whatsapp.com/send/?phone=60174106981&text=Hi+Jewel!+I+have+a+question+about+Bijou+AI."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500/15 border border-emerald-400/30 text-emerald-400 hover:bg-emerald-500/25 rounded-xl text-sm font-semibold transition-all"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp Founder
+                </a>
+                <a
+                  href="mailto:jewel@mybijou.xyz"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gold-500/10 border border-gold-400/30 text-gold-400 hover:bg-gold-500/20 rounded-xl text-sm font-semibold transition-all"
+                >
+                  <Mail className="w-4 h-4" />
+                  jewel@mybijou.xyz
+                </a>
               </div>
             </div>
           </div>
