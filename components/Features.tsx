@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  MessageCircle,
-  Send,
-  Brain,
-  Languages,
-  CalendarCheck,
-  Bell,
-  BookOpen,
-  UserCheck,
-  Shield,
-  ChevronDown,
-  Server,
-  EyeOff,
-  FileKey,
-  ShieldCheck,
+    Bell,
+    BookOpen,
+    Brain,
+    CalendarCheck,
+    ChevronDown,
+    EyeOff,
+    FileKey,
+    Languages,
+    MessageCircle,
+    Send,
+    Server,
+    Shield,
+    ShieldCheck,
+    UserCheck,
 } from "lucide-react";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 // --- Interactive Widgets ---
 const ManglishDialWidget = () => {
@@ -62,10 +62,30 @@ const ManglishDialWidget = () => {
 
 const TraceWidget = () => {
   const steps = [
-    { label: "Emotion", bg: "bg-rose-500/10 border-rose-500/20", dot: "bg-rose-400", color: "text-rose-400" },
-    { label: "Cause",   bg: "bg-amber-500/10 border-amber-500/20", dot: "bg-amber-400", color: "text-amber-400" },
-    { label: "Plan",    bg: "bg-blue-500/10 border-blue-500/20",   dot: "bg-blue-400",  color: "text-blue-400" },
-    { label: "Respond", bg: "bg-emerald-500/10 border-emerald-500/20", dot: "bg-emerald-400", color: "text-emerald-400" },
+    {
+      label: "Emotion",
+      bg: "bg-rose-500/10 border-rose-500/20",
+      dot: "bg-rose-400",
+      color: "text-rose-400",
+    },
+    {
+      label: "Cause",
+      bg: "bg-amber-500/10 border-amber-500/20",
+      dot: "bg-amber-400",
+      color: "text-amber-400",
+    },
+    {
+      label: "Plan",
+      bg: "bg-blue-500/10 border-blue-500/20",
+      dot: "bg-blue-400",
+      color: "text-blue-400",
+    },
+    {
+      label: "Respond",
+      bg: "bg-emerald-500/10 border-emerald-500/20",
+      dot: "bg-emerald-400",
+      color: "text-emerald-400",
+    },
   ];
   return (
     <div className="flex items-center gap-1.5 w-full flex-wrap">
@@ -80,7 +100,9 @@ const TraceWidget = () => {
             <span className={`w-1.5 h-1.5 rounded-full ${s.dot}`} />
             {s.label}
           </motion.div>
-          {i < steps.length - 1 && <span className="text-gray-600 text-xs">&#8594;</span>}
+          {i < steps.length - 1 && (
+            <span className="text-gray-600 text-xs">&#8594;</span>
+          )}
         </React.Fragment>
       ))}
     </div>
@@ -90,9 +112,19 @@ const TraceWidget = () => {
 const CalWidget = () => (
   <div className="space-y-2 w-full">
     {[
-      { time: "Tomorrow 10am", status: "Confirmed", color: "text-emerald-400", icon: "✅" },
-      { time: "Fri 2pm",       status: "Available", color: "text-blue-400",    icon: "📅" },
-      { time: "Sat 11am",      status: "Taken",     color: "text-red-400",     icon: "❌" },
+      {
+        time: "Tomorrow 10am",
+        status: "Confirmed",
+        color: "text-emerald-400",
+        icon: "✅",
+      },
+      {
+        time: "Fri 2pm",
+        status: "Available",
+        color: "text-blue-400",
+        icon: "📅",
+      },
+      { time: "Sat 11am", status: "Taken", color: "text-red-400", icon: "❌" },
     ].map((slot, i) => (
       <motion.div
         key={i}
@@ -102,7 +134,9 @@ const CalWidget = () => (
         className="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2 border border-white/5"
       >
         <span className="text-gray-300 text-xs">{slot.time}</span>
-        <span className={`text-xs font-semibold ${slot.color}`}>{slot.icon} {slot.status}</span>
+        <span className={`text-xs font-semibold ${slot.color}`}>
+          {slot.icon} {slot.status}
+        </span>
       </motion.div>
     ))}
   </div>
@@ -111,17 +145,35 @@ const CalWidget = () => (
 const SecurityWidget = () => (
   <div className="grid grid-cols-2 gap-2 w-full">
     {[
-      { icon: <Server className="w-4 h-4" />,    label: "Row-Level Security", color: "text-blue-400" },
-      { icon: <ShieldCheck className="w-4 h-4" />, label: "PDPA Ready",       color: "text-emerald-400" },
-      { icon: <EyeOff className="w-4 h-4" />,    label: "Data Isolation",     color: "text-purple-400" },
-      { icon: <FileKey className="w-4 h-4" />,   label: "AES-256",            color: "text-orange-400" },
+      {
+        icon: <Server className="w-4 h-4" />,
+        label: "Row-Level Security",
+        color: "text-blue-400",
+      },
+      {
+        icon: <ShieldCheck className="w-4 h-4" />,
+        label: "PDPA Ready",
+        color: "text-emerald-400",
+      },
+      {
+        icon: <EyeOff className="w-4 h-4" />,
+        label: "Data Isolation",
+        color: "text-purple-400",
+      },
+      {
+        icon: <FileKey className="w-4 h-4" />,
+        label: "AES-256",
+        color: "text-orange-400",
+      },
     ].map((item, i) => (
       <div
         key={i}
         className="bg-white/5 rounded-xl flex flex-col items-center justify-center p-2.5 border border-white/5 gap-1"
       >
         <span className={item.color}>{item.icon}</span>
-        <span className="text-[10px] text-gray-400 text-center leading-tight">{item.label}</span>
+        <span className="text-[10px] text-gray-400 text-center leading-tight">
+          {item.label}
+        </span>
       </div>
     ))}
   </div>
@@ -134,11 +186,17 @@ const EscalationWidget = () => {
       <div className="bg-[#1a2530] rounded-lg p-2.5 border border-white/5 space-y-1.5">
         <div className="flex gap-2 items-start">
           <span className="text-[10px] text-gray-500 shrink-0">Customer:</span>
-          <span className="text-xs text-gray-300 italic">&quot;This is the third time I am asking. No one is helping!&quot;</span>
+          <span className="text-xs text-gray-300 italic">
+            &quot;This is the third time I am asking. No one is helping!&quot;
+          </span>
         </div>
         <div className="flex gap-2 items-start">
-          <span className="text-[10px] text-emerald-400 font-bold shrink-0">Bijou:</span>
-          <span className="text-xs text-gray-300 italic">&quot;I am escalating you to our team right now boss.&quot;</span>
+          <span className="text-[10px] text-emerald-400 font-bold shrink-0">
+            Bijou:
+          </span>
+          <span className="text-xs text-gray-300 italic">
+            &quot;I am escalating you to our team right now boss.&quot;
+          </span>
         </div>
       </div>
       <button
@@ -161,7 +219,11 @@ const features = [
     subtitle: "No WABA. No Meta fees. No markups.",
     description:
       "Connect your existing WhatsApp number in minutes via QR scan. No Facebook Business Manager, no WABA application, no RM0.05/message Meta fees. Bijou handles inbound queries flat at RM299/mo.",
-    bullets: ["Scan QR → live in 15 min", "No per-conversation charges", "No Meta markup ever"],
+    bullets: [
+      "Scan QR → live in 15 min",
+      "No per-conversation charges",
+      "No Meta markup ever",
+    ],
     widget: null,
   },
   {
@@ -172,7 +234,11 @@ const features = [
     subtitle: "Same brain. Second channel. Included free.",
     description:
       "The same AI, knowledge base and Manglish personality runs simultaneously on Telegram at no extra cost. Reach customers on whichever app they prefer.",
-    bullets: ["Included in Pro — no extra fee", "Same TRACE engine and knowledge base", "Independent channel, unified setup"],
+    bullets: [
+      "Included in Pro — no extra fee",
+      "Same TRACE engine and knowledge base",
+      "Independent channel, unified setup",
+    ],
     widget: null,
   },
   {
@@ -183,7 +249,11 @@ const features = [
     subtitle: "4-agent pipeline. Not just a keyword matcher.",
     description:
       "Every message runs through 4 specialist AI agents in sequence: emotion detection → causal analysis → response planning → human-like synthesis. The result feels human — not scripted.",
-    bullets: ["Detects frustration before it escalates", "Understands context, not just keywords", "Answers only from your data — no hallucination"],
+    bullets: [
+      "Detects frustration before it escalates",
+      "Understands context, not just keywords",
+      "Answers only from your data — no hallucination",
+    ],
     widget: <TraceWidget />,
   },
   {
@@ -194,7 +264,11 @@ const features = [
     subtitle: "Can lah. Got or not? Sorted.",
     description:
       "20+ regex patterns handle Malaysian code-switching natively — BM, English, Mandarin, Tamil and Manglish blended naturally. Adjust tone from full corporate to full pasar malam.",
-    bullets: ["English, Malay, Mandarin, Tamil", "Tone slider: formal to full Manglish", "No robotic 'Certainly, I can assist you'"],
+    bullets: [
+      "English, Malay, Mandarin, Tamil",
+      "Tone slider: formal to full Manglish",
+      "No robotic 'Certainly, I can assist you'",
+    ],
     widget: <ManglishDialWidget />,
   },
   {
@@ -205,7 +279,11 @@ const features = [
     subtitle: "Book, check, cancel — all via WhatsApp chat.",
     description:
       "Full two-way calendar integration via Cal.com. Customers book appointments, check availability and cancel — entirely through a WhatsApp or Telegram conversation. No links, no forms.",
-    bullets: ["Book, check & cancel via chat", "Automated email confirmation sent to customer", "Zero dev work needed"],
+    bullets: [
+      "Book, check & cancel via chat",
+      "Automated email confirmation sent to customer",
+      "Zero dev work needed",
+    ],
     widget: <CalWidget />,
   },
   {
@@ -216,7 +294,11 @@ const features = [
     subtitle: "You are emailed before the customer rage-quits.",
     description:
       "Bijou detects frustration signals, 3+ unanswered questions and explicit human requests — then instantly emails you the full conversation thread. Never miss a hot lead or angry customer.",
-    bullets: ["Frustration detection built-in", "Full conversation context in alert email", "Custom domain email (Growth plan)"],
+    bullets: [
+      "Frustration detection built-in",
+      "Full conversation context in alert email",
+      "Custom domain email (Growth plan)",
+    ],
     widget: <EscalationWidget />,
   },
   {
@@ -227,7 +309,11 @@ const features = [
     subtitle: "Your FAQs. Your voice. Zero hallucination.",
     description:
       "Upload up to 50 FAQs and 2 documents. Bijou answers only from what you have taught it — no making things up. Update an FAQ and the AI knows instantly, no retraining required.",
-    bullets: ["50 FAQs + 2 document uploads (Pro)", "Instant updates — no retraining", "AI stays in-lane, never guesses"],
+    bullets: [
+      "50 FAQs + 2 document uploads (Pro)",
+      "Instant updates — no retraining",
+      "AI stays in-lane, never guesses",
+    ],
     widget: null,
   },
   {
@@ -238,7 +324,11 @@ const features = [
     subtitle: "Hot, warm, cold — tagged automatically.",
     description:
       "Bijou probes for budget, timeline and intent naturally in conversation. Every lead is tagged automatically so you know exactly who to call back first.",
-    bullets: ["Budget + timeline detection", "Hot / warm / cold tagging", "Included in escalation alert summary"],
+    bullets: [
+      "Budget + timeline detection",
+      "Hot / warm / cold tagging",
+      "Included in escalation alert summary",
+    ],
     widget: null,
   },
   {
@@ -249,20 +339,69 @@ const features = [
     subtitle: "Your data. Fully isolated. Always.",
     description:
       "Row-Level Security means your customer data is 100% isolated from every other Bijou tenant. AES-256 encryption at rest. PDPA and GDPR compliant. Hosted on Fly.io Singapore region.",
-    bullets: ["Row-level multi-tenant data isolation", "AES-256 + PDPA + GDPR ready", "99.9% uptime — Singapore region"],
+    bullets: [
+      "Row-level multi-tenant data isolation",
+      "AES-256 + PDPA + GDPR ready",
+      "99.9% uptime — Singapore region",
+    ],
     widget: <SecurityWidget />,
   },
 ];
 
 // Color token map (static Tailwind classes — never dynamic)
-const colorMap: Record<string, { icon: string; badge: string; badgeBg: string; glow: string; bullet: string }> = {
-  emerald: { icon: "text-emerald-400", badge: "text-emerald-400", badgeBg: "bg-emerald-500/10 border-emerald-500/20", glow: "bg-emerald-500/8",  bullet: "bg-emerald-400" },
-  blue:    { icon: "text-blue-400",    badge: "text-blue-400",    badgeBg: "bg-blue-500/10 border-blue-500/20",       glow: "bg-blue-500/8",    bullet: "bg-blue-400" },
-  purple:  { icon: "text-purple-400",  badge: "text-purple-400",  badgeBg: "bg-purple-500/10 border-purple-500/20",   glow: "bg-purple-500/8",  bullet: "bg-purple-400" },
-  gold:    { icon: "text-yellow-400",  badge: "text-yellow-400",  badgeBg: "bg-yellow-500/10 border-yellow-500/20",   glow: "bg-yellow-500/8",  bullet: "bg-yellow-400" },
-  cyan:    { icon: "text-cyan-400",    badge: "text-cyan-400",    badgeBg: "bg-cyan-500/10 border-cyan-500/20",       glow: "bg-cyan-500/8",    bullet: "bg-cyan-400" },
-  amber:   { icon: "text-amber-400",   badge: "text-amber-400",   badgeBg: "bg-amber-500/10 border-amber-500/20",     glow: "bg-amber-500/8",   bullet: "bg-amber-400" },
-  rose:    { icon: "text-rose-400",    badge: "text-rose-400",    badgeBg: "bg-rose-500/10 border-rose-500/20",       glow: "bg-rose-500/8",    bullet: "bg-rose-400" },
+const colorMap: Record<
+  string,
+  { icon: string; badge: string; badgeBg: string; glow: string; bullet: string }
+> = {
+  emerald: {
+    icon: "text-emerald-400",
+    badge: "text-emerald-400",
+    badgeBg: "bg-emerald-500/10 border-emerald-500/20",
+    glow: "bg-emerald-500/8",
+    bullet: "bg-emerald-400",
+  },
+  blue: {
+    icon: "text-blue-400",
+    badge: "text-blue-400",
+    badgeBg: "bg-blue-500/10 border-blue-500/20",
+    glow: "bg-blue-500/8",
+    bullet: "bg-blue-400",
+  },
+  purple: {
+    icon: "text-purple-400",
+    badge: "text-purple-400",
+    badgeBg: "bg-purple-500/10 border-purple-500/20",
+    glow: "bg-purple-500/8",
+    bullet: "bg-purple-400",
+  },
+  gold: {
+    icon: "text-yellow-400",
+    badge: "text-yellow-400",
+    badgeBg: "bg-yellow-500/10 border-yellow-500/20",
+    glow: "bg-yellow-500/8",
+    bullet: "bg-yellow-400",
+  },
+  cyan: {
+    icon: "text-cyan-400",
+    badge: "text-cyan-400",
+    badgeBg: "bg-cyan-500/10 border-cyan-500/20",
+    glow: "bg-cyan-500/8",
+    bullet: "bg-cyan-400",
+  },
+  amber: {
+    icon: "text-amber-400",
+    badge: "text-amber-400",
+    badgeBg: "bg-amber-500/10 border-amber-500/20",
+    glow: "bg-amber-500/8",
+    bullet: "bg-amber-400",
+  },
+  rose: {
+    icon: "text-rose-400",
+    badge: "text-rose-400",
+    badgeBg: "bg-rose-500/10 border-rose-500/20",
+    glow: "bg-rose-500/8",
+    bullet: "bg-rose-400",
+  },
 };
 
 interface FeatureDef {
@@ -276,7 +415,10 @@ interface FeatureDef {
   widget: React.ReactNode;
 }
 
-const FeatureCard: React.FC<{ feature: FeatureDef; index: number }> = ({ feature, index }) => {
+const FeatureCard: React.FC<{ feature: FeatureDef; index: number }> = ({
+  feature,
+  index,
+}) => {
   const [open, setOpen] = useState(false);
   const c = colorMap[feature.color] ?? colorMap.emerald;
 
@@ -288,23 +430,35 @@ const FeatureCard: React.FC<{ feature: FeatureDef; index: number }> = ({ feature
       transition={{ duration: 0.45, delay: (index % 3) * 0.07 }}
       className="group relative glass-panel-3d rounded-2xl border border-white/[0.07] hover:border-white/20 transition-all duration-300 overflow-hidden"
     >
-      <div className={`absolute top-0 right-0 w-32 h-32 ${c.glow} rounded-full blur-[60px] pointer-events-none`} />
+      <div
+        className={`absolute top-0 right-0 w-32 h-32 ${c.glow} rounded-full blur-[60px] pointer-events-none`}
+      />
 
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-5 flex items-start gap-4"
       >
-        <div className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${c.icon}`}>
+        <div
+          className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center ${c.icon}`}
+        >
           {feature.icon}
         </div>
         <div className="flex-1 min-w-0">
-          <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border mb-1 ${c.badgeBg} ${c.badge}`}>
+          <span
+            className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border mb-1 ${c.badgeBg} ${c.badge}`}
+          >
             {feature.badge}
           </span>
-          <h3 className="text-sm font-bold text-white leading-tight">{feature.title}</h3>
+          <h3 className="text-sm font-bold text-white leading-tight">
+            {feature.title}
+          </h3>
           <p className="text-gray-500 text-xs mt-0.5">{feature.subtitle}</p>
         </div>
-        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }} className="flex-shrink-0 mt-1">
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="flex-shrink-0 mt-1"
+        >
           <ChevronDown className="w-4 h-4 text-gray-500" />
         </motion.div>
       </button>
@@ -321,11 +475,18 @@ const FeatureCard: React.FC<{ feature: FeatureDef; index: number }> = ({ feature
           >
             <div className="px-5 pb-5 space-y-4">
               <div className="h-px bg-white/5" />
-              <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {feature.description}
+              </p>
               <ul className="space-y-1.5">
                 {feature.bullets.map((b, i) => (
-                  <li key={i} className="flex items-center gap-2.5 text-sm text-gray-300">
-                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.bullet}`} />
+                  <li
+                    key={i}
+                    className="flex items-center gap-2.5 text-sm text-gray-300"
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.bullet}`}
+                    />
                     {b}
                   </li>
                 ))}
@@ -374,7 +535,11 @@ export const Features: React.FC = () => {
       title: t("features.trace.title"),
       subtitle: t("features.trace.subtitle"),
       description: t("features.trace.desc"),
-      bullets: [t("features.trace.b1"), t("features.trace.b2"), t("features.trace.b3")],
+      bullets: [
+        t("features.trace.b1"),
+        t("features.trace.b2"),
+        t("features.trace.b3"),
+      ],
       widget: <TraceWidget />,
     },
     {
@@ -384,7 +549,11 @@ export const Features: React.FC = () => {
       title: t("features.manglish.title"),
       subtitle: t("features.manglish.subtitle"),
       description: t("features.manglish.desc"),
-      bullets: [t("features.manglish.b1"), t("features.manglish.b2"), t("features.manglish.b3")],
+      bullets: [
+        t("features.manglish.b1"),
+        t("features.manglish.b2"),
+        t("features.manglish.b3"),
+      ],
       widget: <ManglishDialWidget />,
     },
     {
@@ -394,7 +563,11 @@ export const Features: React.FC = () => {
       title: t("features.cal.title"),
       subtitle: t("features.cal.subtitle"),
       description: t("features.cal.desc"),
-      bullets: [t("features.cal.b1"), t("features.cal.b2"), t("features.cal.b3")],
+      bullets: [
+        t("features.cal.b1"),
+        t("features.cal.b2"),
+        t("features.cal.b3"),
+      ],
       widget: <CalWidget />,
     },
     {
@@ -404,7 +577,11 @@ export const Features: React.FC = () => {
       title: t("features.escalation.title"),
       subtitle: t("features.escalation.subtitle"),
       description: t("features.escalation.desc"),
-      bullets: [t("features.escalation.b1"), t("features.escalation.b2"), t("features.escalation.b3")],
+      bullets: [
+        t("features.escalation.b1"),
+        t("features.escalation.b2"),
+        t("features.escalation.b3"),
+      ],
       widget: <EscalationWidget />,
     },
     {
@@ -424,7 +601,11 @@ export const Features: React.FC = () => {
       title: t("features.leads.title"),
       subtitle: t("features.leads.subtitle"),
       description: t("features.leads.desc"),
-      bullets: [t("features.leads.b1"), t("features.leads.b2"), t("features.leads.b3")],
+      bullets: [
+        t("features.leads.b1"),
+        t("features.leads.b2"),
+        t("features.leads.b3"),
+      ],
       widget: null,
     },
     {
@@ -434,7 +615,11 @@ export const Features: React.FC = () => {
       title: t("features.security.title"),
       subtitle: t("features.security.subtitle"),
       description: t("features.security.desc"),
-      bullets: [t("features.security.b1"), t("features.security.b2"), t("features.security.b3")],
+      bullets: [
+        t("features.security.b1"),
+        t("features.security.b2"),
+        t("features.security.b3"),
+      ],
       widget: <SecurityWidget />,
     },
   ];
@@ -472,7 +657,9 @@ export const Features: React.FC = () => {
               {t("features.live")}
             </span>
             <span className="text-gray-600 text-xs">·</span>
-            <span className="text-xs text-gray-500">{t("features.noBeta")}</span>
+            <span className="text-xs text-gray-500">
+              {t("features.noBeta")}
+            </span>
           </div>
         </motion.div>
 
@@ -490,16 +677,34 @@ export const Features: React.FC = () => {
           className="mt-10 glass-panel-3d rounded-2xl border border-white/[0.07] p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
           {[
-            { value: "9",      label: t("features.stats.features"),  sub: t("features.stats.features.sub") },
-            { value: "15 min", label: t("features.stats.setup"),     sub: t("features.stats.setup.sub") },
-            { value: "3,000",  label: t("features.stats.convos"),    sub: t("features.stats.convos.sub") },
-            { value: "4",      label: t("features.stats.langs"),     sub: t("features.stats.langs.sub") },
+            {
+              value: "9",
+              label: t("features.stats.features"),
+              sub: t("features.stats.features.sub"),
+            },
+            {
+              value: "15 min",
+              label: t("features.stats.setup"),
+              sub: t("features.stats.setup.sub"),
+            },
+            {
+              value: "3,000",
+              label: t("features.stats.convos"),
+              sub: t("features.stats.convos.sub"),
+            },
+            {
+              value: "4",
+              label: t("features.stats.langs"),
+              sub: t("features.stats.langs.sub"),
+            },
           ].map((stat, i) => (
             <div key={i}>
               <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                 {stat.value}
               </div>
-              <div className="text-white text-sm font-bold mt-1">{stat.label}</div>
+              <div className="text-white text-sm font-bold mt-1">
+                {stat.label}
+              </div>
               <div className="text-gray-500 text-xs mt-0.5">{stat.sub}</div>
             </div>
           ))}

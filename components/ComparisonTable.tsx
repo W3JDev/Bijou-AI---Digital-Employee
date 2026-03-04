@@ -249,7 +249,9 @@ const Cell: React.FC<{ value: CellValue; isBijou?: boolean }> = ({
 
 export const ComparisonTable: React.FC = () => {
   const { t } = useTranslation();
-  const [activeCategory, setActiveCategory] = useState(t("comparison.filter.all"));
+  const [activeCategory, setActiveCategory] = useState(
+    t("comparison.filter.all"),
+  );
 
   const categoryKeys: Record<string, string> = {
     Pricing: t("comparison.cat.pricing"),
@@ -259,16 +261,19 @@ export const ComparisonTable: React.FC = () => {
     "Setup & Support": t("comparison.cat.setup"),
   };
 
-  const rawCategories = ["All", ...Array.from(new Set(rows.map((r) => r.category)))];
+  const rawCategories = [
+    "All",
+    ...Array.from(new Set(rows.map((r) => r.category))),
+  ];
   const localizedCategories = rawCategories.map((c) =>
-    c === "All" ? t("comparison.filter.all") : (categoryKeys[c] ?? c)
+    c === "All" ? t("comparison.filter.all") : (categoryKeys[c] ?? c),
   );
 
   const visible =
     activeCategory === t("comparison.filter.all")
       ? rows
       : rows.filter(
-          (r) => (categoryKeys[r.category] ?? r.category) === activeCategory
+          (r) => (categoryKeys[r.category] ?? r.category) === activeCategory,
         );
 
   return (

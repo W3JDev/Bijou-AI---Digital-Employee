@@ -192,7 +192,8 @@ const resources = {
       "features.badge": "What You Actually Get",
       "features.title.part1": "Every Feature,",
       "features.title.highlight": "Clearly Explained",
-      "features.subtitle": "No buzzwords. No vague icons. Click any feature below to see exactly what it does and how it works.",
+      "features.subtitle":
+        "No buzzwords. No vague icons. Click any feature below to see exactly what it does and how it works.",
       "features.live": "All features are live and working today",
       "features.noBeta": "No beta. No waitlist. No asterisk.",
       "features.stats.features": "Live Features",
@@ -208,55 +209,66 @@ const resources = {
       "features.badge.enterprise": "Enterprise-Grade",
       "features.wa.title": "WhatsApp AI Agent",
       "features.wa.subtitle": "No WABA. No Meta fees. No markups.",
-      "features.wa.desc": "Connect your existing WhatsApp number in minutes via QR scan. No Facebook Business Manager, no WABA application, no RM0.05/message Meta fees. Bijou handles inbound queries flat at RM299/mo.",
+      "features.wa.desc":
+        "Connect your existing WhatsApp number in minutes via QR scan. No Facebook Business Manager, no WABA application, no RM0.05/message Meta fees. Bijou handles inbound queries flat at RM299/mo.",
       "features.wa.b1": "Scan QR → live in 15 min",
       "features.wa.b2": "No per-conversation charges",
       "features.wa.b3": "No Meta markup ever",
       "features.tg.title": "Telegram AI Agent",
       "features.tg.subtitle": "Same brain. Second channel. Included free.",
-      "features.tg.desc": "The same AI, knowledge base and Manglish personality runs simultaneously on Telegram at no extra cost. Reach customers on whichever app they prefer.",
+      "features.tg.desc":
+        "The same AI, knowledge base and Manglish personality runs simultaneously on Telegram at no extra cost. Reach customers on whichever app they prefer.",
       "features.tg.b1": "Included in Pro — no extra fee",
       "features.tg.b2": "Same TRACE engine and knowledge base",
       "features.tg.b3": "Independent channel, unified setup",
       "features.trace.title": "TRACE Empathy Engine",
-      "features.trace.subtitle": "4-agent pipeline. Not just a keyword matcher.",
-      "features.trace.desc": "Every message runs through 4 specialist AI agents in sequence: emotion detection → causal analysis → response planning → human-like synthesis. The result feels human — not scripted.",
+      "features.trace.subtitle":
+        "4-agent pipeline. Not just a keyword matcher.",
+      "features.trace.desc":
+        "Every message runs through 4 specialist AI agents in sequence: emotion detection → causal analysis → response planning → human-like synthesis. The result feels human — not scripted.",
       "features.trace.b1": "Detects frustration before it escalates",
       "features.trace.b2": "Understands context, not just keywords",
       "features.trace.b3": "Answers only from your data — no hallucination",
       "features.manglish.title": "Manglish Engine",
       "features.manglish.subtitle": "Can lah. Got or not? Sorted.",
-      "features.manglish.desc": "20+ regex patterns handle Malaysian code-switching natively — BM, English, Mandarin, Tamil and Manglish blended naturally. Adjust tone from full corporate to full pasar malam.",
+      "features.manglish.desc":
+        "20+ regex patterns handle Malaysian code-switching natively — BM, English, Mandarin, Tamil and Manglish blended naturally. Adjust tone from full corporate to full pasar malam.",
       "features.manglish.b1": "English, Malay, Mandarin, Tamil",
       "features.manglish.b2": "Tone slider: formal to full Manglish",
       "features.manglish.b3": "No robotic 'Certainly, I can assist you'",
       "features.cal.title": "Cal.com Booking",
       "features.cal.subtitle": "Book, check, cancel — all via WhatsApp chat.",
-      "features.cal.desc": "Full two-way calendar integration via Cal.com. Customers book appointments, check availability and cancel — entirely through a WhatsApp or Telegram conversation. No links, no forms.",
+      "features.cal.desc":
+        "Full two-way calendar integration via Cal.com. Customers book appointments, check availability and cancel — entirely through a WhatsApp or Telegram conversation. No links, no forms.",
       "features.cal.b1": "Book, check & cancel via chat",
       "features.cal.b2": "Automated email confirmation sent to customer",
       "features.cal.b3": "Zero dev work needed",
       "features.escalation.title": "Smart Escalation Alerts",
-      "features.escalation.subtitle": "You are emailed before the customer rage-quits.",
-      "features.escalation.desc": "Bijou detects frustration signals, 3+ unanswered questions and explicit human requests — then instantly emails you the full conversation thread. Never miss a hot lead or angry customer.",
+      "features.escalation.subtitle":
+        "You are emailed before the customer rage-quits.",
+      "features.escalation.desc":
+        "Bijou detects frustration signals, 3+ unanswered questions and explicit human requests — then instantly emails you the full conversation thread. Never miss a hot lead or angry customer.",
       "features.escalation.b1": "Frustration detection built-in",
       "features.escalation.b2": "Full conversation context in alert email",
       "features.escalation.b3": "Custom domain email (Growth plan)",
       "features.kb.title": "Knowledge Base",
       "features.kb.subtitle": "Your FAQs. Your voice. Zero hallucination.",
-      "features.kb.desc": "Upload up to 50 FAQs and 2 documents. Bijou answers only from what you have taught it — no making things up. Update an FAQ and the AI knows instantly, no retraining required.",
+      "features.kb.desc":
+        "Upload up to 50 FAQs and 2 documents. Bijou answers only from what you have taught it — no making things up. Update an FAQ and the AI knows instantly, no retraining required.",
       "features.kb.b1": "50 FAQs + 2 document uploads (Pro)",
       "features.kb.b2": "Instant updates — no retraining",
       "features.kb.b3": "AI stays in-lane, never guesses",
       "features.leads.title": "Lead Qualification",
       "features.leads.subtitle": "Hot, warm, cold — tagged automatically.",
-      "features.leads.desc": "Bijou probes for budget, timeline and intent naturally in conversation. Every lead is tagged automatically so you know exactly who to call back first.",
+      "features.leads.desc":
+        "Bijou probes for budget, timeline and intent naturally in conversation. Every lead is tagged automatically so you know exactly who to call back first.",
       "features.leads.b1": "Budget + timeline detection",
       "features.leads.b2": "Hot / warm / cold tagging",
       "features.leads.b3": "Included in escalation alert summary",
       "features.security.title": "PDPA-Ready Security",
       "features.security.subtitle": "Your data. Fully isolated. Always.",
-      "features.security.desc": "Row-Level Security means your customer data is 100% isolated from every other Bijou tenant. AES-256 encryption at rest. PDPA and GDPR compliant. Hosted on Fly.io Singapore region.",
+      "features.security.desc":
+        "Row-Level Security means your customer data is 100% isolated from every other Bijou tenant. AES-256 encryption at rest. PDPA and GDPR compliant. Hosted on Fly.io Singapore region.",
       "features.security.b1": "Row-level multi-tenant data isolation",
       "features.security.b2": "AES-256 + PDPA + GDPR ready",
       "features.security.b3": "99.9% uptime — Singapore region",
@@ -265,8 +277,10 @@ const resources = {
       "comparison.badge": "Honest Comparison",
       "comparison.title.part1": "How We Stack Up",
       "comparison.title.highlight": "Against Everyone Else",
-      "comparison.subtitle": "No cherry-picked metrics. Every row is verifiable. We included the ones where competitors beat us too.",
-      "comparison.disclaimer": "* ChatDaddy advertises RM75/mo but requires a WABA account (+RM150–400/mo in Meta fees). Real total: RM280–500+/mo.",
+      "comparison.subtitle":
+        "No cherry-picked metrics. Every row is verifiable. We included the ones where competitors beat us too.",
+      "comparison.disclaimer":
+        "* ChatDaddy advertises RM75/mo but requires a WABA account (+RM150–400/mo in Meta fees). Real total: RM280–500+/mo.",
       "comparison.filter.all": "All",
       "comparison.cat.pricing": "Pricing",
       "comparison.cat.channels": "Channels",
@@ -275,7 +289,8 @@ const resources = {
       "comparison.cat.setup": "Setup & Support",
       "comparison.best": "★ Best Value",
       "comparison.cta.title": "You have seen the numbers. Judge for yourself.",
-      "comparison.cta.body": "RM299/mo. No WABA. No hidden Meta fees. No annual trap. WhatsApp direct to the founder if you have any questions.",
+      "comparison.cta.body":
+        "RM299/mo. No WABA. No hidden Meta fees. No annual trap. WhatsApp direct to the founder if you have any questions.",
       "comparison.cta.wa": "Ask Jewel on WhatsApp",
       "comparison.cta.email": "jewel@mybijou.xyz",
 
@@ -285,7 +300,8 @@ const resources = {
       "waitlist.pill2": "Live in 15 min",
       "waitlist.pill3": "Zero setup hassle",
       "waitlist.social": "500+ Malaysian SMEs already on the list",
-      "waitlist.mobileSub": "✅ Done for you · ⚡ Live in 15 min · 🚫 Zero hassle",
+      "waitlist.mobileSub":
+        "✅ Done for you · ⚡ Live in 15 min · 🚫 Zero hassle",
       "waitlist.cta": "Claim My Spot",
 
       // Early Adopter block (Pricing)
@@ -492,7 +508,8 @@ const resources = {
       "features.badge": "Apa Yang Anda Dapat",
       "features.title.part1": "Setiap Ciri,",
       "features.title.highlight": "Dijelaskan Dengan Jelas",
-      "features.subtitle": "Tiada buzzword. Tiada ikon yang samar. Klik mana-mana ciri untuk lihat cara kerjanya.",
+      "features.subtitle":
+        "Tiada buzzword. Tiada ikon yang samar. Klik mana-mana ciri untuk lihat cara kerjanya.",
       "features.live": "Semua ciri aktif dan berfungsi hari ini",
       "features.noBeta": "Tiada beta. Tiada senarai tunggu. Tiada asterisk.",
       "features.stats.features": "Ciri Aktif",
@@ -508,56 +525,71 @@ const resources = {
       "features.badge.enterprise": "Gred Perusahaan",
       "features.wa.title": "Ejen AI WhatsApp",
       "features.wa.subtitle": "Tiada WABA. Tiada bayaran Meta. Tiada markup.",
-      "features.wa.desc": "Sambungkan nombor WhatsApp sedia ada anda dalam beberapa minit melalui imbasan QR. Tiada Facebook Business Manager, tiada permohonan WABA, tiada bayaran Meta RM0.05/mesej. Bijou mengendalikan pertanyaan masuk pada kadar rata RM299/bulan.",
+      "features.wa.desc":
+        "Sambungkan nombor WhatsApp sedia ada anda dalam beberapa minit melalui imbasan QR. Tiada Facebook Business Manager, tiada permohonan WABA, tiada bayaran Meta RM0.05/mesej. Bijou mengendalikan pertanyaan masuk pada kadar rata RM299/bulan.",
       "features.wa.b1": "Imbas QR → aktif dalam 15 minit",
       "features.wa.b2": "Tiada caj setiap perbualan",
       "features.wa.b3": "Tiada markup Meta selamanya",
       "features.tg.title": "Ejen AI Telegram",
       "features.tg.subtitle": "Otak sama. Saluran kedua. Percuma.",
-      "features.tg.desc": "AI, pangkalan pengetahuan dan personaliti Manglish yang sama berjalan serentak di Telegram tanpa kos tambahan.",
+      "features.tg.desc":
+        "AI, pangkalan pengetahuan dan personaliti Manglish yang sama berjalan serentak di Telegram tanpa kos tambahan.",
       "features.tg.b1": "Termasuk dalam Pro — tiada bayaran tambahan",
       "features.tg.b2": "Enjin TRACE dan pangkalan pengetahuan yang sama",
       "features.tg.b3": "Saluran bebas, persediaan bersatu",
       "features.trace.title": "Enjin Empati TRACE",
-      "features.trace.subtitle": "Saluran 4-ejen. Bukan sekadar padanan kata kunci.",
-      "features.trace.desc": "Setiap mesej melalui 4 ejen AI pakar: pengesanan emosi → analisis punca → perancangan respons → sintesis seperti manusia.",
+      "features.trace.subtitle":
+        "Saluran 4-ejen. Bukan sekadar padanan kata kunci.",
+      "features.trace.desc":
+        "Setiap mesej melalui 4 ejen AI pakar: pengesanan emosi → analisis punca → perancangan respons → sintesis seperti manusia.",
       "features.trace.b1": "Mengesan kekecewaan sebelum ia meningkat",
       "features.trace.b2": "Faham konteks, bukan sekadar kata kunci",
       "features.trace.b3": "Jawab hanya dari data anda — tiada halusinasi",
       "features.manglish.title": "Enjin Manglish",
       "features.manglish.subtitle": "Boleh lah. Ada atau tidak? Selesai.",
-      "features.manglish.desc": "Lebih 20 corak regex mengendalikan pertukaran kod Malaysia secara asli — BM, Inggeris, Mandarin, Tamil dan Manglish dicampur secara semula jadi.",
+      "features.manglish.desc":
+        "Lebih 20 corak regex mengendalikan pertukaran kod Malaysia secara asli — BM, Inggeris, Mandarin, Tamil dan Manglish dicampur secara semula jadi.",
       "features.manglish.b1": "Inggeris, Melayu, Mandarin, Tamil",
       "features.manglish.b2": "Slider nada: formal hingga Manglish penuh",
-      "features.manglish.b3": "Tiada respons robot 'Certainly, I can assist you'",
+      "features.manglish.b3":
+        "Tiada respons robot 'Certainly, I can assist you'",
       "features.cal.title": "Tempahan Cal.com",
       "features.cal.subtitle": "Tempah, semak, batal — semua melalui WhatsApp.",
-      "features.cal.desc": "Integrasi kalendar dua hala penuh melalui Cal.com. Pelanggan tempah temujanji, semak ketersediaan dan batal — semuanya melalui WhatsApp atau Telegram.",
+      "features.cal.desc":
+        "Integrasi kalendar dua hala penuh melalui Cal.com. Pelanggan tempah temujanji, semak ketersediaan dan batal — semuanya melalui WhatsApp atau Telegram.",
       "features.cal.b1": "Tempah, semak & batal melalui sembang",
       "features.cal.b2": "E-mel pengesahan automatik dihantar kepada pelanggan",
       "features.cal.b3": "Tiada kerja pembangun diperlukan",
       "features.escalation.title": "Amaran Eskalasi Pintar",
-      "features.escalation.subtitle": "Anda diemelkan sebelum pelanggan mengamuk.",
-      "features.escalation.desc": "Bijou mengesan isyarat kekecewaan, 3+ soalan tidak dijawab dan permintaan manusia eksplisit — kemudian segera menghantar e-mel utas perbualan penuh kepada anda.",
+      "features.escalation.subtitle":
+        "Anda diemelkan sebelum pelanggan mengamuk.",
+      "features.escalation.desc":
+        "Bijou mengesan isyarat kekecewaan, 3+ soalan tidak dijawab dan permintaan manusia eksplisit — kemudian segera menghantar e-mel utas perbualan penuh kepada anda.",
       "features.escalation.b1": "Pengesanan kekecewaan terbina dalam",
       "features.escalation.b2": "Konteks perbualan penuh dalam e-mel amaran",
       "features.escalation.b3": "E-mel domain tersuai (Pelan Growth)",
       "features.kb.title": "Pangkalan Pengetahuan",
       "features.kb.subtitle": "FAQ anda. Suara anda. Tiada halusinasi.",
-      "features.kb.desc": "Muat naik sehingga 50 FAQ dan 2 dokumen. Bijou hanya menjawab dari apa yang anda ajar — tiada rekaan. Kemaskini FAQ dan AI tahu serta-merta.",
+      "features.kb.desc":
+        "Muat naik sehingga 50 FAQ dan 2 dokumen. Bijou hanya menjawab dari apa yang anda ajar — tiada rekaan. Kemaskini FAQ dan AI tahu serta-merta.",
       "features.kb.b1": "50 FAQ + 2 muat naik dokumen (Pro)",
       "features.kb.b2": "Kemaskini serta-merta — tiada latihan semula",
       "features.kb.b3": "AI kekal dalam laluan, tidak pernah meneka",
       "features.leads.title": "Kelayakan Petunjuk",
-      "features.leads.subtitle": "Panas, suam, sejuk — ditanda secara automatik.",
-      "features.leads.desc": "Bijou menyiasat bajet, garis masa dan niat secara semula jadi dalam perbualan. Setiap petunjuk ditanda secara automatik.",
+      "features.leads.subtitle":
+        "Panas, suam, sejuk — ditanda secara automatik.",
+      "features.leads.desc":
+        "Bijou menyiasat bajet, garis masa dan niat secara semula jadi dalam perbualan. Setiap petunjuk ditanda secara automatik.",
       "features.leads.b1": "Pengesanan bajet + garis masa",
       "features.leads.b2": "Penandaan Hot / Warm / Cold",
       "features.leads.b3": "Disertakan dalam ringkasan amaran eskalasi",
       "features.security.title": "Keselamatan Sedia PDPA",
-      "features.security.subtitle": "Data anda. Diasingkan sepenuhnya. Sentiasa.",
-      "features.security.desc": "Keselamatan Peringkat Baris bermakna data pelanggan anda diasingkan 100% daripada setiap penyewa Bijou yang lain. Penyulitan AES-256. Patuh PDPA dan GDPR.",
-      "features.security.b1": "Pengasingan data berbilang penyewa peringkat baris",
+      "features.security.subtitle":
+        "Data anda. Diasingkan sepenuhnya. Sentiasa.",
+      "features.security.desc":
+        "Keselamatan Peringkat Baris bermakna data pelanggan anda diasingkan 100% daripada setiap penyewa Bijou yang lain. Penyulitan AES-256. Patuh PDPA dan GDPR.",
+      "features.security.b1":
+        "Pengasingan data berbilang penyewa peringkat baris",
       "features.security.b2": "AES-256 + PDPA + GDPR sedia",
       "features.security.b3": "99.9% uptime — rantau Singapura",
 
@@ -565,8 +597,10 @@ const resources = {
       "comparison.badge": "Perbandingan Jujur",
       "comparison.title.part1": "Bagaimana Kami Berbanding",
       "comparison.title.highlight": "Dengan Yang Lain",
-      "comparison.subtitle": "Tiada metrik terpilih. Setiap baris boleh disahkan. Kami sertakan yang pesaing mengatasi kami juga.",
-      "comparison.disclaimer": "* ChatDaddy mengiklankan RM75/bulan tetapi memerlukan akaun WABA (+RM150–400/bulan dalam bayaran Meta). Jumlah sebenar: RM280–500+/bulan.",
+      "comparison.subtitle":
+        "Tiada metrik terpilih. Setiap baris boleh disahkan. Kami sertakan yang pesaing mengatasi kami juga.",
+      "comparison.disclaimer":
+        "* ChatDaddy mengiklankan RM75/bulan tetapi memerlukan akaun WABA (+RM150–400/bulan dalam bayaran Meta). Jumlah sebenar: RM280–500+/bulan.",
       "comparison.filter.all": "Semua",
       "comparison.cat.pricing": "Harga",
       "comparison.cat.channels": "Saluran",
@@ -575,17 +609,20 @@ const resources = {
       "comparison.cat.setup": "Persediaan & Sokongan",
       "comparison.best": "★ Nilai Terbaik",
       "comparison.cta.title": "Anda sudah lihat angkanya. Nilai sendiri.",
-      "comparison.cta.body": "RM299/bulan. Tiada WABA. Tiada bayaran Meta tersembunyi. Tiada perangkap tahunan. WhatsApp terus kepada pengasas jika ada soalan.",
+      "comparison.cta.body":
+        "RM299/bulan. Tiada WABA. Tiada bayaran Meta tersembunyi. Tiada perangkap tahunan. WhatsApp terus kepada pengasas jika ada soalan.",
       "comparison.cta.wa": "Tanya Jewel di WhatsApp",
       "comparison.cta.email": "jewel@mybijou.xyz",
 
       // Jalur Senarai Tunggu
-      "waitlist.headline": "Hanya 7 Spot Pengamal Awal Tinggal — RM299/bulan Selamanya",
+      "waitlist.headline":
+        "Hanya 7 Spot Pengamal Awal Tinggal — RM299/bulan Selamanya",
       "waitlist.pill1": "Dibuat untuk anda",
       "waitlist.pill2": "Aktif dalam 15 minit",
       "waitlist.pill3": "Tiada kerumitan persediaan",
       "waitlist.social": "500+ PKS Malaysia sudah dalam senarai",
-      "waitlist.mobileSub": "✅ Dibuat untuk anda · ⚡ Aktif 15 minit · 🚫 Tiada kerumitan",
+      "waitlist.mobileSub":
+        "✅ Dibuat untuk anda · ⚡ Aktif 15 minit · 🚫 Tiada kerumitan",
       "waitlist.cta": "Tuntut Tempat Saya",
 
       // Blok Pengamal Awal
@@ -778,7 +815,8 @@ const resources = {
       "features.badge": "您真正获得的",
       "features.title.part1": "每项功能，",
       "features.title.highlight": "清晰说明",
-      "features.subtitle": "没有术语。没有模糊图标。点击任意功能查看其工作原理。",
+      "features.subtitle":
+        "没有术语。没有模糊图标。点击任意功能查看其工作原理。",
       "features.live": "所有功能今天都已上线运行",
       "features.noBeta": "无测试版。无等待列表。无星号。",
       "features.stats.features": "上线功能",
@@ -794,55 +832,64 @@ const resources = {
       "features.badge.enterprise": "企业级",
       "features.wa.title": "WhatsApp AI代理",
       "features.wa.subtitle": "无需WABA。无Meta费用。无加价。",
-      "features.wa.desc": "通过QR扫描在几分钟内连接您现有的WhatsApp号码。无需Facebook Business Manager，无需WABA申请，无RM0.05/消息Meta费用。Bijou以RM299/月的固定费率处理入站查询。",
+      "features.wa.desc":
+        "通过QR扫描在几分钟内连接您现有的WhatsApp号码。无需Facebook Business Manager，无需WABA申请，无RM0.05/消息Meta费用。Bijou以RM299/月的固定费率处理入站查询。",
       "features.wa.b1": "扫描QR → 15分钟内上线",
       "features.wa.b2": "无每次对话费用",
       "features.wa.b3": "永不加价Meta费用",
       "features.tg.title": "Telegram AI代理",
       "features.tg.subtitle": "同一大脑。第二频道。免费附带。",
-      "features.tg.desc": "相同的AI、知识库和Manglish个性同时在Telegram上运行，无额外费用。",
+      "features.tg.desc":
+        "相同的AI、知识库和Manglish个性同时在Telegram上运行，无额外费用。",
       "features.tg.b1": "包含在Pro中 — 无额外费用",
       "features.tg.b2": "相同TRACE引擎和知识库",
       "features.tg.b3": "独立频道，统一设置",
       "features.trace.title": "TRACE共情引擎",
       "features.trace.subtitle": "4代理管道。不只是关键词匹配。",
-      "features.trace.desc": "每条消息依次通过4个专业AI代理：情绪检测→因果分析→响应规划→类人合成。结果感觉像人类。",
+      "features.trace.desc":
+        "每条消息依次通过4个专业AI代理：情绪检测→因果分析→响应规划→类人合成。结果感觉像人类。",
       "features.trace.b1": "在升级前检测挫败感",
       "features.trace.b2": "理解上下文，不只是关键词",
       "features.trace.b3": "只从您的数据回答 — 无幻觉",
       "features.manglish.title": "Manglish引擎",
       "features.manglish.subtitle": "Can lah。Got or not？搞定。",
-      "features.manglish.desc": "20+个正则表达式模式原生处理马来西亚代码切换 — BM、英语、普通话、泰米尔语和Manglish自然混合。",
+      "features.manglish.desc":
+        "20+个正则表达式模式原生处理马来西亚代码切换 — BM、英语、普通话、泰米尔语和Manglish自然混合。",
       "features.manglish.b1": "英语、马来语、普通话、泰米尔语",
       "features.manglish.b2": "语气滑块：正式到完整Manglish",
       "features.manglish.b3": "无机器人式'Certainly, I can assist you'",
       "features.cal.title": "Cal.com预约",
       "features.cal.subtitle": "预约、查询、取消 — 全通过WhatsApp。",
-      "features.cal.desc": "通过Cal.com进行全双向日历集成。客户预约、查询可用性并取消 — 完全通过WhatsApp或Telegram对话。",
+      "features.cal.desc":
+        "通过Cal.com进行全双向日历集成。客户预约、查询可用性并取消 — 完全通过WhatsApp或Telegram对话。",
       "features.cal.b1": "通过聊天预约、查询和取消",
       "features.cal.b2": "自动向客户发送确认邮件",
       "features.cal.b3": "无需任何开发工作",
       "features.escalation.title": "智能升级警报",
       "features.escalation.subtitle": "在客户发怒前就会收到邮件。",
-      "features.escalation.desc": "Bijou检测挫败信号、3+个未回答问题和明确的人工请求 — 然后立即向您发送完整对话线程。",
+      "features.escalation.desc":
+        "Bijou检测挫败信号、3+个未回答问题和明确的人工请求 — 然后立即向您发送完整对话线程。",
       "features.escalation.b1": "内置挫败感检测",
       "features.escalation.b2": "警报邮件中包含完整对话上下文",
       "features.escalation.b3": "自定义域名邮件（Growth计划）",
       "features.kb.title": "知识库",
       "features.kb.subtitle": "您的FAQ。您的声音。零幻觉。",
-      "features.kb.desc": "上传最多50个FAQ和2份文件。Bijou只从您教的内容回答 — 不编造。更新FAQ后AI立即知晓，无需重新训练。",
+      "features.kb.desc":
+        "上传最多50个FAQ和2份文件。Bijou只从您教的内容回答 — 不编造。更新FAQ后AI立即知晓，无需重新训练。",
       "features.kb.b1": "50个FAQ + 2份文件上传（Pro）",
       "features.kb.b2": "即时更新 — 无需重新训练",
       "features.kb.b3": "AI保持在轨道上，从不猜测",
       "features.leads.title": "线索资格认定",
       "features.leads.subtitle": "热、温、冷 — 自动标记。",
-      "features.leads.desc": "Bijou在对话中自然探询预算、时间线和意图。每个线索自动标记，让您知道先回访谁。",
+      "features.leads.desc":
+        "Bijou在对话中自然探询预算、时间线和意图。每个线索自动标记，让您知道先回访谁。",
       "features.leads.b1": "预算+时间线检测",
       "features.leads.b2": "热/温/冷标记",
       "features.leads.b3": "包含在升级警报摘要中",
       "features.security.title": "符合PDPA的安全性",
       "features.security.subtitle": "您的数据。完全隔离。始终如此。",
-      "features.security.desc": "行级安全意味着您的客户数据与其他所有Bijou租户100%隔离。AES-256加密。符合PDPA和GDPR。",
+      "features.security.desc":
+        "行级安全意味着您的客户数据与其他所有Bijou租户100%隔离。AES-256加密。符合PDPA和GDPR。",
       "features.security.b1": "行级多租户数据隔离",
       "features.security.b2": "AES-256 + PDPA + GDPR就绪",
       "features.security.b3": "99.9%正常运行时间 — 新加坡地区",
@@ -851,8 +898,10 @@ const resources = {
       "comparison.badge": "诚实比较",
       "comparison.title.part1": "与竞争对手相比",
       "comparison.title.highlight": "我们的表现",
-      "comparison.subtitle": "没有精心挑选的指标。每行都可验证。我们也包括了竞争对手胜过我们的地方。",
-      "comparison.disclaimer": "* ChatDaddy宣传RM75/月，但需要WABA账户（+RM150-400/月Meta费用）。实际总计：RM280-500+/月。",
+      "comparison.subtitle":
+        "没有精心挑选的指标。每行都可验证。我们也包括了竞争对手胜过我们的地方。",
+      "comparison.disclaimer":
+        "* ChatDaddy宣传RM75/月，但需要WABA账户（+RM150-400/月Meta费用）。实际总计：RM280-500+/月。",
       "comparison.filter.all": "全部",
       "comparison.cat.pricing": "定价",
       "comparison.cat.channels": "频道",
@@ -861,7 +910,8 @@ const resources = {
       "comparison.cat.setup": "设置与支持",
       "comparison.best": "★ 最佳价值",
       "comparison.cta.title": "您已看到数字。自己判断。",
-      "comparison.cta.body": "RM299/月。无WABA。无隐藏Meta费用。无年度陷阱。有任何问题直接WhatsApp创始人。",
+      "comparison.cta.body":
+        "RM299/月。无WABA。无隐藏Meta费用。无年度陷阱。有任何问题直接WhatsApp创始人。",
       "comparison.cta.wa": "在WhatsApp上问Jewel",
       "comparison.cta.email": "jewel@mybijou.xyz",
 
@@ -1085,9 +1135,11 @@ const resources = {
       "features.badge": "நீங்கள் உண்மையில் என்ன பெறுகிறீர்கள்",
       "features.title.part1": "ஒவ்வொரு அம்சமும்,",
       "features.title.highlight": "தெளிவாக விவரிக்கப்பட்டுள்ளது",
-      "features.subtitle": "வீண் வார்த்தைகள் இல்லை. தெளிவற்ற ஐகான்கள் இல்லை. எந்த அம்சத்தையும் கிளிக் செய்து அது எப்படி வேலை செய்கிறது என்று பாருங்கள்.",
+      "features.subtitle":
+        "வீண் வார்த்தைகள் இல்லை. தெளிவற்ற ஐகான்கள் இல்லை. எந்த அம்சத்தையும் கிளிக் செய்து அது எப்படி வேலை செய்கிறது என்று பாருங்கள்.",
       "features.live": "அனைத்து அம்சங்களும் இன்று செயல்படுகின்றன",
-      "features.noBeta": "பீட்டா இல்லை. காத்திருப்பு பட்டியல் இல்லை. விதிவிலக்கு இல்லை.",
+      "features.noBeta":
+        "பீட்டா இல்லை. காத்திருப்பு பட்டியல் இல்லை. விதிவிலக்கு இல்லை.",
       "features.stats.features": "செயலில் உள்ள அம்சங்கள்",
       "features.stats.features.sub": "இன்று அனைத்தும் வேலை செய்கின்றன",
       "features.stats.setup": "அமைப்பு நேரம்",
@@ -1100,56 +1152,72 @@ const resources = {
       "features.badge.unique": "Bijou மட்டுமே",
       "features.badge.enterprise": "நிறுவன-தரம்",
       "features.wa.title": "WhatsApp AI முகவர்",
-      "features.wa.subtitle": "WABA தேவையில்லை. Meta கட்டணம் இல்லை. மார்க்அப் இல்லை.",
-      "features.wa.desc": "QR ஸ்கேன் மூலம் சில நிமிடங்களில் உங்கள் WhatsApp எண்ணை இணைக்கவும். Facebook Business Manager தேவையில்லை, WABA விண்ணப்பம் தேவையில்லை, RM0.05/செய்தி Meta கட்டணம் இல்லை.",
+      "features.wa.subtitle":
+        "WABA தேவையில்லை. Meta கட்டணம் இல்லை. மார்க்அப் இல்லை.",
+      "features.wa.desc":
+        "QR ஸ்கேன் மூலம் சில நிமிடங்களில் உங்கள் WhatsApp எண்ணை இணைக்கவும். Facebook Business Manager தேவையில்லை, WABA விண்ணப்பம் தேவையில்லை, RM0.05/செய்தி Meta கட்டணம் இல்லை.",
       "features.wa.b1": "QR ஸ்கேன் → 15 நிமிடத்தில் செயல்படுகிறது",
       "features.wa.b2": "ஒவ்வொரு உரையாடலுக்கும் கட்டணம் இல்லை",
       "features.wa.b3": "Meta மார்க்அப் ஒருபோதும் இல்லை",
       "features.tg.title": "Telegram AI முகவர்",
-      "features.tg.subtitle": "ஒரே மூளை. இரண்டாவது சேனல். இலவசமாக சேர்க்கப்பட்டது.",
-      "features.tg.desc": "அதே AI, அறிவுத் தளம் மற்றும் Manglish ஆளுமை Telegram-இல் ஒரே நேரத்தில் இயங்குகிறது, எந்த கூடுதல் செலவும் இல்லாமல்.",
+      "features.tg.subtitle":
+        "ஒரே மூளை. இரண்டாவது சேனல். இலவசமாக சேர்க்கப்பட்டது.",
+      "features.tg.desc":
+        "அதே AI, அறிவுத் தளம் மற்றும் Manglish ஆளுமை Telegram-இல் ஒரே நேரத்தில் இயங்குகிறது, எந்த கூடுதல் செலவும் இல்லாமல்.",
       "features.tg.b1": "Pro-இல் சேர்க்கப்பட்டது — கூடுதல் கட்டணம் இல்லை",
       "features.tg.b2": "அதே TRACE என்ஜின் மற்றும் அறிவுத் தளம்",
       "features.tg.b3": "சுதந்திர சேனல், ஒருங்கிணைந்த அமைப்பு",
       "features.trace.title": "TRACE பச்சாதாப என்ஜின்",
-      "features.trace.subtitle": "4-முகவர் குழாய். வெறும் சொல்-பொருத்தம் மட்டுமல்ல.",
-      "features.trace.desc": "ஒவ்வொரு செய்தியும் 4 நிபுணர் AI முகவர்கள் வழியாக செல்கிறது: உணர்வு கண்டறிதல் → காரண பகுப்பாய்வு → பதில் திட்டமிடல் → மனித-போன்ற தொகுப்பு.",
+      "features.trace.subtitle":
+        "4-முகவர் குழாய். வெறும் சொல்-பொருத்தம் மட்டுமல்ல.",
+      "features.trace.desc":
+        "ஒவ்வொரு செய்தியும் 4 நிபுணர் AI முகவர்கள் வழியாக செல்கிறது: உணர்வு கண்டறிதல் → காரண பகுப்பாய்வு → பதில் திட்டமிடல் → மனித-போன்ற தொகுப்பு.",
       "features.trace.b1": "அதிகரிக்கும் முன் விரக்தியை கண்டறிகிறது",
       "features.trace.b2": "சூழலை புரிகிறது, வெறும் சொற்களை மட்டுமல்ல",
       "features.trace.b3": "உங்கள் தரவிலிருந்து மட்டுமே பதில் — மாயை இல்லை",
       "features.manglish.title": "Manglish என்ஜின்",
       "features.manglish.subtitle": "Can lah. Got or not? தீர்ந்தது.",
-      "features.manglish.desc": "20+ regex வடிவங்கள் மலேசிய குறியீடு-மாற்றத்தை இயல்பாகவே கையாளுகின்றன — BM, ஆங்கிலம், மண்டரின், தமிழ் மற்றும் Manglish இயல்பாக கலக்கப்பட்டது.",
+      "features.manglish.desc":
+        "20+ regex வடிவங்கள் மலேசிய குறியீடு-மாற்றத்தை இயல்பாகவே கையாளுகின்றன — BM, ஆங்கிலம், மண்டரின், தமிழ் மற்றும் Manglish இயல்பாக கலக்கப்பட்டது.",
       "features.manglish.b1": "ஆங்கிலம், மலாய், மண்டரின், தமிழ்",
       "features.manglish.b2": "தொனி ஸ்லைடர்: முறையான முதல் முழு Manglish வரை",
       "features.manglish.b3": "ரோபோட்டிக் 'Certainly, I can assist you' இல்லை",
       "features.cal.title": "Cal.com பதிவு",
-      "features.cal.subtitle": "பதிவு, சரிபார், ரத்து — அனைத்தும் WhatsApp வழியாக.",
-      "features.cal.desc": "Cal.com வழியாக முழு இரு-திசை காலண்டர் ஒருங்கிணைப்பு. வாடிக்கையாளர்கள் WhatsApp அல்லது Telegram உரையாடல் வழியாக முழுமையாக பதிவு செய்கிறார்கள்.",
+      "features.cal.subtitle":
+        "பதிவு, சரிபார், ரத்து — அனைத்தும் WhatsApp வழியாக.",
+      "features.cal.desc":
+        "Cal.com வழியாக முழு இரு-திசை காலண்டர் ஒருங்கிணைப்பு. வாடிக்கையாளர்கள் WhatsApp அல்லது Telegram உரையாடல் வழியாக முழுமையாக பதிவு செய்கிறார்கள்.",
       "features.cal.b1": "அரட்டை வழியாக பதிவு, சரிபார் மற்றும் ரத்து",
       "features.cal.b2": "வாடிக்கையாளருக்கு தானாக உறுதிப்படுத்தல் மின்னஞ்சல்",
       "features.cal.b3": "டெவலப்பர் வேலை தேவையில்லை",
       "features.escalation.title": "ஸ்மார்ட் எஸ்கலேஷன் எச்சரிக்கைகள்",
-      "features.escalation.subtitle": "வாடிக்கையாளர் கோபமாவதற்கு முன்பே உங்களுக்கு மின்னஞ்சல் வரும்.",
-      "features.escalation.desc": "Bijou விரக்தி சமிக்ஞைகள், 3+ பதிலளிக்கப்படாத கேள்விகள் மற்றும் வெளிப்படையான மனித கோரிக்கைகளை கண்டறிகிறது — பின்னர் உடனடியாக முழு உரையாடல் நூலை மின்னஞ்சல் செய்கிறது.",
+      "features.escalation.subtitle":
+        "வாடிக்கையாளர் கோபமாவதற்கு முன்பே உங்களுக்கு மின்னஞ்சல் வரும்.",
+      "features.escalation.desc":
+        "Bijou விரக்தி சமிக்ஞைகள், 3+ பதிலளிக்கப்படாத கேள்விகள் மற்றும் வெளிப்படையான மனித கோரிக்கைகளை கண்டறிகிறது — பின்னர் உடனடியாக முழு உரையாடல் நூலை மின்னஞ்சல் செய்கிறது.",
       "features.escalation.b1": "விரக்தி கண்டறிதல் உள்ளமைக்கப்பட்டது",
       "features.escalation.b2": "எச்சரிக்கை மின்னஞ்சலில் முழு உரையாடல் சூழல்",
       "features.escalation.b3": "தனிப்பயன் டொமைன் மின்னஞ்சல் (Growth திட்டம்)",
       "features.kb.title": "அறிவுத் தளம்",
       "features.kb.subtitle": "உங்கள் FAQ. உங்கள் குரல். சூன்ய மாயை.",
-      "features.kb.desc": "50 FAQ மற்றும் 2 ஆவணங்களை பதிவேற்றவும். Bijou நீங்கள் கற்பித்ததிலிருந்து மட்டுமே பதில் கூறுகிறது — கற்பனை செய்வதில்லை. FAQ புதுப்பிக்கவும் AI உடனடியாக தெரிந்துகொள்ளும்.",
+      "features.kb.desc":
+        "50 FAQ மற்றும் 2 ஆவணங்களை பதிவேற்றவும். Bijou நீங்கள் கற்பித்ததிலிருந்து மட்டுமே பதில் கூறுகிறது — கற்பனை செய்வதில்லை. FAQ புதுப்பிக்கவும் AI உடனடியாக தெரிந்துகொள்ளும்.",
       "features.kb.b1": "50 FAQ + 2 ஆவண பதிவேற்றங்கள் (Pro)",
       "features.kb.b2": "உடனடி புதுப்பிப்புகள் — மறுபயிற்சி தேவையில்லை",
       "features.kb.b3": "AI பாதையில் இருக்கும், ஒருபோதும் யூகிக்காது",
       "features.leads.title": "லீட் தகுதிப்பெறுதல்",
-      "features.leads.subtitle": "சூடான, வெதுவெதுப்பான, குளிர் — தானாக குறிக்கப்படும்.",
-      "features.leads.desc": "Bijou உரையாடலில் இயல்பாக பட்ஜெட், கால அட்டவணை மற்றும் நோக்கத்தை ஆராய்கிறது. ஒவ்வொரு லீட்டும் தானாக குறிக்கப்படும்.",
+      "features.leads.subtitle":
+        "சூடான, வெதுவெதுப்பான, குளிர் — தானாக குறிக்கப்படும்.",
+      "features.leads.desc":
+        "Bijou உரையாடலில் இயல்பாக பட்ஜெட், கால அட்டவணை மற்றும் நோக்கத்தை ஆராய்கிறது. ஒவ்வொரு லீட்டும் தானாக குறிக்கப்படும்.",
       "features.leads.b1": "பட்ஜெட் + கால அட்டவணை கண்டறிதல்",
       "features.leads.b2": "சூடான / வெதுவெதுப்பான / குளிர் குறிக்கல்",
       "features.leads.b3": "எஸ்கலேஷன் எச்சரிக்கை சுருக்கத்தில் சேர்க்கப்பட்டது",
       "features.security.title": "PDPA-தயார் பாதுகாப்பு",
-      "features.security.subtitle": "உங்கள் தரவு. முழுமையாக தனிமைப்படுத்தப்பட்டது. எப்பொழுதும்.",
-      "features.security.desc": "வரிசை-நிலை பாதுகாப்பு என்பது உங்கள் வாடிக்கையாளர் தரவு மற்ற அனைத்து Bijou வாடகையாளர்களிடமிருந்தும் 100% தனிமைப்படுத்தப்பட்டுள்ளது என்று அர்த்தம். AES-256 குறியாக்கம். PDPA மற்றும் GDPR இணங்குதல்.",
+      "features.security.subtitle":
+        "உங்கள் தரவு. முழுமையாக தனிமைப்படுத்தப்பட்டது. எப்பொழுதும்.",
+      "features.security.desc":
+        "வரிசை-நிலை பாதுகாப்பு என்பது உங்கள் வாடிக்கையாளர் தரவு மற்ற அனைத்து Bijou வாடகையாளர்களிடமிருந்தும் 100% தனிமைப்படுத்தப்பட்டுள்ளது என்று அர்த்தம். AES-256 குறியாக்கம். PDPA மற்றும் GDPR இணங்குதல்.",
       "features.security.b1": "வரிசை-நிலை பல-வாடகையாளர் தரவு தனிமைப்படுத்தல்",
       "features.security.b2": "AES-256 + PDPA + GDPR தயார்",
       "features.security.b3": "99.9% அப்டைம் — சிங்கப்பூர் பிராந்தியம்",
@@ -1158,8 +1226,10 @@ const resources = {
       "comparison.badge": "நேர்மையான ஒப்பீடு",
       "comparison.title.part1": "நாங்கள் எவ்வாறு ஒப்பிடுகிறோம்",
       "comparison.title.highlight": "மற்றவர்களுடன்",
-      "comparison.subtitle": "தேர்ந்தெடுக்கப்பட்ட அளவீடுகள் இல்லை. ஒவ்வொரு வரியும் சரிபார்க்கக்கூடியது. போட்டியாளர்கள் நம்மை மிஞ்சும் இடங்களும் சேர்க்கப்பட்டுள்ளன.",
-      "comparison.disclaimer": "* ChatDaddy RM75/மாதம் விளம்பரப்படுத்துகிறது ஆனால் WABA கணக்கு தேவை (+RM150-400/மாதம் Meta கட்டணங்கள்). உண்மையான மொத்தம்: RM280-500+/மாதம்.",
+      "comparison.subtitle":
+        "தேர்ந்தெடுக்கப்பட்ட அளவீடுகள் இல்லை. ஒவ்வொரு வரியும் சரிபார்க்கக்கூடியது. போட்டியாளர்கள் நம்மை மிஞ்சும் இடங்களும் சேர்க்கப்பட்டுள்ளன.",
+      "comparison.disclaimer":
+        "* ChatDaddy RM75/மாதம் விளம்பரப்படுத்துகிறது ஆனால் WABA கணக்கு தேவை (+RM150-400/மாதம் Meta கட்டணங்கள்). உண்மையான மொத்தம்: RM280-500+/மாதம்.",
       "comparison.filter.all": "அனைத்தும்",
       "comparison.cat.pricing": "விலை",
       "comparison.cat.channels": "சேனல்கள்",
@@ -1167,18 +1237,22 @@ const resources = {
       "comparison.cat.automation": "தானியங்கு",
       "comparison.cat.setup": "அமைப்பு மற்றும் ஆதரவு",
       "comparison.best": "★ சிறந்த மதிப்பு",
-      "comparison.cta.title": "நீங்கள் எண்களை பார்த்தீர்கள். நீங்களே தீர்மானிக்கவும்.",
-      "comparison.cta.body": "RM299/மாதம். WABA இல்லை. மறைக்கப்பட்ட Meta கட்டணங்கள் இல்லை. வருடாந்திர பொறி இல்லை. கேள்விகள் இருந்தால் நிறுவகருக்கு நேரடியாக WhatsApp செய்யவும்.",
+      "comparison.cta.title":
+        "நீங்கள் எண்களை பார்த்தீர்கள். நீங்களே தீர்மானிக்கவும்.",
+      "comparison.cta.body":
+        "RM299/மாதம். WABA இல்லை. மறைக்கப்பட்ட Meta கட்டணங்கள் இல்லை. வருடாந்திர பொறி இல்லை. கேள்விகள் இருந்தால் நிறுவகருக்கு நேரடியாக WhatsApp செய்யவும்.",
       "comparison.cta.wa": "WhatsApp-இல் Jewel-ஐ கேளுங்கள்",
       "comparison.cta.email": "jewel@mybijou.xyz",
 
       // காத்திருப்பு பட்டை
-      "waitlist.headline": "வெறும் 7 ஆரம்ப பயனர் இடங்கள் மட்டுமே உள்ளன — RM299/மாதம் எப்பொழுதும்",
+      "waitlist.headline":
+        "வெறும் 7 ஆரம்ப பயனர் இடங்கள் மட்டுமே உள்ளன — RM299/மாதம் எப்பொழுதும்",
       "waitlist.pill1": "உங்களுக்காக செய்யப்பட்டது",
       "waitlist.pill2": "15 நிமிடத்தில் செயல்படுகிறது",
       "waitlist.pill3": "அமைப்பு சிரமம் சூன்யம்",
       "waitlist.social": "500+ மலேசிய SME-கள் ஏற்கனவே பட்டியலில் உள்ளன",
-      "waitlist.mobileSub": "✅ உங்களுக்காக செய்யப்பட்டது · ⚡ 15 நிமிடத்தில் · 🚫 சிரமம் இல்லை",
+      "waitlist.mobileSub":
+        "✅ உங்களுக்காக செய்யப்பட்டது · ⚡ 15 நிமிடத்தில் · 🚫 சிரமம் இல்லை",
       "waitlist.cta": "என் இடத்தை கோரவும்",
 
       // ஆரம்ப பயனர் தொகுதி
