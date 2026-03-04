@@ -259,7 +259,8 @@ export const FAQ: React.FC = () => {
             <span className="text-gradient-gold">Questions</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Real answers from the Bijou team. No sales scripts, no vague promises.
+            Real answers from the Bijou team. No sales scripts, no vague
+            promises.
           </p>
         </motion.div>
 
@@ -385,7 +386,8 @@ export const FAQ: React.FC = () => {
                   Still have a specific question?
                 </p>
                 <p className="text-gray-400 text-sm">
-                  The founder replies personally — no bots, no support ticket queues.
+                  The founder replies personally — no bots, no support ticket
+                  queues.
                 </p>
                 <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
