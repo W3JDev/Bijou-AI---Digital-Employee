@@ -72,15 +72,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.05] mb-6 lg:mb-8"
+              className="text-5xl sm:text-6xl lg:text-8xl font-display font-extrabold tracking-tight leading-[1.08] mb-6 lg:mb-8"
             >
-              {t("hero.title.part1")}{" "}
-              <span className="text-gradient-gold">
-                {t("hero.title.savingsAmount")}
-              </span>{" "}
-              {t("hero.title.part2")}{" "}
-              <span className="text-gradient-premium">
-                {t("hero.title.priceAmount")}
+              <span className="block">
+                {t("hero.title.part1")}{" "}
+                <span className="text-gradient-gold">
+                  {t("hero.title.savingsAmount")}
+                </span>
+              </span>
+              <span className="block">
+                {t("hero.title.part2")}{" "}
+                <span className="text-gradient-premium">
+                  {t("hero.title.priceAmount")}
+                </span>
               </span>
             </motion.h1>
 

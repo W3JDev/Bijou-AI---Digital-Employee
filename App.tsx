@@ -13,7 +13,6 @@ import { Playbooks } from "./components/Playbooks";
 import { Pricing } from "./components/Pricing";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { RevenueCalculator } from "./components/RevenueCalculator";
-import { Roadmap } from "./components/Roadmap";
 import { SlideDeckModal } from "./components/SlideDeckModal";
 import { ViralPillars } from "./components/ViralPillars";
 import { WaitlistStrip } from "./components/WaitlistStrip";
@@ -81,7 +80,7 @@ export default function App() {
           />
           <Pricing onOpenModal={() => openModal("signup", "pricing")} />
           <HowItWorks />
-          <Roadmap />
+
           <Playbooks />
           <CaseStudies
             onOpenModal={() => openModal("signup", "case_studies")}

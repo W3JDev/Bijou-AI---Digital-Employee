@@ -34,15 +34,15 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
     };
   }, []);
 
-  // Auto-expand animation periodically to grab attention
+  // Auto-expand only on desktop, only once, after a delay — never on mobile
   useEffect(() => {
-    if (isVisible && !hasInteracted) {
-      const expandTimer = setInterval(() => {
+    if (isVisible && !hasInteracted && window.innerWidth >= 768) {
+      const expandTimer = setTimeout(() => {
         setIsExpanded(true);
-        setTimeout(() => setIsExpanded(false), 4000);
-      }, 15000); // Expand every 15 seconds
+        setTimeout(() => setIsExpanded(false), 5000);
+      }, 5000); // Show once after 5s on desktop only
 
-      return () => clearInterval(expandTimer);
+      return () => clearTimeout(expandTimer);
     }
   }, [isVisible, hasInteracted]);
 
@@ -79,7 +79,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
   return (
     <div
       className={`fixed right-4 z-50 ${className}`}
-      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 72px)" }}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 16px)" }}
     >
       <AnimatePresence>
         {isExpanded && (
@@ -87,7 +87,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
-            className="absolute bottom-20 right-0 w-80 max-w-[90vw] p-6 glass-panel-3d rounded-2xl border border-emerald-500/30 bg-[#050816]/95 backdrop-blur-xl shadow-2xl"
+            className="absolute bottom-20 right-0 w-64 sm:w-80 max-w-[85vw] p-4 sm:p-6 glass-panel-3d rounded-2xl border border-emerald-500/30 bg-[#050816]/95 backdrop-blur-xl shadow-2xl"
           >
             <button
               onClick={() => setIsExpanded(false)}
@@ -112,9 +112,9 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
               </div>
             </div>
 
-            <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-              Get instant answers about how Bijou can stop your revenue leaks.
-              Our Malaysian team speaks your language! 🇲🇾
+            <p className="text-gray-300 text-xs sm:text-sm mb-4 leading-relaxed">
+              Get instant answers from our Malaysian team. We speak your
+              language! 🇲🇾
             </p>
 
             <motion.button
@@ -142,7 +142,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={handleExpand}
-        className="relative w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:shadow-[0_0_40px_rgba(34,197,94,0.6)] transition-all flex items-center justify-center group"
+        className="relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:shadow-[0_0_40px_rgba(34,197,94,0.6)] transition-all flex items-center justify-center group"
       >
         {/* Pulse animation */}
         <div className="absolute inset-0 rounded-full bg-green-500/30 animate-ping"></div>
