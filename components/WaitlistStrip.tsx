@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface WaitlistStripProps {
   className?: string;
@@ -11,10 +12,12 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
   className = "",
   onOpenModal,
 }) => {
+  const { t } = useTranslation();
+
   const pills = [
-    { icon: "✅", text: "Done for you" },
-    { icon: "⚡", text: "Live in 15 min" },
-    { icon: "🚫", text: "Zero setup hassle" },
+    { icon: "✅", text: t("waitlist.pill1") },
+    { icon: "⚡", text: t("waitlist.pill2") },
+    { icon: "🚫", text: t("waitlist.pill3") },
   ];
 
   return (
@@ -53,7 +56,7 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                   🔥
                 </motion.span>
                 <span className="text-white font-black text-sm sm:text-base leading-tight">
-                  Only 7 Early Adopter Spots Left — RM299/mo Forever
+                  {t("waitlist.headline")}
                 </span>
               </div>
 
@@ -68,13 +71,13 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                   </span>
                 ))}
                 <span className="text-gray-500 text-[10px]">
-                  · 500+ Malaysian SMEs already on the list
+                  · {t("waitlist.social")}
                 </span>
               </div>
 
               {/* Mobile subtext */}
               <p className="sm:hidden text-emerald-300/70 text-[10px] font-medium">
-                ✅ Done for you · ⚡ Live in 15 min · 🚫 Zero hassle
+                {t("waitlist.mobileSub")}
               </p>
             </div>
 
@@ -90,7 +93,7 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
                 className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-black text-sm sm:text-base whitespace-nowrap bg-gradient-to-r from-emerald-500 to-green-400 text-black shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
               >
                 <Zap className="w-4 h-4" />
-                <span>Claim My Spot</span>
+                <span>{t("waitlist.cta")}</span>
                 <ArrowRight className="w-4 h-4 hidden sm:block" />
               </motion.button>
             </div>

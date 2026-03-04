@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import {
   MessageCircle,
   Send,
@@ -264,7 +265,18 @@ const colorMap: Record<string, { icon: string; badge: string; badgeBg: string; g
   rose:    { icon: "text-rose-400",    badge: "text-rose-400",    badgeBg: "bg-rose-500/10 border-rose-500/20",       glow: "bg-rose-500/8",    bullet: "bg-rose-400" },
 };
 
-const FeatureCard: React.FC<{ feature: typeof features[0]; index: number }> = ({ feature, index }) => {
+interface FeatureDef {
+  icon: React.ReactNode;
+  color: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  bullets: string[];
+  widget: React.ReactNode;
+}
+
+const FeatureCard: React.FC<{ feature: FeatureDef; index: number }> = ({ feature, index }) => {
   const [open, setOpen] = useState(false);
   const c = colorMap[feature.color] ?? colorMap.emerald;
 
@@ -332,6 +344,101 @@ const FeatureCard: React.FC<{ feature: typeof features[0]; index: number }> = ({
 };
 
 export const Features: React.FC = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: <MessageCircle className="w-5 h-5" />,
+      color: "emerald",
+      badge: t("features.badge.live"),
+      title: t("features.wa.title"),
+      subtitle: t("features.wa.subtitle"),
+      description: t("features.wa.desc"),
+      bullets: [t("features.wa.b1"), t("features.wa.b2"), t("features.wa.b3")],
+      widget: null,
+    },
+    {
+      icon: <Send className="w-5 h-5" />,
+      color: "blue",
+      badge: t("features.badge.live"),
+      title: t("features.tg.title"),
+      subtitle: t("features.tg.subtitle"),
+      description: t("features.tg.desc"),
+      bullets: [t("features.tg.b1"), t("features.tg.b2"), t("features.tg.b3")],
+      widget: null,
+    },
+    {
+      icon: <Brain className="w-5 h-5" />,
+      color: "purple",
+      badge: t("features.badge.unique"),
+      title: t("features.trace.title"),
+      subtitle: t("features.trace.subtitle"),
+      description: t("features.trace.desc"),
+      bullets: [t("features.trace.b1"), t("features.trace.b2"), t("features.trace.b3")],
+      widget: <TraceWidget />,
+    },
+    {
+      icon: <Languages className="w-5 h-5" />,
+      color: "gold",
+      badge: t("features.badge.unique"),
+      title: t("features.manglish.title"),
+      subtitle: t("features.manglish.subtitle"),
+      description: t("features.manglish.desc"),
+      bullets: [t("features.manglish.b1"), t("features.manglish.b2"), t("features.manglish.b3")],
+      widget: <ManglishDialWidget />,
+    },
+    {
+      icon: <CalendarCheck className="w-5 h-5" />,
+      color: "cyan",
+      badge: t("features.badge.live"),
+      title: t("features.cal.title"),
+      subtitle: t("features.cal.subtitle"),
+      description: t("features.cal.desc"),
+      bullets: [t("features.cal.b1"), t("features.cal.b2"), t("features.cal.b3")],
+      widget: <CalWidget />,
+    },
+    {
+      icon: <Bell className="w-5 h-5" />,
+      color: "amber",
+      badge: t("features.badge.live"),
+      title: t("features.escalation.title"),
+      subtitle: t("features.escalation.subtitle"),
+      description: t("features.escalation.desc"),
+      bullets: [t("features.escalation.b1"), t("features.escalation.b2"), t("features.escalation.b3")],
+      widget: <EscalationWidget />,
+    },
+    {
+      icon: <BookOpen className="w-5 h-5" />,
+      color: "rose",
+      badge: t("features.badge.live"),
+      title: t("features.kb.title"),
+      subtitle: t("features.kb.subtitle"),
+      description: t("features.kb.desc"),
+      bullets: [t("features.kb.b1"), t("features.kb.b2"), t("features.kb.b3")],
+      widget: null,
+    },
+    {
+      icon: <UserCheck className="w-5 h-5" />,
+      color: "emerald",
+      badge: t("features.badge.live"),
+      title: t("features.leads.title"),
+      subtitle: t("features.leads.subtitle"),
+      description: t("features.leads.desc"),
+      bullets: [t("features.leads.b1"), t("features.leads.b2"), t("features.leads.b3")],
+      widget: null,
+    },
+    {
+      icon: <Shield className="w-5 h-5" />,
+      color: "blue",
+      badge: t("features.badge.enterprise"),
+      title: t("features.security.title"),
+      subtitle: t("features.security.subtitle"),
+      description: t("features.security.desc"),
+      bullets: [t("features.security.b1"), t("features.security.b2"), t("features.security.b3")],
+      widget: <SecurityWidget />,
+    },
+  ];
+
   return (
     <section id="features" className="py-24 relative">
       <div className="absolute inset-0 pointer-events-none">
@@ -348,24 +455,24 @@ export const Features: React.FC = () => {
           className="text-center mb-12"
         >
           <div className="inline-block px-3 py-1 mb-4 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-            What You Actually Get
+            {t("features.badge")}
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Every Feature,{" "}
+            {t("features.title.part1")}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-              Clearly Explained
+              {t("features.title.highlight")}
             </span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            No buzzwords. No vague icons. Click any feature below to see exactly what it does and how it works.
+            {t("features.subtitle")}
           </p>
           <div className="flex items-center justify-center gap-3 mt-5 flex-wrap">
             <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              All features are live and working today
+              {t("features.live")}
             </span>
             <span className="text-gray-600 text-xs">·</span>
-            <span className="text-xs text-gray-500">No beta. No waitlist. No asterisk.</span>
+            <span className="text-xs text-gray-500">{t("features.noBeta")}</span>
           </div>
         </motion.div>
 
@@ -383,10 +490,10 @@ export const Features: React.FC = () => {
           className="mt-10 glass-panel-3d rounded-2xl border border-white/[0.07] p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         >
           {[
-            { value: "9",      label: "Live Features",       sub: "all working today" },
-            { value: "15 min", label: "Setup Time",          sub: "self-serve, no dev" },
-            { value: "3,000",  label: "Conversations/mo",    sub: "~100 per day" },
-            { value: "4",      label: "Languages Supported", sub: "EN · BM · 中文 · தமிழ்" },
+            { value: "9",      label: t("features.stats.features"),  sub: t("features.stats.features.sub") },
+            { value: "15 min", label: t("features.stats.setup"),     sub: t("features.stats.setup.sub") },
+            { value: "3,000",  label: t("features.stats.convos"),    sub: t("features.stats.convos.sub") },
+            { value: "4",      label: t("features.stats.langs"),     sub: t("features.stats.langs.sub") },
           ].map((stat, i) => (
             <div key={i}>
               <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">

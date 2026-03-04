@@ -254,10 +254,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-0.5">
                         <span className="text-gold-300 text-[10px] font-black uppercase tracking-widest">
-                          Early Adopter Price Lock
+                          {t("pricing.ea.label")}
                         </span>
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 text-[10px] font-black animate-pulse">
-                          🔥 Closing Soon
+                          {t("pricing.ea.badge")}
                         </span>
                       </div>
                       <p className="text-white text-sm font-bold leading-snug">
@@ -270,11 +270,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                   <div className="mb-3">
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-gold-400/70 text-[10px] font-semibold">
-                        {spotsTotal - remaining} of {spotsTotal} founding spots
-                        claimed
+                        {t("pricing.ea.claimed", { total: spotsTotal })}
                       </span>
                       <span className="text-gold-300 text-[10px] font-black">
-                        {remaining} left
+                        {remaining} {t("pricing.ea.left")}
                       </span>
                     </div>
                     <div className="w-full bg-black/40 rounded-full h-2.5 overflow-hidden">
@@ -292,10 +291,10 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
                   {/* What the lock means */}
                   <div className="grid grid-cols-2 gap-2">
                     {[
-                      { icon: "🔒", text: "RM299 rate locked forever" },
-                      { icon: "📈", text: "New customers pay RM399+" },
-                      { icon: "✅", text: "Cancel anytime, no trap" },
-                      { icon: "🎁", text: "Free add-ons when they ship" },
+                      { icon: "🔒", text: t("pricing.ea.b1") },
+                      { icon: "📈", text: t("pricing.ea.b2") },
+                      { icon: "✅", text: t("pricing.ea.b3") },
+                      { icon: "🎁", text: t("pricing.ea.b4") },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-1.5">
                         <span className="text-sm">{item.icon}</span>
