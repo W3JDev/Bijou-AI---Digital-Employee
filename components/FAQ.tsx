@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Mail } from "lucide-react";
+import { ChevronDown, HelpCircle, Mail, MessageCircle } from "lucide-react";
 import React, { useState } from "react";
 
 interface FAQItem {
@@ -193,11 +193,31 @@ const faqs: FAQItem[] = [
 
 const categories = [...new Set(faqs.map((f) => f.category))];
 
-const categoryColors: Record<string, string> = {
-  "About Bijou": "gold",
-  "Malaysian Market": "emerald",
-  "Pricing & Fees": "blue",
-  "Setup & Technical": "purple",
+const categoryActiveClasses: Record<string, string> = {
+  All: "bg-white/15 border-white/30 text-white",
+  "About Bijou": "bg-yellow-500/15 border-yellow-400/40 text-yellow-300",
+  "Malaysian Market": "bg-emerald-500/15 border-emerald-400/40 text-emerald-300",
+  "Pricing & Fees": "bg-blue-500/15 border-blue-400/40 text-blue-300",
+  "Setup & Technical": "bg-purple-500/15 border-purple-400/40 text-purple-300",
+};
+
+const categoryInactiveClasses: Record<string, string> = {
+  All: "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white",
+  "About Bijou":
+    "bg-white/5 border-white/10 text-gray-400 hover:bg-yellow-500/10 hover:border-yellow-400/20 hover:text-yellow-300",
+  "Malaysian Market":
+    "bg-white/5 border-white/10 text-gray-400 hover:bg-emerald-500/10 hover:border-emerald-400/20 hover:text-emerald-300",
+  "Pricing & Fees":
+    "bg-white/5 border-white/10 text-gray-400 hover:bg-blue-500/10 hover:border-blue-400/20 hover:text-blue-300",
+  "Setup & Technical":
+    "bg-white/5 border-white/10 text-gray-400 hover:bg-purple-500/10 hover:border-purple-400/20 hover:text-purple-300",
+};
+
+const categoryDotClasses: Record<string, string> = {
+  "About Bijou": "bg-yellow-400",
+  "Malaysian Market": "bg-emerald-400",
+  "Pricing & Fees": "bg-blue-400",
+  "Setup & Technical": "bg-purple-400",
 };
 
 export const FAQ: React.FC = () => {
@@ -210,32 +230,62 @@ export const FAQ: React.FC = () => {
       : faqs.filter((f) => f.category === activeCategory);
 
   return (
-    <section id="faq" className="py-24 relative bg-black/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold-900/10 rounded-full blur-[120px] pointer-events-none" />
+    <section
+      id="faq"
+      className="py-32 relative overflow-hidden bg-gradient-to-b from-black/0 via-black/40 to-black/0"
+    >
+      {/* Background glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-gold-500/6 rounded-full blur-[150px]" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-emerald-500/6 rounded-full blur-[130px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-gold-900/8 rounded-full blur-[120px]" />
+      </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-1.5 mb-4 rounded-full bg-gold-500/10 border border-gold-400/20 text-gold-400 text-xs font-bold uppercase tracking-wider">
-            Got Questions?
+          <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full glass-panel-3d border border-gold-400/25 text-gold-400 text-xs font-black uppercase tracking-widest">
+            <HelpCircle className="w-3.5 h-3.5" />
+            Everything You Want To Know
           </div>
-          <h2 className="text-4xl md:text-5xl font-display font-extrabold mb-4 tracking-tight">
-            Frequently Asked Questions
+          <h2 className="text-5xl md:text-6xl font-display font-extrabold mb-5 tracking-tight">
+            Frequently{" "}
+            <span className="text-gradient-gold">Asked</span>{" "}
+            Questions
           </h2>
-          <p className="text-gray-400 text-lg">Real answers. No sales fluff.</p>
+          <p className="text-gray-400 text-xl max-w-2xl mx-auto leading-relaxed">
+            Real answers from the Bijou team. No sales scripts, no vague promises.
+          </p>
+          <div className="flex items-center justify-center gap-6 mt-6 text-sm text-gray-500">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-gold-400 rounded-full inline-block" />
+              {faqs.length} questions answered
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full inline-block" />
+              Updated March 2026
+            </span>
+          </div>
         </motion.div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap gap-2.5 justify-center mb-12"
+        >
           {["All", ...categories].map((cat) => {
-            const color = categoryColors[cat] ?? "gray";
             const isActive = activeCategory === cat;
+            const activeClass = categoryActiveClasses[cat] ?? categoryActiveClasses["All"];
+            const inactiveClass = categoryInactiveClasses[cat] ?? categoryInactiveClasses["All"];
             return (
               <button
                 key={cat}
@@ -243,102 +293,140 @@ export const FAQ: React.FC = () => {
                   setActiveCategory(cat);
                   setOpenIndex(null);
                 }}
-                className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all ${
-                  isActive
-                    ? `bg-${color}-500/20 border-${color}-400/50 text-${color}-300`
-                    : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"
+                className={`px-5 py-2.5 rounded-full text-sm font-bold border transition-all duration-200 ${
+                  isActive ? activeClass : inactiveClass
                 }`}
               >
+                {cat !== "All" && (
+                  <span
+                    className={`inline-block w-2 h-2 rounded-full mr-2 ${
+                      categoryDotClasses[cat] ?? "bg-gray-400"
+                    }`}
+                  />
+                )}
                 {cat}
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* FAQ Items */}
-        <div className="space-y-3">
-          {filtered.map((item, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.04 }}
-                className={`glass-panel-3d rounded-2xl border transition-colors ${
-                  isOpen
-                    ? "border-gold-400/30 bg-gold-500/5"
-                    : "border-white/8 hover:border-white/15"
-                }`}
-              >
-                <button
-                  className="w-full text-left px-6 py-5 flex items-start gap-4"
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
+        {/* FAQ Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-3"
+          >
+            {filtered.map((item, idx) => {
+              const isOpen = openIndex === idx;
+              const dotClass = categoryDotClasses[item.category] ?? "bg-gray-400";
+              return (
+                <motion.div
+                  key={`${activeCategory}-${idx}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.04 }}
+                  className={`rounded-2xl border transition-all duration-200 ${
+                    isOpen
+                      ? "border-gold-400/35 bg-gradient-to-br from-gold-500/8 to-transparent shadow-[0_0_40px_rgba(212,175,55,0.08)]"
+                      : "border-white/8 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]"
+                  }`}
                 >
-                  <span className="text-[10px] font-black uppercase tracking-widest text-gold-400/60 mt-0.5 hidden sm:block w-24 flex-shrink-0">
-                    {item.category}
-                  </span>
-                  <span className="flex-1 font-semibold text-white leading-snug">
-                    {item.q}
-                  </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 text-gold-400" : ""
-                    }`}
-                  />
-                </button>
+                  <button
+                    className="w-full text-left px-6 py-5 flex items-start gap-4"
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2.5 ${dotClass} ${
+                        isOpen ? "opacity-100" : "opacity-40"
+                      }`}
+                    />
+                    <span className="flex-1 font-semibold text-white text-base leading-snug">
+                      {item.q}
+                    </span>
+                    <ChevronDown
+                      className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-all duration-300 ${
+                        isOpen
+                          ? "rotate-180 text-gold-400"
+                          : "text-gray-500"
+                      }`}
+                    />
+                  </button>
 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 pl-6 sm:pl-[7.5rem] text-gray-300 text-sm leading-relaxed">
-                        {item.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-6 pl-8 text-gray-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                          <span className="text-[9px] font-black uppercase tracking-widest text-gold-400/50 block mb-3">
+                            {item.category}
+                          </span>
+                          {item.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Still have questions CTA */}
+        {/* Bottom CTA — full-width card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 text-center glass-panel-3d rounded-2xl p-8 border border-white/10"
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-16"
         >
-          <p className="text-white font-semibold text-lg mb-2">
-            Still have a specific question?
-          </p>
-          <p className="text-gray-400 text-sm mb-5">
-            Email the founder directly — real replies, no bots.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="mailto:jewel@mybijou.xyz"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gold-500/10 border border-gold-400/30 text-gold-400 hover:bg-gold-500/20 rounded-xl text-sm font-semibold transition-all"
-            >
-              <Mail className="w-4 h-4" />
-              jewel@mybijou.xyz
-            </a>
-            <a
-              href="https://wa.me/60174106981?text=Hi! I have a question about Bijou AI."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-500/10 border border-emerald-400/30 text-emerald-400 hover:bg-emerald-500/20 rounded-xl text-sm font-semibold transition-all"
-            >
-              WhatsApp us directly
-            </a>
+          <div className="relative rounded-3xl overflow-hidden border border-gold-400/20">
+            {/* Gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gold-900/25 via-black/60 to-emerald-900/15 pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[150px] bg-gold-500/10 rounded-full blur-[80px] pointer-events-none" />
+
+            <div className="relative z-10 p-10 md:p-14">
+              <div className="flex flex-col md:flex-row md:items-center gap-8">
+                <div className="flex-1">
+                  <p className="text-2xl md:text-3xl font-black text-white mb-2 leading-tight">
+                    Still have a question?
+                  </p>
+                  <p className="text-gray-400 text-base">
+                    The founder replies personally. No bots, no waiting days for support tickets.
+                  </p>
+                  <div className="mt-4 flex items-center gap-3 text-sm text-gray-500">
+                    <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                    Usually responds within 2 hours
+                  </div>
+                </div>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 md:w-56">
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=60174106981&text=Hi+Jewel!+I+have+a+question+about+Bijou+AI."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-white font-bold rounded-xl transition-all shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:shadow-[0_0_40px_rgba(16,185,129,0.5)] text-sm"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    WhatsApp Founder
+                  </a>
+                  <a
+                    href="mailto:jewel@mybijou.xyz"
+                    className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-gold-500/15 border border-gold-400/30 hover:bg-gold-500/25 text-gold-300 font-bold rounded-xl transition-all text-sm"
+                  >
+                    <Mail className="w-4 h-4" />
+                    jewel@mybijou.xyz
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

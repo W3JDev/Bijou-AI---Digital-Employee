@@ -169,6 +169,23 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
               >
                 {t("pricing.cta.trial")}
               </button>
+              {/* Direct contact row */}
+              <div className="flex gap-2 mt-3">
+                <a
+                  href="https://api.whatsapp.com/send/?phone=60174106981"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-all text-center"
+                >
+                  💬 WhatsApp Us
+                </a>
+                <a
+                  href="mailto:jewel@mybijou.xyz"
+                  className="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-gold-400 bg-gold-500/10 border border-gold-400/20 hover:bg-gold-500/20 transition-all text-center"
+                >
+                  ✉️ Email Founder
+                </a>
+              </div>
 
               {/* Zero Hidden Fees */}
               <div className="mt-4 border border-emerald-500/15 bg-emerald-950/20 rounded-xl px-4 py-3">
@@ -276,6 +293,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
         </motion.div>
 
         {/* Add-ons Roadmap */}
+        <div id="roadmap" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
