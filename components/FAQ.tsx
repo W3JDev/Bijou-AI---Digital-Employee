@@ -196,7 +196,8 @@ const categories = [...new Set(faqs.map((f) => f.category))];
 const categoryActiveClasses: Record<string, string> = {
   All: "bg-white/15 border-white/30 text-white",
   "About Bijou": "bg-yellow-500/15 border-yellow-400/40 text-yellow-300",
-  "Malaysian Market": "bg-emerald-500/15 border-emerald-400/40 text-emerald-300",
+  "Malaysian Market":
+    "bg-emerald-500/15 border-emerald-400/40 text-emerald-300",
   "Pricing & Fees": "bg-blue-500/15 border-blue-400/40 text-blue-300",
   "Setup & Technical": "bg-purple-500/15 border-purple-400/40 text-purple-300",
 };
@@ -255,12 +256,12 @@ export const FAQ: React.FC = () => {
             Everything You Want To Know
           </div>
           <h2 className="text-5xl md:text-6xl font-display font-extrabold mb-5 tracking-tight">
-            Frequently{" "}
-            <span className="text-gradient-gold">Asked</span>{" "}
+            Frequently <span className="text-gradient-gold">Asked</span>{" "}
             Questions
           </h2>
           <p className="text-gray-400 text-xl max-w-2xl mx-auto leading-relaxed">
-            Real answers from the Bijou team. No sales scripts, no vague promises.
+            Real answers from the Bijou team. No sales scripts, no vague
+            promises.
           </p>
           <div className="flex items-center justify-center gap-6 mt-6 text-sm text-gray-500">
             <span className="flex items-center gap-1.5">
@@ -284,8 +285,10 @@ export const FAQ: React.FC = () => {
         >
           {["All", ...categories].map((cat) => {
             const isActive = activeCategory === cat;
-            const activeClass = categoryActiveClasses[cat] ?? categoryActiveClasses["All"];
-            const inactiveClass = categoryInactiveClasses[cat] ?? categoryInactiveClasses["All"];
+            const activeClass =
+              categoryActiveClasses[cat] ?? categoryActiveClasses["All"];
+            const inactiveClass =
+              categoryInactiveClasses[cat] ?? categoryInactiveClasses["All"];
             return (
               <button
                 key={cat}
@@ -322,7 +325,8 @@ export const FAQ: React.FC = () => {
           >
             {filtered.map((item, idx) => {
               const isOpen = openIndex === idx;
-              const dotClass = categoryDotClasses[item.category] ?? "bg-gray-400";
+              const dotClass =
+                categoryDotClasses[item.category] ?? "bg-gray-400";
               return (
                 <motion.div
                   key={`${activeCategory}-${idx}`}
@@ -349,9 +353,7 @@ export const FAQ: React.FC = () => {
                     </span>
                     <ChevronDown
                       className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-all duration-300 ${
-                        isOpen
-                          ? "rotate-180 text-gold-400"
-                          : "text-gray-500"
+                        isOpen ? "rotate-180 text-gold-400" : "text-gray-500"
                       }`}
                     />
                   </button>
@@ -400,7 +402,8 @@ export const FAQ: React.FC = () => {
                     Still have a question?
                   </p>
                   <p className="text-gray-400 text-base">
-                    The founder replies personally. No bots, no waiting days for support tickets.
+                    The founder replies personally. No bots, no waiting days for
+                    support tickets.
                   </p>
                   <div className="mt-4 flex items-center gap-3 text-sm text-gray-500">
                     <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
