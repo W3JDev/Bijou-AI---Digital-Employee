@@ -158,7 +158,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                        14 days completely free
+                        30-day money-back guarantee
                       </div>
                     </div>
 
@@ -167,7 +167,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
                       className="space-y-4"
                       onSuccess={() => {
                         setShowModal(false);
-                        // Could add success toast here
+                        window.location.href = "https://app.mybijou.xyz/signup";
                       }}
                     />
                   </motion.div>
