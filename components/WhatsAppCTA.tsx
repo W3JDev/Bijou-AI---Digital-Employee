@@ -78,7 +78,7 @@ export const WhatsAppCTA: React.FC<WhatsAppCTAProps> = ({
 
   return (
     <div
-      className={`fixed right-4 z-50 ${className}`}
+      className={`hidden sm:block fixed right-4 z-50 ${className}`}
       style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 16px)" }}
     >
       <AnimatePresence>
