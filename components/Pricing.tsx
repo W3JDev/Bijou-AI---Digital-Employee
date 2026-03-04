@@ -232,37 +232,71 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenModal }) => {
               </ul>
 
               {/* Early Adopter Counter — live from /api/spots */}
-              <div className="border-t border-white/5 pt-4 mt-2">
-                <div className="flex items-center gap-3 bg-gold-500/10 border border-gold-400/30 rounded-xl px-4 py-3">
-                  <motion.div
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 2.5,
-                      ease: "easeInOut",
-                    }}
-                    className="flex-shrink-0"
-                  >
-                    <Lock className="w-5 h-5 text-gold-400" />
-                  </motion.div>
-                  <div className="min-w-0 flex-1">
-                    <div className="text-gold-300 text-[10px] font-black uppercase tracking-wider mb-0.5">
-                      Early Adopter Price Lock
+              {/* Early Adopter Price Lock — enhanced */}
+              <div className="border-t border-white/5 pt-5 mt-3">
+                <div className="relative rounded-2xl overflow-hidden border border-gold-400/40 bg-gradient-to-br from-gold-500/10 via-black/20 to-amber-500/5 p-5 shadow-[0_0_40px_rgba(212,175,55,0.12)]">
+                  {/* Animated shimmer edge */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-400/5 to-transparent animate-shine bg-[length:200%_100%] pointer-events-none" />
+
+                  {/* Header row */}
+                  <div className="flex items-start gap-3 mb-4">
+                    <motion.div
+                      animate={{ scale: [1, 1.18, 1], rotate: [0, -5, 5, 0] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      className="flex-shrink-0 w-9 h-9 rounded-xl bg-gold-500/20 flex items-center justify-center"
+                    >
+                      <Lock className="w-4 h-4 text-gold-400" />
+                    </motion.div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                        <span className="text-gold-300 text-[10px] font-black uppercase tracking-widest">
+                          Early Adopter Price Lock
+                        </span>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-red-400 text-[10px] font-black animate-pulse">
+                          🔥 Closing Soon
+                        </span>
+                      </div>
+                      <p className="text-white text-sm font-bold leading-snug">
+                        {getUrgencyMessage(remaining)}
+                      </p>
                     </div>
-                    <div className="text-white text-xs font-semibold">
-                      {getUrgencyMessage(remaining)}
+                  </div>
+
+                  {/* Progress bar */}
+                  <div className="mb-3">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-gold-400/70 text-[10px] font-semibold">
+                        {spotsTotal - remaining} of {spotsTotal} founding spots claimed
+                      </span>
+                      <span className="text-gold-300 text-[10px] font-black">
+                        {remaining} left
+                      </span>
                     </div>
-                    <div className="mt-1.5 w-full bg-black/30 rounded-full h-1">
+                    <div className="w-full bg-black/40 rounded-full h-2.5 overflow-hidden">
                       <motion.div
-                        className="bg-gradient-to-r from-gold-500 to-gold-300 h-1 rounded-full"
+                        className="bg-gradient-to-r from-gold-500 to-amber-300 h-2.5 rounded-full relative"
                         initial={{ width: 0 }}
                         animate={{ width: `${filledPct}%` }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                      />
+                        transition={{ duration: 1.4, ease: "easeOut" }}
+                      >
+                        <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/30 rounded-full blur-sm" />
+                      </motion.div>
                     </div>
-                    <div className="text-gold-400/60 text-[10px] mt-1">
-                      {spotsTotal - remaining} of {spotsTotal} spots claimed
-                    </div>
+                  </div>
+
+                  {/* What the lock means */}
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      { icon: "🔒", text: "RM299 rate locked forever" },
+                      { icon: "📈", text: "New customers pay RM399+" },
+                      { icon: "✅", text: "Cancel anytime, no trap" },
+                      { icon: "🎁", text: "Free add-ons when they ship" },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-1.5">
+                        <span className="text-sm">{item.icon}</span>
+                        <span className="text-gray-300 text-[10px] leading-tight">{item.text}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <p className="text-gray-500 text-[10px] leading-relaxed mt-2 pl-1">

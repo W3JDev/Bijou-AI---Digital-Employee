@@ -1,8 +1,5 @@
 import { motion } from "framer-motion";
-import {
-    ArrowRight,
-    Users
-} from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import React from "react";
 
 interface WaitlistStripProps {
@@ -14,52 +11,82 @@ export const WaitlistStrip: React.FC<WaitlistStripProps> = ({
   className = "",
   onOpenModal,
 }) => {
+  const pills = [
+    { icon: "✅", text: "Done for you" },
+    { icon: "⚡", text: "Live in 15 min" },
+    { icon: "🚫", text: "Zero setup hassle" },
+  ];
+
   return (
     <div
       className={`fixed bottom-0 left-0 right-0 z-40 ${className}`}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
-      <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-green-900 backdrop-blur-xl border-t-2 border-emerald-400/20 shadow-[0_-15px_60px_rgba(16,185,129,0.2)] relative overflow-hidden">
-        {/* Enhanced background glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/10 via-transparent to-green-900/10 pointer-events-none" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
+      {/* Glow blur above strip */}
+      <div className="h-4 bg-gradient-to-t from-emerald-900/30 to-transparent pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 relative z-10">
-          <div className="flex items-center justify-between gap-3 sm:gap-4">
-            {/* Left side - Message (hidden on smallest screens) */}
-            <div className="hidden sm:flex items-center gap-3 flex-1 min-w-0">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-emerald-400/20 rounded-full flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.2)] ring-2 ring-emerald-400/30">
-                <Users className="w-5 h-5 lg:w-6 lg:h-6 text-white drop-shadow-lg" />
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-white font-bold text-base lg:text-lg drop-shadow-lg tracking-tight leading-tight">
-                  Don't Miss Out!
-                </h4>
-                <p className="text-white/90 text-xs lg:text-sm font-medium drop-shadow-sm hidden lg:block">
-                  Join 500+ Malaysian SMEs getting exclusive Bijou updates
-                </p>
-              </div>
-            </div>
+      <div className="bg-gradient-to-r from-[#0a1f12] via-[#0d2b19] to-[#0a1f12] backdrop-blur-xl border-t border-emerald-400/20 shadow-[0_-12px_50px_rgba(16,185,129,0.18)] relative overflow-hidden">
+        {/* Shimmer line at top */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
+        {/* Subtle animated glow */}
+        <motion.div
+          animate={{ opacity: [0.4, 0.7, 0.4] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          className="absolute inset-0 bg-gradient-to-r from-emerald-900/10 via-emerald-600/5 to-emerald-900/10 pointer-events-none"
+        />
 
-            {/* Mobile-only compact text */}
-            <div className="sm:hidden flex-1 min-w-0">
-              <p className="text-white font-bold text-sm leading-tight">
-                Join 500+ SMEs on the waitlist!
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 relative z-10">
+          <div className="flex items-center justify-between gap-4">
+
+            {/* Left: headline + pills */}
+            <div className="flex-1 min-w-0">
+              {/* Headline */}
+              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                <motion.span
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                  className="text-lg"
+                >🔥</motion.span>
+                <span className="text-white font-black text-sm sm:text-base leading-tight">
+                  Only 7 Early Adopter Spots Left — RM299/mo Forever
+                </span>
+              </div>
+
+              {/* Pills — desktop */}
+              <div className="hidden sm:flex items-center gap-2 flex-wrap">
+                {pills.map((p, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] font-semibold"
+                  >
+                    {p.icon} {p.text}
+                  </span>
+                ))}
+                <span className="text-gray-500 text-[10px]">
+                  · 500+ Malaysian SMEs already on the list
+                </span>
+              </div>
+
+              {/* Mobile subtext */}
+              <p className="sm:hidden text-emerald-300/70 text-[10px] font-medium">
+                ✅ Done for you · ⚡ Live in 15 min · 🚫 Zero hassle
               </p>
             </div>
 
-            {/* Right side - Button */}
+            {/* CTA button */}
             <div className="flex-shrink-0">
               <motion.button
                 onClick={onOpenModal}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-semibold transition-all whitespace-nowrap bg-white text-emerald-600 hover:bg-emerald-50 shadow-lg hover:shadow-xl text-sm sm:text-base"
+                whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(16,185,129,0.5)" }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-black text-sm sm:text-base whitespace-nowrap bg-gradient-to-r from-emerald-500 to-green-400 text-black shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
               >
-                Join Waitlist
-                <ArrowRight className="w-4 h-4" />
+                <Zap className="w-4 h-4" />
+                <span>Claim My Spot</span>
+                <ArrowRight className="w-4 h-4 hidden sm:block" />
               </motion.button>
             </div>
+
           </div>
         </div>
       </div>
